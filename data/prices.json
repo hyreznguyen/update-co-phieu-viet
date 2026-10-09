@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-10-09T16:00:00+07:00",
+  "updatedAt": "2026-10-09T16:25:19+07:00",
   "prices": {
     "FPT": {
-      "close": 59700,
+      "close": 57900,
       "prevClose": 59700,
-      "date": "2026-10-08",
-      "source": "nhập tay"
+      "date": "2026-10-09",
+      "source": "VCI"
     },
     "PVD": {
-      "close": 18300,
+      "close": 18200,
       "prevClose": 18250,
       "date": "2026-10-09",
-      "source": "nhập tay"
+      "source": "VCI"
     }
   }
 }
