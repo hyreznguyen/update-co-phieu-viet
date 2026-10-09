@@ -12,6 +12,12 @@
       "prevClose": 18250,
       "date": "2026-10-09",
       "source": "VCI"
+    },
+    "MSR": {
+      "close": 68200,
+      "prevClose": 65000,
+      "date": "2026-10-08",
+      "source": "nhập tay"
     }
   }
 }

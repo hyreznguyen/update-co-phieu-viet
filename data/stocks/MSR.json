@@ -1,0 +1,82 @@
+{
+  "ticker": "MSR",
+  "name": "CTCP Masan High-Tech Materials",
+  "nameEn": "Masan High-Tech Materials",
+  "exchange": "UPCoM",
+  "sector": "Khai khoáng – vật liệu",
+  "updatedAt": "2026-10-09T10:30:00.000Z",
+  "dataAsOf": "giá 08/10/2026, KQKD Q2/2026",
+  "price": 68200,
+  "recommendation": "BÁN",
+  "intrinsic": { "low": 20000, "base": 30000, "high": 70000 },
+  "epsTTM": 2199,
+  "bvps": 13015,
+  "sharesMn": 1104.97,
+  "dps": 0,
+  "tagline": "Mỏ vonfram lớn hàng đầu ngoài Trung Quốc vừa đi từ thua lỗ nặng sang lãi kỷ lục nhờ giá vonfram tăng vọt. Giá cổ phiếu hiện đang trả cho kịch bản giá vonfram cao kéo dài nhiều năm.",
+  "story": "Masan High-Tech Materials vận hành mỏ Núi Pháo ở Thái Nguyên, một trong những nguồn cung vonfram lớn nhất thế giới nằm ngoài Trung Quốc. Công ty khai thác và chế biến vonfram (thành APT và các sản phẩm trung gian), kèm theo florit, bismut và đồng. Vonfram là kim loại cứng, chịu nhiệt, dùng trong dụng cụ cắt gọt, quốc phòng, bán dẫn và điện tử. Trung Quốc chiếm phần lớn nguồn cung toàn cầu.\n\nNhiều năm qua MSR là một câu chuyện khó khăn. Năm 2020 công ty mua lại H.C. Starck (Đức) để đi xuống mảng chế biến sâu, nhưng mảng này ăn mòn lợi nhuận và đẩy nợ vay lên cao. Năm 2023 và 2024 công ty lỗ hơn 1.500 tỷ mỗi năm vì sản lượng thấp, chi phí nguyên liệu cao và lãi vay lớn. Cuối 2024, MSR bán H.C. Starck cho Mitsubishi Materials với giá 134,5 triệu USD và quay về làm đúng một việc: khai thác Núi Pháo.\n\nRồi giá vonfram đổi chiều. Từ 2025, Trung Quốc siết xuất khẩu vonfram, khiến nguồn cung ngoài Trung Quốc khan hiếm và giá bán ở châu Âu cao hơn nhiều so với trong Trung Quốc. Giá APT tại Trung Quốc lên đỉnh khoảng tháng 7/2026. MSR từ hòa vốn năm 2025 lên lãi 537 tỷ quý I và 1.666 tỷ quý II/2026, mức cao nhất lịch sử. Ban lãnh đạo nói đây mới là khởi đầu, kỳ vọng có khoảng 200 triệu USD tiền mặt cuối năm và giảm mạnh đòn bẩy.\n\nThị trường đã phản ứng mạnh. Giá cổ phiếu tăng khoảng 27% chỉ trong hai tuần đầu tháng 10, lên 68.200 đồng, tương đương P/E 31 lần lợi nhuận 12 tháng và P/B hơn 5 lần. Điều đáng chú ý: cùng lúc đó giá APT tại Trung Quốc đang giảm, dự báo tháng 10 còn 550.000 NDT/tấn, thấp hơn đỉnh tháng 7 khoảng 17%. Thêm vào đó, Masan Group nắm khoảng 95% cổ phần, nên lượng cổ phiếu tự do rất ít và giá có thể biến động mạnh vì vài lệnh lớn.",
+  "thesis": "Đây là doanh nghiệp khai khoáng đang ở đỉnh chu kỳ lợi nhuận, và giá cổ phiếu đang trả cho kịch bản tốt nhất: giá vonfram ngoài Trung Quốc giữ ở mức cao trong nhiều năm. Nếu lợi nhuận quý II kéo dài, P/E thực chỉ khoảng 11x và giá hiện tại là hợp lý. Nhưng nếu giá vonfram quay về mức bình thường như đã bắt đầu thấy ở Trung Quốc, lợi nhuận có thể giảm hơn một nửa và giá trị hợp lý chỉ quanh 30.000 đồng. Với nhà đầu tư giá trị, không có biên an toàn ở giá này: tài sản tốt, nhưng giá quá đắt.",
+  "thesisPoints": [
+    { "title": "Lợi nhuận đỉnh chu kỳ, không phải lợi nhuận bình thường", "detail": "Năm 2025 MSR chỉ lãi 11 tỷ; 2023–2024 lỗ hơn 1.500 tỷ mỗi năm. Toàn bộ lợi nhuận 12 tháng gần nhất (~2.430 tỷ) đến từ đợt tăng giá vonfram, không phải từ cải thiện cấu trúc kéo dài." },
+    { "title": "Giá vonfram đã bắt đầu hạ nhiệt", "detail": "APT tại Trung Quốc giảm từ khoảng 660.000 (tháng 7) xuống 550.000 NDT/tấn (dự báo tháng 10). Cổ phiếu lại tăng mạnh nhất đúng lúc giá hàng hóa đi xuống." },
+    { "title": "Định giá đã phản ánh kịch bản lạc quan", "detail": "68.200 đồng tương đương ~11x lợi nhuận quý II nhân 4. Nghĩa là thị trường đang giả định quý II là mức lợi nhuận bền vững chứ không phải đỉnh." },
+    { "title": "Có lý do để trả giá cao hơn mức khai khoáng thông thường, nhưng có giới hạn", "detail": "Tài sản chiến lược ngoài Trung Quốc, đàm phán đối tác Mỹ/Âu/Nhật và chuyển sàn HOSE năm 2027 là lý do chính đáng cho một khoản phần bù. Nhưng phần bù đó khó lên tới mức gấp đôi giá trị hợp lý." }
+  ],
+  "thesisBreakers": [
+    "Giá APT ngoài Trung Quốc (châu Âu) giữ trên ~2.500 USD/mtu đến hết 2027, tức lệnh hạn chế xuất khẩu của Trung Quốc thành cấu trúc lâu dài",
+    "LNST quý III và IV/2026 mỗi quý vẫn trên ~1.200 tỷ dù giá APT Trung Quốc giảm",
+    "MSR ký đối tác chiến lược với định giá cao hơn giá thị trường hiện tại",
+    "Mở rộng trữ lượng hoặc giấy phép giúp kéo dài đáng kể tuổi thọ mỏ Núi Pháo"
+  ],
+  "metrics": { "roe": 17, "netMargin": 15.6 },
+  "valuationMethod": "Định giá theo kịch bản lợi nhuận, vì lợi nhuận hiện tại là đỉnh chu kỳ.\nThấp (~20.000): giá vonfram về mức bình thường từ 2028, lợi nhuận bình thường ~1.500 tỷ/năm, cộng hai năm lợi nhuận cao 2026–2027. Cơ sở (~30.000): giá ngoài Trung Quốc giữ cao đến hết 2028 (~4.500–5.000 tỷ/năm), sau đó lợi nhuận bình thường cao hơn trước (~2.500 tỷ/năm) nhờ đã giảm nợ, chiết khấu 12%/năm, P/E 12x cho giai đoạn bình thường. Cao (~70.000): lợi nhuận quý II (~6.600 tỷ/năm) duy trì nhiều năm, 12x.\nGiá hiện tại gần bằng kịch bản cao. Lưu ý: tuổi thọ mỏ có hạn nên giả định lợi nhuận vĩnh viễn ở kịch bản cơ sở đã khá rộng rãi.",
+  "financials": {
+    "unit": "Tỷ đồng",
+    "years": ["2021", "2022", "2023", "2024", "2025", "12T tới 6/26"],
+    "cagrCols": 5,
+    "rows": [
+      { "label": "Doanh thu", "values": [13520, 15550, 14093, 14336, 7443, 15567] },
+      { "label": "LN trước thuế", "values": [null, null, null, null, 49, 2576] },
+      { "label": "LNST", "values": [261, 105, -1576, -1638, 11, 2430] },
+      { "label": "EPS điều chỉnh (đồng)", "values": [236, 95, -1426, -1482, 10, 2199] }
+    ],
+    "note": "Doanh thu 2021–2024 gồm H.C. Starck (đã bán cuối 2024), nên không so sánh trực tiếp được với 2025 trở đi (chỉ còn Núi Pháo). Doanh thu 2021 ước tính ngược từ tốc độ tăng công bố. 2021–2024 lấy từ báo cáo HĐQT, không có số LN trước thuế. 2025 và 12 tháng gần nhất cộng từ số liệu từng quý. Masan Group nắm ~95% nên LNST gần như bằng LNST cổ đông mẹ. EPS điều chỉnh = LNST chia ~1.105 triệu cổ phiếu hiện tại."
+  },
+  "financialsComment": "Hai năm lỗ nặng rồi một quý lãi bằng cả năm của nhiều doanh nghiệp: đó là đòn bẩy hoạt động của một mỏ có chi phí cố định cao và nợ vay lớn. Chiều tăng mạnh bao nhiêu thì chiều giảm cũng mạnh bấy nhiêu. Doanh thu quý II/2026 (8.138 tỷ) gấp 2,7 lần quý I, nên cần xem quý III có giữ được nhịp này hay quý II có phần bán ra hàng tồn kho tích lũy.",
+  "news": [
+    { "date": "10/2026", "title": "Cổ phiếu tăng ~27% trong hai tuần, lên 68.200", "note": "Cùng lúc, Ganzhou dự báo APT tháng 10 còn 550.000 NDT/tấn, giảm 50.000 so với tháng trước. Giá cổ phiếu và giá hàng hóa đang đi ngược chiều.", "impact": "-" },
+    { "date": "08/2026", "title": "Q2/2026 lãi kỷ lục 1.666 tỷ; 6 tháng 2.202 tỷ", "note": "Đạt khoảng 88% mức cao nhất của kế hoạch năm. Ban lãnh đạo kỳ vọng ~200 triệu USD tiền mặt cuối 2026 và vượt kế hoạch nếu giá giữ.", "impact": "+" },
+    { "date": "08/2026", "title": "Giá vonfram Trung Quốc bắt đầu hạ nhiệt", "note": "Ganzhou dự báo APT tháng 8 là 606.000 NDT/tấn, giảm 54.000 so với tháng 7.", "impact": "-" },
+    { "date": "05/2026", "title": "Kế hoạch chuyển sàn HOSE năm 2027, đàm phán đối tác chiến lược", "note": "Masan cần giảm sở hữu dưới 90%. Đang đàm phán với đối tác Mỹ, châu Âu, Nhật. Nợ ròng/EBITDA 3,5x, mục tiêu 1,7x cuối 2026.", "impact": "+" },
+    { "date": "05/2026", "title": "Q1/2026 lãi 537 tỷ, cao nhất lịch sử khi đó", "note": "So với lỗ 222 tỷ cùng kỳ. Doanh thu tăng ~115% nhờ bán APT giá cao.", "impact": "+" },
+    { "date": "12/2024", "title": "Hoàn tất bán H.C. Starck cho Mitsubishi Materials", "note": "Thu 134,5 triệu USD, chấm dứt mảng chế biến sâu thua lỗ. MSR chỉ còn tập trung vào Núi Pháo.", "impact": "+" }
+  ],
+  "catalysts": [
+    "Công bố đối tác chiến lược quốc tế, có thể kèm định giá tham chiếu",
+    "Chuyển sàn HOSE năm 2027, tăng thanh khoản và khả năng vào các chỉ số",
+    "Giảm nợ nhanh, tiết kiệm chi phí lãi vay",
+    "Chính sách khoáng sản chiến lược của Mỹ, EU, Nhật ưu tiên nguồn cung ngoài Trung Quốc"
+  ],
+  "risks": [
+    "Giá vonfram tiếp tục giảm; lợi nhuận rất nhạy với giá bán",
+    "Trung Quốc nới lỏng xuất khẩu, làm mất phần bù giá ngoài Trung Quốc",
+    "Định giá cao: P/E ~31x lợi nhuận 12 tháng, P/B hơn 5x",
+    "Cổ phiếu tự do chỉ ~5%: giá dễ biến động mạnh; Masan bán bớt cổ phần sẽ tăng nguồn cung cổ phiếu",
+    "Tuổi thọ và trữ lượng mỏ có hạn",
+    "Không chia cổ tức; giao dịch liên quan với các công ty trong hệ sinh thái Masan"
+  ],
+  "sources": [
+    { "title": "Simplize – Lịch sử giá MSR (08/10/2026)" },
+    { "title": "24HMoney – Báo cáo tài chính quý MSR (Q3/2024–Q2/2026)" },
+    { "title": "Masan High-Tech Materials – Báo cáo HĐQT 2022 và 2024" },
+    { "title": "VnBusiness – MSR lỗ kỷ lục năm 2024 (02/2025)" },
+    { "title": "Thị trường Tài chính Tiền tệ – MSR Q1/2026, kế hoạch chuyển sàn HOSE (05/2026)" },
+    { "title": "Znews – Sau quý II kỷ lục, điều gì chờ MSR (08/2026)" },
+    { "title": "Nông nghiệp và Môi trường – Chu kỳ lợi nhuận của MSR (08/2026)" },
+    { "title": "SMM – Giá APT Trung Quốc và châu Âu (07–10/2026)" },
+    { "title": "The Investor – Mitsubishi mua H.C. Starck từ Masan" }
+  ],
+  "history": [
+    { "date": "2026-10-09", "price": 68200, "intrinsicBase": 30000, "recommendation": "BÁN" }
+  ]
+}
