@@ -1,0 +1,197 @@
+{
+  "ticker": "FPT",
+  "name": "CTCP FPT",
+  "nameEn": "FPT Corporation",
+  "exchange": "HOSE",
+  "sector": "Công nghệ thông tin",
+  "updatedAt": "2026-10-09T09:05:00.000Z",
+  "dataAsOf": "giá 08/10/2026, KQKD 6T2026",
+  "price": 59700,
+  "recommendation": "MUA",
+  "intrinsic": {
+    "low": 68000,
+    "base": 82000,
+    "high": 98000
+  },
+  "tagline": "Cỗ máy tăng trưởng lợi nhuận ~20%/năm bị bán mất một nửa giá trị, trong khi lợi nhuận vẫn tăng đều. Câu hỏi là AI sẽ là mối đe dọa hay cơ hội của FPT.",
+  "story": "FPT ra đời năm 1988 và trở thành tập đoàn công nghệ lớn nhất Việt Nam. Công ty kiếm tiền chủ yếu từ dịch vụ CNTT cho khách hàng nước ngoài (offshore IT services): viết phần mềm, chuyển đổi số, vận hành hệ thống cho doanh nghiệp Nhật Bản, Mỹ, châu Âu và châu Á. Bên cạnh đó là FPT Telecom (internet, truyền hình) và hệ thống giáo dục từ phổ thông đến đại học.\n\nGiai đoạn 2021–2025, FPT là một trong những cỗ máy tăng trưởng đều đặn nhất sàn chứng khoán: doanh thu gần gấp đôi, lợi nhuận cổ đông mẹ hơn gấp đôi, năm nào cũng tăng khoảng 20%. Nhật Bản là động lực chính, với các hợp đồng lớn trị giá hơn 10 triệu USD ngày càng nhiều. Thị trường trả giá cao cho sự ổn định đó: đầu năm 2025 cổ phiếu lên đỉnh khoảng 131.000 đồng, tương đương P/E trên 25x.\n\nTừ đó câu chuyện đổi chiều. Cổ phiếu mất hơn một nửa giá trị dù lợi nhuận không hề giảm. Áp lực đến từ dòng tiền: khối ngoại bán ròng khoảng 16.800 tỷ đồng chỉ trong 7 tháng đầu 2026, nhiều nhất thị trường. Tăng trưởng lợi nhuận chậm lại từ ~20% xuống ~14%. Và phía sau là một câu hỏi lớn hơn: AI tạo sinh có làm thu hẹp thị trường gia công phần mềm, vốn là nguồn thu chính của FPT? Thêm vào đó, từ 2026 FPT Telecom không còn hợp nhất doanh thu vì Bộ Công an trở thành cổ đông chi phối, khiến doanh thu báo cáo trông như giảm.\n\nFPT đang trả lời bằng cách đặt cược hết vào AI (chiến lược AI-First 2026–2028). Hai cụm AI Factory tại Việt Nam và Nhật Bản đã chạy trên 90% công suất và bắt đầu có lãi từ quý II/2026. Mảng AI và dữ liệu tăng 54%, hợp đồng ký mới ở nước ngoài tăng 32%. Ở giá 59.700 đồng, thị trường đang trả khoảng 11 lần lợi nhuận cho một doanh nghiệp vẫn tăng trưởng hai chữ số, mức rẻ nhất trong nhiều năm.",
+  "thesis": "Thị trường đang định giá FPT như một công ty gia công sắp bị AI thay thế, trong khi số liệu nói điều ngược lại: hợp đồng ký mới tăng tốc, mảng AI tăng nhanh nhất và đã có lãi. Ở khoảng 11x P/E, giá đã phản ánh kịch bản xấu. Chỉ cần FPT giữ tăng trưởng lợi nhuận 12–15%/năm là đủ để cổ phiếu được định giá lại về vùng 80.000 trở lên.",
+  "thesisPoints": [
+    {
+      "title": "Lợi nhuận vẫn tăng, chỉ có giá là giảm",
+      "detail": "LNST cổ đông mẹ tăng trung bình ~21%/năm giai đoạn 2021–2025 và +14% trong 6T2026, nhưng P/E đã giảm từ trên 25x (đầu 2025) về khoảng 11x."
+    },
+    {
+      "title": "Hợp đồng ký mới báo trước tăng trưởng",
+      "detail": "Ký mới CNTT nước ngoài đạt hơn 1,5 tỷ USD năm 2025 (+23%) và tăng tiếp 32% trong 6T2026. Đây là doanh thu của 1–3 năm tới, chưa thấy dấu hiệu khách hàng rời đi."
+    },
+    {
+      "title": "AI là cơ hội, không chỉ là mối đe dọa",
+      "detail": "AI Factory có lãi từ Q2/2026, dịch vụ AI và dữ liệu tăng 54%. FPT đang bán hạ tầng và giải pháp AI cho chính những khách hàng lo bị AI thay đổi."
+    },
+    {
+      "title": "Được trả tiền trong lúc chờ",
+      "detail": "Cổ tức tiền mặt 20% mệnh giá mỗi năm (khoảng 3,4% ở giá hiện tại) cộng cổ phiếu thưởng định kỳ."
+    }
+  ],
+  "thesisBreakers": [
+    "Ký mới CNTT nước ngoài tăng dưới 10% hoặc giảm trong 2 quý liên tiếp",
+    "Biên lợi nhuận trước thuế khối Công nghệ giảm rõ rệt xuống dưới ~13%, dấu hiệu bị ép giá vì AI",
+    "LNST cổ đông mẹ cả năm 2026 tăng dưới 10%, trượt xa kế hoạch +15%",
+    "Khách hàng Nhật cắt giảm ngân sách CNTT, hoặc đồng yên mất giá mạnh kéo dài"
+  ],
+  "metrics": {
+    "roe": 25,
+    "epsGrowth": 13.4
+  },
+  "valuationMethod": "Định giá theo P/E. Ước tính LNST cổ đông mẹ 2026 khoảng 10.700 tỷ (+14%, sát kế hoạch), tương đương EPS ~5.670 đồng trên ~1.886 triệu cổ phiếu sau thưởng.\nThấp: 12x EPS 2026 ≈ 68.000. Cơ sở: ~14,5x EPS 2026 ≈ 82.000, vẫn thấp hơn nhiều mức trên 20x những năm trước. Cao: 15x EPS 2027 (giả định +15%) ≈ 98.000.\nP/E, P/B, ROE là ước tính từ giá 59.700 và LNST 12 tháng gần nhất (~9.994 tỷ).",
+  "financials": {
+    "unit": "Tỷ đồng",
+    "years": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "12T tới 6/26"
+    ],
+    "cagrCols": 5,
+    "rows": [
+      {
+        "label": "Doanh thu",
+        "values": [
+          35657,
+          44017,
+          52618,
+          62849,
+          70113,
+          null
+        ]
+      },
+      {
+        "label": "LN trước thuế",
+        "values": [
+          6335,
+          7654,
+          9203,
+          11071,
+          13039,
+          13915
+        ]
+      },
+      {
+        "label": "LNST cổ đông mẹ",
+        "values": [
+          4337,
+          5310,
+          6470,
+          7849,
+          9369,
+          9994
+        ]
+      },
+      {
+        "label": "EPS điều chỉnh (đồng)",
+        "values": [
+          2300,
+          2815,
+          3431,
+          4162,
+          4968,
+          5299
+        ]
+      }
+    ],
+    "note": "CAGR và xu hướng tính cho 2021–2025. LNST cổ đông mẹ 2021–2022 suy ra từ tốc độ tăng công bố. EPS điều chỉnh = LNST cổ đông mẹ chia ~1.886 triệu cổ phiếu hiện tại để so sánh được qua các năm (EPS công bố từng năm lần lượt 4.346; 4.421; 4.666; 4.940; 5.211 đồng, bị pha loãng bởi các đợt thưởng cổ phiếu). Doanh thu 2021–2025 gồm FPT Telecom; từ 2026 không còn hợp nhất nên không có số 12 tháng so sánh được."
+  },
+  "financialsComment": "Doanh thu tăng trung bình ~18%/năm và LNST cổ đông mẹ ~21%/năm trong 5 năm, nghĩa là biên lợi nhuận mở rộng đều qua từng năm. Lợi nhuận 12 tháng gần nhất vẫn lập đỉnh mới. Thứ thay đổi không nằm ở lợi nhuận mà ở mức giá thị trường sẵn sàng trả cho lợi nhuận đó.",
+  "news": [
+    {
+      "date": "10/2026",
+      "title": "Giá giảm liên tục từ 64.700 (25/9) về 59.700 (8/10) sau khi chốt quyền thưởng",
+      "note": "Áp sát vùng đáy cuối tháng 7 sau khi điều chỉnh thưởng.",
+      "impact": "-"
+    },
+    {
+      "date": "09/2026",
+      "title": "Thưởng cổ phiếu 10%, chốt quyền 22/9",
+      "note": "Khoảng 171 triệu cổ phiếu mới, vốn điều lệ lên gần 18.858 tỷ. Không làm thay đổi giá trị doanh nghiệp.",
+      "impact": "0"
+    },
+    {
+      "date": "07/2026",
+      "title": "6T2026: LNTT +18%, ký mới CNTT nước ngoài +32%, AI Factory có lãi từ Q2",
+      "note": "Mảng AI và dữ liệu tăng 54%, CNTT trong nước lãi gấp đôi. Củng cố thesis rằng tăng trưởng chưa chững lại.",
+      "impact": "+"
+    },
+    {
+      "date": "07/2026",
+      "title": "Khối ngoại bán ròng ~16.800 tỷ từ đầu năm, FPT rơi khỏi top 10 vốn hóa",
+      "note": "Lực bán lớn nhất thị trường. Room ngoại trống khoảng 22%, giá thấp nhất từ 11/2023.",
+      "impact": "-"
+    },
+    {
+      "date": "03/2026",
+      "title": "FPT Telecom chuyển sang phương pháp vốn chủ sở hữu; kế hoạch LNTT 2026 +15%",
+      "note": "Doanh thu báo cáo giảm cơ học, lợi nhuận không bị ảnh hưởng. Cổ tức tiền mặt dự kiến tối đa 20%.",
+      "impact": "0"
+    }
+  ],
+  "catalysts": [
+    "Ký mới nước ngoài tiếp tục tăng mạnh, chuyển thành doanh thu 2027",
+    "AI Factory mở rộng công suất và đóng góp lợi nhuận rõ hơn",
+    "Khối ngoại ngừng bán hoặc quay lại mua (room trống ~22%)",
+    "Thị trường được nâng hạng, thu hút vốn ngoại thụ động vào cổ phiếu vốn hóa lớn"
+  ],
+  "risks": [
+    "AI tạo sinh làm giảm nhu cầu gia công phần mềm truyền thống, gây áp lực lên giá và khối lượng hợp đồng",
+    "Đồng yên yếu làm giảm doanh thu quy đổi từ thị trường lớn nhất",
+    "Khối ngoại tiếp tục bán ròng, giữ giá ở vùng thấp lâu hơn dự kiến",
+    "Mảng Giáo dục giảm doanh thu; sản phẩm Made-by-FPT đi ngang",
+    "Thay đổi cách hợp nhất FPT Telecom khiến số liệu khó so sánh"
+  ],
+  "sources": [
+    {
+      "title": "Simplize – Lịch sử giá FPT (08/10/2026)"
+    },
+    {
+      "title": "FPT – Business performance in 2021"
+    },
+    {
+      "title": "VnEconomy – FPT báo lãi trước thuế 7.654 tỷ năm 2022"
+    },
+    {
+      "title": "Brands Vietnam – FPT lãi hơn 9.200 tỷ năm 2023"
+    },
+    {
+      "title": "Tin nhanh chứng khoán – Năm 2024 FPT tăng trưởng lợi nhuận trên 20%"
+    },
+    {
+      "title": "VnEconomy – Năm 2025 FPT báo lãi trước thuế tăng 17,8%"
+    },
+    {
+      "title": "Thị trường Tài chính Tiền tệ – Kế hoạch 2026 của FPT (03/2026)"
+    },
+    {
+      "title": "Doanh nhân – FPT báo lãi trước thuế hơn 5.700 tỷ nửa đầu 2026"
+    },
+    {
+      "title": "Doanh nhân – FPT rớt khỏi top 10 vốn hóa (07/2026)"
+    },
+    {
+      "title": "Doanh nhân – FPT chốt ngày thưởng hơn 171 triệu cổ phiếu (09/2026)"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-09",
+      "price": 59700,
+      "intrinsicBase": 82000,
+      "recommendation": "MUA"
+    }
+  ],
+  "epsTTM": 5299,
+  "bvps": 21170,
+  "sharesMn": 1885.8,
+  "dps": 2000
+}

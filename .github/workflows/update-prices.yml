@@ -1,0 +1,40 @@
+name: Cập nhật giá cổ phiếu
+
+on:
+  schedule:
+    # 09:15 UTC = 16:15 giờ Việt Nam, thứ Hai đến thứ Sáu (sau giờ đóng cửa).
+    - cron: "15 9 * * 1-5"
+  workflow_dispatch: {}   # cho phép bấm chạy tay trong tab Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Lấy giá đóng cửa
+        run: python scripts/update_prices.py
+
+      - name: Lưu giá mới vào repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/prices.json
+          if git diff --cached --quiet; then
+            echo "Không có giá mới."
+          else
+            git commit -m "Cập nhật giá $(TZ=Asia/Ho_Chi_Minh date +%F)"
+            git push
+          fi

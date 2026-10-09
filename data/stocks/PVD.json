@@ -1,0 +1,204 @@
+{
+  "ticker": "PVD",
+  "name": "Tổng CTCP Khoan và Dịch vụ Khoan Dầu khí (PV Drilling)",
+  "nameEn": "PetroVietnam Drilling & Well Services",
+  "exchange": "HOSE",
+  "sector": "Dịch vụ dầu khí",
+  "updatedAt": "2026-10-09T09:40:00.000Z",
+  "dataAsOf": "giá 09/10/2026, KQKD Q2/2026",
+  "price": 18300,
+  "recommendation": "GIỮ",
+  "intrinsic": {
+    "low": 16000,
+    "base": 21000,
+    "high": 25000
+  },
+  "tagline": "Nhà khoan dầu khí lớn nhất Việt Nam đang mua giàn cũ giá rẻ để tăng trưởng. Lợi nhuận đi lên theo số giàn, nhưng ROE vẫn thấp và nợ vay tăng nhanh.",
+  "story": "PV Drilling là nhà thầu khoan dầu khí lớn nhất Việt Nam, công ty con của Petrovietnam. Công ty kiếm tiền theo hai cách: cho thuê giàn khoan tự nâng (jack-up) tính theo ngày, hiện khoảng 90.000 USD/ngày, và bán dịch vụ kỹ thuật giếng khoan (khoảng 40% doanh thu). Giàn của PVD làm việc ở Việt Nam, Malaysia, Indonesia và Brunei. Khi trong nước cần nhiều giàn hơn số tự có, PVD thuê thêm giàn của hãng khác để làm thầu lại, phần này doanh thu lớn nhưng biên lợi nhuận mỏng.\n\nĐây là doanh nghiệp chu kỳ thuần túy. Thời giá dầu cao 2011–2014, PVD lãi hàng nghìn tỷ mỗi năm. Khi giá dầu sụp năm 2015, giá thuê giàn rơi tự do và PVD trải qua gần một thập kỷ lãi mỏng hoặc lỗ: năm 2021 chỉ lãi 20 tỷ, năm 2022 lỗ 103 tỷ. Chu kỳ quay lại từ 2023 khi giá thuê giàn khu vực tăng. Năm 2024 lãi cao nhất 9 năm, năm 2025 lãi khoảng 1.032 tỷ, cao nhất 10 năm.\n\nĐiểm khác biệt của chu kỳ này là cách PVD mở rộng: thay vì đóng giàn mới (200–300 triệu USD/chiếc), công ty mua lại giàn cũ với khoảng 90–100 triệu USD khi các tập đoàn lớn rút khỏi mảng khoan. PVD VIII chạy từ 9/2025, PVD IX từ 4/2026, PVD X đã nhận bàn giao tháng 7/2026 và sẽ hoạt động từ Q2/2027, đưa đội giàn tự sở hữu lên 8 chiếc. Tiền mua giàn chủ yếu là vay: nợ vay tăng 76% lên khoảng 5.474 tỷ, và công ty không chia cổ tức tiền mặt năm 2025 để giữ tiền đầu tư.\n\nKết quả là doanh thu 2026 tăng vọt (6 tháng +63%) nhưng lợi nhuận không theo kịp. Quý II/2026 lãi giảm 32% vì chi phí nâng cấp giàn không còn được vốn hóa theo Thông tư 99, lãi vay tăng gần gấp 2,5 lần, khấu hao giàn mới và một dự án bị chậm. Ở giá 18.300 đồng, thị trường đang định giá PVD đúng bằng giá trị sổ sách (P/B ~1x), tức chưa tin rằng đội giàn mới sẽ tạo ra lợi nhuận tương xứng.",
+  "thesis": "PVD đang giao dịch quanh giá trị sổ sách trong khi đội giàn được mua với giá chỉ bằng một phần ba đến một nửa chi phí đóng mới, và lợi nhuận đang tăng theo số giàn. Nhưng ROE mới khoảng 6–7%, thấp hơn chi phí vốn, nên giá hiện tại là hợp lý chứ chưa rẻ. Thesis chỉ đúng nếu giàn mới và nhu cầu khoan trong nước kéo ROE lên khoảng 9–10% vào 2027. Biên an toàn hiện khoảng 13%, chưa đủ cho một doanh nghiệp chu kỳ đang tăng nợ: nên chờ giá dưới ~16.500 hoặc chờ lợi nhuận Q4/2026 xác nhận phục hồi.",
+  "thesisPoints": [
+    {
+      "title": "Mua tài sản rẻ ở đáy chu kỳ đầu tư",
+      "detail": "Giàn cũ giá 90–100 triệu USD so với 200–300 triệu USD đóng mới. Ban lãnh đạo nói giá thuê phải lên ~200.000 USD/ngày mới đáng đóng mới, nên nguồn cung giàn mới trong khu vực sẽ hạn chế."
+    },
+    {
+      "title": "Lợi nhuận tăng theo số giàn",
+      "detail": "Số giàn tự sở hữu bình quân tăng từ ~4,8 (Q1/2026) lên 8 khi PVD X hoạt động. Lợi nhuận 12 tháng gần nhất đã tăng ~40% so với cùng kỳ dù quý II gặp khó."
+    },
+    {
+      "title": "Nhu cầu khoan trong nước có đầu ra rõ",
+      "detail": "Vốn đầu tư xây dựng của Petrovietnam tăng 75% trong 5 tháng đầu 2026. Lô B – Ô Môn có thể cần 40–50 giếng mỗi năm, thêm Cá Voi Xanh, Đại Hùng, Hải Sư Vàng."
+    },
+    {
+      "title": "Quý II yếu vì kế toán và thời điểm, không phải vì mất khách",
+      "detail": "Hiệu suất đội giàn trên 99%. Phần giảm lợi nhuận chủ yếu đến từ chi phí nâng cấp ghi nhận một lần, lãi vay giai đoạn đầu và dự án Sông Đốc chậm. Ban lãnh đạo kỳ vọng phục hồi từ Q4/2026."
+    }
+  ],
+  "thesisBreakers": [
+    "Giá thuê jack-up bình quân của PVD giảm dưới ~85.000 USD/ngày",
+    "LNST cổ đông mẹ Q4/2026 thấp hơn Q4/2025 (~361 tỷ), tức không có phục hồi như ban lãnh đạo nói",
+    "Hiệu suất đội giàn xuống dưới 90%, hoặc PVD X chưa có hợp đồng trước Q2/2027",
+    "Nợ vay tiếp tục tăng để mua giàn mà ROE không vượt ~8% vào 2027"
+  ],
+  "metrics": {
+    "roe": 6.4,
+    "netMargin": 8.3,
+    "debtEquity": 0.32,
+    "epsGrowth": 39.6
+  },
+  "valuationMethod": "Kết hợp P/B và P/E dự phóng. Giá trị sổ sách khoảng 18.700 đồng/cp. Với ROE ~6–7% (thấp hơn chi phí vốn ~12–13%), P/B quanh 1x là hợp lý ở hiện tại.\nThấp: 0,85x P/B nếu ROE đứng yên ≈ 16.000. Cơ sở: LNST cổ đông mẹ 2027 khoảng 1.500 tỷ khi PVD X chạy (EPS ~1.600 đồng), 13x P/E ≈ 21.000, tương đương ~1,1x P/B. Cao: giá thuê lên ~110.000 USD/ngày, ROE ~10%, 1,35x P/B ≈ 25.000.\nĐể tham khảo, giá mục tiêu của SSI, ACBS, BSC (5/2026) quy đổi sau thưởng 66,9% vào khoảng 20.400–23.600 đồng.",
+  "financials": {
+    "unit": "Tỷ đồng",
+    "years": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "12T tới 6/26"
+    ],
+    "cagrCols": 5,
+    "rows": [
+      {
+        "label": "Doanh thu",
+        "values": [
+          3995,
+          5432,
+          5812,
+          9282,
+          10834,
+          13321
+        ]
+      },
+      {
+        "label": "LN trước thuế",
+        "values": [
+          166,
+          -93,
+          656,
+          857,
+          1376,
+          1517
+        ]
+      },
+      {
+        "label": "LNST cổ đông mẹ",
+        "values": [
+          20,
+          -103,
+          579,
+          671,
+          1032,
+          1108
+        ]
+      },
+      {
+        "label": "EPS điều chỉnh (đồng)",
+        "values": [
+          22,
+          -111,
+          624,
+          723,
+          1112,
+          1195
+        ]
+      }
+    ],
+    "note": "CAGR không tính cho các dòng có năm lỗ. LNTT và LNST cổ đông mẹ 2024 là ước tính (số 6 tháng đầu 2024 suy ra từ LNST công bố). 2025 và 12 tháng gần nhất cộng từ số liệu từng quý. EPS điều chỉnh = LNST cổ đông mẹ chia ~927,7 triệu cổ phiếu hiện tại (sau thưởng 66,9%)."
+  },
+  "financialsComment": "Doanh thu tăng gần 2,7 lần trong 5 năm (~28%/năm) nhờ giá thuê giàn hồi phục và thêm giàn. Lợi nhuận đi từ lỗ năm 2022 lên hơn 1.100 tỷ trong 12 tháng gần nhất. Nhưng biên LN ròng chỉ khoảng 8%, vì phần thuê giàn ngoài và dịch vụ có biên mỏng, và lãi vay đang tăng. Doanh thu chạy nhanh hơn lợi nhuận là điểm cần theo dõi.",
+  "news": [
+    {
+      "date": "08/2026",
+      "title": "Q2/2026: doanh thu +24% nhưng LNST cổ đông mẹ chỉ 163 tỷ, giảm 32%",
+      "note": "Chi phí nâng cấp PVD VIII, IX phải ghi vào chi phí theo Thông tư 99; lãi vay ~111 tỷ, gấp ~2,5 lần; dự án Sông Đốc chậm đến 8/2026. Ban lãnh đạo nói Q3 còn áp lực, phục hồi từ Q4.",
+      "impact": "-"
+    },
+    {
+      "date": "07/2026",
+      "title": "Nhận bàn giao giàn PV DRILLING X, hoạt động từ Q2/2027",
+      "note": "Đội giàn tự sở hữu lên 8 chiếc. Nợ vay tăng 76% lên ~5.474 tỷ để tài trợ mở rộng.",
+      "impact": "+"
+    },
+    {
+      "date": "07/2026",
+      "title": "Thưởng cổ phiếu tỷ lệ 66,9% (GDKHQ 14/7)",
+      "note": "Vốn điều lệ lên ~9.282 tỷ. Không chia cổ tức tiền mặt năm 2025, giữ lại ~708 tỷ cho kế hoạch đầu tư 4.229 tỷ.",
+      "impact": "0"
+    },
+    {
+      "date": "04/2026",
+      "title": "ĐHĐCĐ: kế hoạch 2026 doanh thu 11.185 tỷ, LNST 800 tỷ",
+      "note": "Giả định Brent ~56 USD/thùng, thận trọng như thường lệ. Ưu tiên mua giàn cũ thay vì đóng mới; tập trung Malaysia, Indonesia.",
+      "impact": "0"
+    },
+    {
+      "date": "04/2026",
+      "title": "PVD IX bắt đầu hoạt động; Q1/2026 lãi 306 tỷ, gấp đôi cùng kỳ",
+      "note": "Malaysia và Indonesia biên gộp 39–47%. Brunei lỗ gộp vì giàn TAD cho thuê ~85.000 USD/ngày, hợp đồng hết hạn 2027.",
+      "impact": "+"
+    },
+    {
+      "date": "02/2026",
+      "title": "Năm 2025 lãi cao nhất 10 năm",
+      "note": "LNST cổ đông mẹ ~1.032 tỷ, tăng ~50%; quý IV lãi ~361 tỷ.",
+      "impact": "+"
+    }
+  ],
+  "catalysts": [
+    "Lợi nhuận Q4/2026 phục hồi khi chi phí nâng cấp và dự án chậm qua đi",
+    "PVD X bắt đầu có doanh thu từ Q2/2027",
+    "Tái ký hợp đồng giàn TAD ở Brunei năm 2027 với giá cao hơn (thị trường ~90.000–135.000 USD/ngày)",
+    "Lô B – Ô Môn và Cá Voi Xanh triển khai khoan, tăng nhu cầu giàn và dịch vụ giếng trong nước",
+    "Giá dầu tăng kéo giá thuê giàn khu vực đi lên"
+  ],
+  "risks": [
+    "Giá dầu giảm khiến chủ mỏ cắt giảm vốn đầu tư khoan",
+    "Giá thuê giàn Đông Nam Á đi ngang ~90.000–110.000 USD/ngày, hiệu suất giàn toàn khu vực đã giảm về ~74%",
+    "Nợ vay tăng nhanh, hệ số khả năng trả lãi giảm còn ~2,8 lần",
+    "Phần thuê giàn ngoài có biên mỏng làm loãng biên lợi nhuận chung",
+    "Không chia cổ tức tiền mặt; số cổ phiếu tăng 66,9% sau đợt thưởng",
+    "Rủi ro vận hành và sự cố giàn"
+  ],
+  "sources": [
+    {
+      "title": "Simplize – Lịch sử giá PVD (09/10/2026)"
+    },
+    {
+      "title": "24HMoney – Báo cáo tài chính quý PVD (Q3/2024–Q2/2026)"
+    },
+    {
+      "title": "ABS – Báo cáo cập nhật PVD (08/2023), số liệu 2021–2022"
+    },
+    {
+      "title": "KBSEC – Báo cáo PVD (12/2024), số liệu 2023"
+    },
+    {
+      "title": "Mekong ASEAN – KQKD Q2/2024 và 6T2024 của PVD"
+    },
+    {
+      "title": "Elibook – PVD lợi nhuận Q4/2025, Q1/2026, định giá (02–05/2026)"
+    },
+    {
+      "title": "Elibook – PVD Q2/2026 và Thông tư 99 (08/2026)"
+    },
+    {
+      "title": "Doanh nhân – ĐHĐCĐ PVD 2026 (04/2026)"
+    },
+    {
+      "title": "VCCI – Đội giàn mở rộng, doanh thu 6 tháng PVD (06/2026)"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-09",
+      "price": 18300,
+      "intrinsicBase": 21000,
+      "recommendation": "GIỮ"
+    }
+  ],
+  "epsTTM": 1195,
+  "bvps": 18670,
+  "sharesMn": 927.74,
+  "dps": 0
+}

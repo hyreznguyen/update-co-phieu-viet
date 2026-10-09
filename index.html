@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Sổ Cổ Phiếu Việt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,650;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap&subset=vietnamese">
+<style>
+/* Layout: a research-desk page — library table up top, each ticker opens as a one-column brokerage-style report that leads with the company's story and thesis; VN board colours (xanh / vàng / đỏ) carry MUA / GIỮ / BÁN */
+:root{
+  --paper:#F6F7F9; --surface:#FFFFFF; --ink:#16202C; --muted:#5B6878; --rule:#DCE1E7; --soft:#EEF1F5;
+  --accent:#1D4E89; --accent-ink:#FFFFFF;
+  --up:#0E8048; --ref:#A87A05; --down:#C2302E;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --paper:#11151B; --surface:#181E26; --ink:#E5E9EF; --muted:#93A0B0; --rule:#2B3440; --soft:#1F2630;
+  --accent:#86AEE3; --accent-ink:#0E1620;
+  --up:#3DC683; --ref:#E2B33E; --down:#F06D69; color-scheme:dark }}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+[hidden]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+@media (max-width:520px){.wrap{padding-inline:16px}}
+h1,h2,h3{font-family:var(--serif);font-weight:650;text-wrap:balance;margin:0;line-height:1.2}
+td.n,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.mast{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-block:28px 14px;border-bottom:2px solid var(--ink)}
+.brand h1{font-size:30px;letter-spacing:-.01em}
+.brand h1 a{color:inherit;text-decoration:none}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:4px}
+.tabs a{text-decoration:none;color:var(--muted);padding:6px 12px;border-radius:6px;font-weight:500;font-size:14px}
+.tabs a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+.tabs a[aria-current="page"] .en{color:inherit;opacity:.7}
+.label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.en{color:var(--muted);font-weight:400}
+
+.search{margin-top:24px;display:grid;gap:10px}
+.search form{display:flex;gap:8px;flex-wrap:wrap}
+.search input{flex:1 1 220px;min-width:0;padding:12px 14px;border:1px solid var(--rule);background:var(--surface);border-radius:8px;font-family:var(--mono);font-size:18px;text-transform:uppercase;letter-spacing:.06em}
+.btn{border:1px solid var(--rule);background:var(--surface);padding:9px 14px;border-radius:8px;cursor:pointer;font-weight:500;font-size:14px}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.panel p{margin:0 0 10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;margin:28px 0 10px}
+.toolbar label{display:grid;gap:3px}
+.toolbar select{padding:7px 10px;border:1px solid var(--rule);border-radius:7px;background:var(--surface);min-width:130px}
+.count{margin-left:auto;color:var(--muted);font-size:13px}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--soft)}
+td.n,th.n{text-align:right}
+tbody tr:last-child td{border-bottom:0}
+tr.click{cursor:pointer}
+tr.click:hover td{background:var(--soft)}
+.tk{font-family:var(--mono);font-weight:500;font-size:15px}
+.sub{color:var(--muted);font-size:12.5px;white-space:normal}
+.empty{padding:36px 20px;text-align:center;color:var(--muted)}
+.empty strong{display:block;color:var(--ink);font-family:var(--serif);font-size:19px;margin-bottom:6px}
+
+.rec{display:inline-block;font-weight:600;font-size:12px;padding:2px 9px;border-radius:999px;letter-spacing:.04em;border:1px solid currentColor}
+.rec.MUA{color:var(--up)} .rec.GIỮ{color:var(--ref)} .rec.BÁN{color:var(--down)}
+.pos{color:var(--up)} .neg{color:var(--down)} .flat{color:var(--ref)}
+
+.back{display:inline-block;margin-top:20px;font-size:14px;text-decoration:none}
+.cover{margin-top:14px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.cover-top{border-top:6px solid var(--accent);padding:22px 24px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 28px}
+@media (max-width:720px){.cover-top{grid-template-columns:1fr}}
+.cover .tkbig{font-family:var(--mono);font-size:44px;font-weight:500;letter-spacing:.02em;line-height:1}
+.cover h2{font-size:22px;margin-top:6px}
+.cover .meta{color:var(--muted);font-size:13px;margin-top:6px}
+.cover .tagline{font-family:var(--serif);font-style:italic;font-size:17px;margin:12px 0 0;max-width:62ch}
+.verdict{display:grid;gap:6px;align-content:start;justify-items:start}
+.verdict .rec{font-size:16px;padding:4px 16px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule)}
+.kpis>div{padding:14px 24px;border-right:1px solid var(--rule)}
+.kpis>div:last-child{border-right:0}
+.kpis .v{font-family:var(--mono);font-size:20px;font-variant-numeric:tabular-nums;margin-top:2px}
+.kpis .d{font-size:12px;color:var(--muted);font-family:var(--mono)}
+@media (max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis>div:nth-child(2){border-right:0}.kpis>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
+
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:20px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+.sec{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:22px 24px;margin-top:20px;min-width:0}
+.grid2 .sec{margin-top:0}
+.sec h3{font-size:20px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.sec h3 .en{font-family:var(--sans);font-size:13px}
+.sec h4{font-size:13px;margin:18px 0 6px;font-weight:600}
+.prose{max-width:68ch;white-space:pre-line}
+.story{font-family:var(--serif);font-size:17.5px;line-height:1.65;max-width:66ch;white-space:pre-line}
+.thesis-sum{font-family:var(--serif);font-size:17.5px;line-height:1.6;max-width:66ch;white-space:pre-line;margin:0 0 6px}
+ol.pillars{margin:6px 0 0;padding:0;list-style:none;counter-reset:p;display:grid;gap:12px;max-width:72ch}
+ol.pillars li{counter-increment:p;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px}
+ol.pillars li::before{content:counter(p);font-family:var(--mono);font-size:13px;width:24px;height:24px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:grid;place-items:center;margin-top:1px}
+ol.pillars b{display:block;font-weight:600}
+.breaks{margin-top:18px;padding:14px 16px;border-radius:8px;background:var(--soft)}
+.breaks .label{color:var(--down)}
+ul.plain{margin:0;padding-left:18px}
+ul.plain li{margin-bottom:6px}
+.kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px 18px}
+.kv .v{font-family:var(--mono);font-size:17px;font-variant-numeric:tabular-nums}
+.range svg{width:100%;height:auto;display:block}
+.news{display:grid;gap:14px;max-width:76ch}
+.news .it{display:grid;grid-template-columns:76px 18px minmax(0,1fr);gap:8px;font-size:14.5px}
+.news .d{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:2px}
+.news .imp{font-weight:700;text-align:center}
+.news .tt{font-weight:500}
+.spark{display:inline-flex;gap:3px;align-items:flex-end;height:24px;vertical-align:middle}
+.spark i{display:block;width:8px;background:var(--accent);opacity:.75;border-radius:1px}
+.spark i.neg{background:var(--down)}
+.fin td:first-child{font-weight:500}
+.fin td.g{font-size:12px}
+.notes{display:grid;gap:12px}
+.notes .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.notes .two{grid-template-columns:1fr}}
+.notes label{display:grid;gap:4px}
+.notes input,.notes textarea{border:1px solid var(--rule);border-radius:7px;padding:9px 11px;background:var(--paper);min-width:0}
+.notes textarea{min-height:110px;resize:vertical;line-height:1.5}
+.small{font-size:12.5px;color:var(--muted)}
+.hist td{font-size:13px}
+details summary{cursor:pointer;color:var(--muted);font-size:13px}
+.copybox{font-family:var(--mono);font-size:13px;background:var(--soft);border-radius:7px;padding:10px 12px;white-space:pre-wrap;word-break:break-word;user-select:all}
+.cmp-picks{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0 12px}
+.pick{border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:4px 12px;font-family:var(--mono);cursor:pointer;font-size:13px}
+.pick[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+td.best{font-weight:600;color:var(--up)}
+.foot{margin-top:40px;color:var(--muted);font-size:12px;border-top:1px solid var(--rule);padding-top:12px;display:grid;gap:4px}
+@media (prefers-reduced-motion:no-preference){.btn,.pick,tr.click td{transition:background .15s,border-color .15s}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div class="brand">
+      <h1><a href="#lib">Sổ Cổ Phiếu Việt</a></h1>
+      <p>Research cá nhân · HOSE · HNX · UPCoM</p>
+    </div>
+    <nav class="tabs" aria-label="Trang">
+      <a href="#lib" id="tab-lib">Thư viện <span class="en">Library</span></a>
+      <a href="#cmp" id="tab-cmp">So sánh <span class="en">Compare</span></a>
+    </nav>
+  </header>
+  <main id="app"><div class="empty">Đang tải thư viện…</div></main>
+  <div class="foot">
+    <span id="price-stamp"></span>
+    <span>Phân tích phục vụ mục đích nghiên cứu cá nhân, không phải khuyến nghị đầu tư. P/E, P/B, biên an toàn được tính lại theo giá mới nhất; câu chuyện và thesis cập nhật khi có thông tin cơ bản mới.</span>
+  </div>
+</div>
+
+<script>
+(() => {
+const app = document.getElementById('app');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const isNum = v => typeof v === 'number' && isFinite(v);
+const fmtP = v => isNum(v) ? Math.round(v).toLocaleString('vi-VN') : '—';
+const fmtN = (v, d=1) => isNum(v) ? v.toLocaleString('vi-VN', {maximumFractionDigits:d, minimumFractionDigits:d}) : '—';
+const fmtX = v => isNum(v) ? fmtN(v,1) + 'x' : '—';
+const fmtPct = (v, d=1) => isNum(v) ? fmtN(v,d) + '%' : '—';
+const fmtSigned = (v, d=1) => isNum(v) ? (v>0?'+':'') + fmtN(v,d) + '%' : '—';
+const fmtDate = s => { if(!s) return '—'; const d = new Date(s); return isNaN(d) ? esc(s) : d.toLocaleDateString('vi-VN'); };
+const RECS = ['MUA','GIỮ','BÁN'];
+const normRec = r => { const u = String(r||'').toUpperCase(); if (u.startsWith('MUA')||u==='BUY') return 'MUA'; if (u.startsWith('B')) return 'BÁN'; if (u) return 'GIỮ'; return ''; };
+const recChip = r => { const n = normRec(r); return n ? `<span class="rec ${n}">${n}</span>` : '<span class="small">—</span>'; };
+const cls = v => v>0?'pos':v<0?'neg':'flat';
+const store = { get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } }, set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+/* ---------- data ---------- */
+let stocks = new Map(), priceInfo = {}, loadError = '';
+const bust = () => '?v=' + Math.floor(Date.now() / 60000);
+async function getJSON(path){ const r = await fetch(path + bust(), {cache:'no-store'}); if (!r.ok) throw new Error(path + ' ' + r.status); return r.json(); }
+
+function enrich(raw){
+  const s = structuredClone(raw);
+  const p = priceInfo.prices?.[s.ticker];
+  if (p && isNum(p.close)) { s.price = p.close; s.priceDate = p.date; s.change = isNum(p.prevClose) && p.prevClose > 0 ? (p.close/p.prevClose - 1)*100 : null; }
+  s.metrics = {...(s.metrics||{})};
+  if (isNum(s.epsTTM) && s.epsTTM > 0) s.metrics.pe = s.price / s.epsTTM;
+  if (isNum(s.bvps) && s.bvps > 0) s.metrics.pb = s.price / s.bvps;
+  if (isNum(s.dps)) s.metrics.divYield = s.dps / s.price * 100;
+  if (isNum(s.sharesMn)) s.marketCapBn = s.price * s.sharesMn / 1000;
+  const b = s.intrinsic?.base; s.mos = isNum(b) && b > 0 && isNum(s.price) ? (b - s.price)/b*100 : null;
+  return s;
+}
+
+async function load(){
+  try {
+    const [tickers, prices] = await Promise.all([getJSON('data/tickers.json'), getJSON('data/prices.json').catch(() => ({prices:{}}))]);
+    priceInfo = prices;
+    const docs = await Promise.all(tickers.map(t => getJSON(`data/stocks/${t}.json`).catch(() => null)));
+    stocks = new Map(docs.filter(Boolean).map(d => [d.ticker, enrich(d)]));
+    document.getElementById('price-stamp').textContent = prices.updatedAt ? `Giá cập nhật tự động lúc ${new Date(prices.updatedAt).toLocaleString('vi-VN')}.` : '';
+  } catch (e) { loadError = 'Không tải được dữ liệu. Thử tải lại trang sau ít phút.'; }
+  render();
+}
+
+/* ---------- state ---------- */
+const savedF = store.get('filters') || {};
+const ui = {
+  filters: {sector: savedF.sector||'', rec: savedF.rec||'', sort: ['mos','pe','change','updated','ticker'].includes(savedF.sort) ? savedF.sort : 'mos'},
+  compare: new Set(store.get('compare') || []),
+  query: '', missing: null, noteMsg: ''
+};
+
+function route(){
+  const h = location.hash.replace('#','');
+  if (h.startsWith('t-')) return {view:'stock', ticker:h.slice(2).toUpperCase()};
+  if (h === 'cmp') return {view:'cmp'};
+  return {view:'lib'};
+}
+window.addEventListener('hashchange', () => { ui.noteMsg=''; render(); window.scrollTo(0,0); });
+
+function render(){
+  const r = route();
+  const lib = document.getElementById('tab-lib'), cmp = document.getElementById('tab-cmp');
+  if (r.view === 'cmp') { cmp.setAttribute('aria-current','page'); lib.removeAttribute('aria-current'); }
+  else { lib.setAttribute('aria-current','page'); cmp.removeAttribute('aria-current'); }
+  if (loadError) { app.innerHTML = `<div class="panel" style="margin-top:24px"><p><strong>${esc(loadError)}</strong></p></div>`; return; }
+  app.innerHTML = r.view === 'stock' ? viewStock(r.ticker) : r.view === 'cmp' ? viewCompare() : viewLibrary();
+  bind(r);
+}
+
+const researchPrompt = t => `Research mã ${t} và cập nhật lên Sổ Cổ Phiếu Việt.`;
+
+/* ---------- library ---------- */
+function viewLibrary(){
+  const f = ui.filters;
+  const all = [...stocks.values()];
+  const sectors = [...new Set(all.map(s=>s.sector).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'vi'));
+  let list = all.filter(s => (!f.sector || s.sector===f.sector) && (!f.rec || normRec(s.recommendation)===f.rec));
+  const pe = s => isNum(s.metrics?.pe) && s.metrics.pe > 0 ? s.metrics.pe : null;
+  const sorters = {
+    mos: (a,b) => (b.mos??-999) - (a.mos??-999),
+    pe: (a,b) => (pe(a)??9999) - (pe(b)??9999),
+    change: (a,b) => (b.change??-999) - (a.change??-999),
+    updated: (a,b) => String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')),
+    ticker: (a,b) => String(a.ticker).localeCompare(String(b.ticker)),
+  };
+  list.sort(sorters[f.sort] || sorters.mos);
+  const sel = (id, label, en, opts, val) => `<label for="${id}"><span class="label">${label} <span class="en">${en}</span></span><select id="${id}">${opts.map(([v,t])=>`<option value="${esc(v)}"${v===val?' selected':''}>${esc(t)}</option>`).join('')}</select></label>`;
+
+  let body;
+  if (!all.length) body = `<div class="tablebox"><div class="empty"><strong>Sổ chưa có mã nào</strong>Nhắn Claude "research [mã]" để thêm mã đầu tiên.</div></div>`;
+  else if (!list.length) body = `<div class="tablebox"><div class="empty"><strong>Không có mã khớp bộ lọc</strong>Thử bỏ bớt điều kiện lọc.</div></div>`;
+  else body = `<div class="tablebox"><table>
+    <thead><tr><th title="Chọn để so sánh">SS</th><th>Mã</th><th>Ngành</th><th class="n">Giá</th><th class="n">Hôm nay</th><th class="n">Giá trị nội tại</th><th class="n">Biên an toàn</th><th class="n">P/E</th><th>Khuyến nghị</th><th>Research</th></tr></thead>
+    <tbody>${list.map(s => `<tr class="click" data-t="${esc(s.ticker)}">
+      <td><input type="checkbox" class="cmpbox" id="c-${esc(s.ticker)}" data-t="${esc(s.ticker)}" aria-label="So sánh ${esc(s.ticker)}"${ui.compare.has(s.ticker)?' checked':''}></td>
+      <td><div class="tk">${esc(s.ticker)}</div><div class="sub">${esc(s.name||'')}</div></td>
+      <td class="sub">${esc(s.sector||'—')}</td>
+      <td class="n">${fmtP(s.price)}</td>
+      <td class="n ${cls(s.change)}">${fmtSigned(s.change)}</td>
+      <td class="n">${fmtP(s.intrinsic?.base)}</td>
+      <td class="n ${s.mos>0?'pos':s.mos<0?'neg':''}">${fmtPct(s.mos,0)}</td>
+      <td class="n">${fmtX(s.metrics?.pe)}</td>
+      <td>${recChip(s.recommendation)}</td>
+      <td><span class="small">${fmtDate(s.updatedAt)}</span></td>
+    </tr>`).join('')}</tbody></table></div>`;
+
+  const miss = ui.missing ? `<div class="panel">
+      <p><strong>${esc(ui.missing)}</strong> chưa có trong sổ.</p>
+      <p class="small">Dán lệnh dưới đây vào chat với Claude. Bản research sẽ được đưa lên trang này sau vài phút.</p>
+      <div class="copybox" id="cpy">${esc(researchPrompt(ui.missing))}</div>
+      <div class="row" style="margin-top:12px"><button class="btn primary" id="copy-prompt">Sao chép lệnh</button><button class="btn" id="close-miss">Đóng</button><span class="small" id="cpmsg"></span></div>
+    </div>` : '';
+
+  return `
+  <section class="search" aria-label="Tra cứu">
+    <span class="label">Tra cứu mã <span class="en">Ticker lookup</span></span>
+    <form id="qform" autocomplete="off">
+      <input id="q" name="q" placeholder="VD: FPT, HPG, MWG" maxlength="10" value="${esc(ui.query)}" aria-label="Mã cổ phiếu">
+      <button class="btn primary" type="submit">Xem phân tích</button>
+    </form>
+    ${miss}
+  </section>
+  <div class="toolbar">
+    ${sel('f-sector','Ngành','Sector',[['','Tất cả'],...sectors.map(s=>[s,s])],f.sector)}
+    ${sel('f-rec','Khuyến nghị','Rating',[['','Tất cả'],...RECS.map(r=>[r,r])],f.rec)}
+    ${sel('f-sort','Sắp xếp','Sort',[['mos','Biên an toàn lớn nhất'],['pe','P/E thấp nhất'],['change','Tăng mạnh nhất hôm nay'],['updated','Mới research'],['ticker','Theo mã A–Z']],f.sort)}
+    <span class="count">${list.length}/${all.length} mã${ui.compare.size?` · <a href="#cmp">So sánh ${ui.compare.size} mã →</a>`:''}</span>
+  </div>
+  ${body}`;
+}
+
+/* ---------- report ---------- */
+function rangeSvg(s){
+  const lo = s.intrinsic?.low, base = s.intrinsic?.base, hi = s.intrinsic?.high, p = s.price;
+  const vals = [lo, base, hi, p].filter(isNum);
+  if (vals.length < 2 || !isNum(base)) return '';
+  const min = Math.min(...vals)*0.9, max = Math.max(...vals)*1.08;
+  const W = 600, L = 20, R = 20, x = v => L + (v-min)/(max-min)*(W-L-R), y = 44;
+  const band = isNum(lo)&&isNum(hi) ? `<rect x="${x(lo)}" y="${y-9}" width="${Math.max(2,x(hi)-x(lo))}" height="18" rx="3" fill="var(--accent)" fill-opacity=".18"/>` : '';
+  const lbl = (v,t,yy,anchor) => `<text x="${x(v)}" y="${yy}" text-anchor="${anchor}" font-family="var(--mono)" font-size="12" fill="var(--muted)">${t} ${fmtP(v)}</text>`;
+  const pc = isNum(p) && p <= base ? 'var(--up)' : 'var(--down)';
+  return `<div class="range"><svg viewBox="0 0 ${W} 96" role="img" aria-label="Dải giá trị nội tại so với giá hiện tại">
+    <line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--rule)" stroke-width="2"/>${band}
+    ${isNum(lo)?lbl(lo,'Thấp',y+28,'start'):''}${isNum(hi)?lbl(hi,'Cao',y+28,'end'):''}
+    <line x1="${x(base)}" x2="${x(base)}" y1="${y-14}" y2="${y+14}" stroke="var(--accent)" stroke-width="3"/>
+    <text x="${x(base)}" y="${y+28}" text-anchor="middle" font-family="var(--mono)" font-size="12" font-weight="500" fill="var(--accent)">Cơ sở ${fmtP(base)}</text>
+    ${isNum(p)?`<circle cx="${x(p)}" cy="${y}" r="7" fill="${pc}" stroke="var(--surface)" stroke-width="2"/><text x="${x(p)}" y="${y-18}" text-anchor="middle" font-family="var(--mono)" font-size="12" font-weight="500" fill="${pc}">Giá ${fmtP(p)}</text>`:''}
+  </svg></div>`;
+}
+function spark(values){
+  const v = (values||[]).filter(isNum); if (v.length < 2) return '';
+  const m = Math.max(...v.map(Math.abs)) || 1;
+  return `<span class="spark" aria-hidden="true">${(values||[]).map(x => isNum(x) ? `<i class="${x<0?'neg':''}" style="height:${Math.max(2, Math.abs(x)/m*24)}px"></i>` : '<i style="height:1px;opacity:.3"></i>').join('')}</span>`;
+}
+function cagr(values){
+  const v = (values||[]).filter(isNum); if (v.length < 2 || v.some(x => x <= 0)) return null;
+  return (Math.pow(v[v.length-1]/v[0], 1/(v.length-1)) - 1) * 100;
+}
+const METRICS = [
+  ['pe','P/E',fmtX,'min'],['pb','P/B',fmtX,'min'],['evEbitda','EV/EBITDA',fmtX,'min'],
+  ['roe','ROE',v=>fmtPct(v),'max'],['netMargin','Biên LN ròng',v=>fmtPct(v),'max'],
+  ['debtEquity','Nợ vay/VCSH',fmtX,'min'],['divYield','Tỷ suất cổ tức',v=>fmtPct(v),'max'],['epsGrowth','Tăng trưởng EPS',v=>fmtPct(v),'max'],
+];
+
+function viewStock(t){
+  const s = stocks.get(t);
+  if (!s) return `<a class="back" href="#lib">← Thư viện</a><div class="tablebox" style="margin-top:14px"><div class="empty"><strong>${esc(t)} chưa có trong sổ</strong>Nhắn Claude "research ${esc(t)}" để thêm mã này.</div></div>`;
+  const n = store.get('note:' + t) || {};
+  const fin = s.financials || {};
+  const pillars = Array.isArray(s.thesisPoints) ? s.thesisPoints : [];
+  const breakers = Array.isArray(s.thesisBreakers) ? s.thesisBreakers : [];
+  const shown = METRICS.filter(([k]) => isNum(s.metrics?.[k]));
+  return `
+  <a class="back" href="#lib">← Thư viện</a>
+  <article>
+  <section class="cover">
+    <div class="cover-top">
+      <div>
+        <div class="tkbig">${esc(s.ticker)}</div>
+        <h2>${esc(s.name||'')}${s.nameEn?` <span class="en" style="font-size:16px">· ${esc(s.nameEn)}</span>`:''}</h2>
+        <div class="meta">${[s.exchange, s.sector].filter(Boolean).map(esc).join(' · ')} ${isNum(s.marketCapBn)?`· Vốn hóa ${fmtP(s.marketCapBn)} tỷ`:''}</div>
+        ${s.tagline?`<p class="tagline">${esc(s.tagline)}</p>`:''}
+      </div>
+      <div class="verdict">
+        <span class="label">Khuyến nghị <span class="en">Rating</span></span>
+        ${recChip(s.recommendation)}
+        <span class="small">Research ${fmtDate(s.updatedAt)}${s.dataAsOf?` · ${esc(s.dataAsOf)}`:''}</span>
+      </div>
+    </div>
+    <div class="kpis">
+      <div><div class="label">Giá <span class="en">Price</span></div><div class="v">${fmtP(s.price)}</div><div class="d"><span class="${cls(s.change)}">${fmtSigned(s.change)}</span>${s.priceDate?` · ${fmtDate(s.priceDate)}`:''}</div></div>
+      <div><div class="label">Giá trị nội tại <span class="en">Intrinsic</span></div><div class="v">${fmtP(s.intrinsic?.base)}</div></div>
+      <div><div class="label">Biên an toàn <span class="en">MoS</span></div><div class="v ${s.mos>0?'pos':s.mos<0?'neg':''}">${fmtPct(s.mos,0)}</div></div>
+      <div><div class="label">P/E</div><div class="v">${fmtX(s.metrics?.pe)}</div></div>
+    </div>
+  </section>
+
+  ${s.story ? `<section class="sec"><h3>Câu chuyện <span class="en">The story</span></h3><div class="story">${esc(s.story)}</div></section>` : ''}
+
+  ${(s.thesis || pillars.length) ? `<section class="sec"><h3>Luận điểm đầu tư <span class="en">Investment thesis</span></h3>
+    ${s.thesis?`<p class="thesis-sum">${esc(s.thesis)}</p>`:''}
+    ${pillars.length?`<ol class="pillars">${pillars.map(p => typeof p === 'string' ? `<li><div>${esc(p)}</div></li>` : `<li><div><b>${esc(p.title)}</b>${esc(p.detail||'')}</div></li>`).join('')}</ol>`:''}
+    ${breakers.length?`<div class="breaks"><div class="label">Thesis sai nếu <span class="en">What would break it</span></div><ul class="plain" style="margin-top:6px">${breakers.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
+  </section>` : ''}
+
+  <section class="sec"><h3>Định giá <span class="en">Valuation</span></h3>
+    ${rangeSvg(s)}
+    ${shown.length?`<div class="kv" style="margin-top:14px">${shown.map(([k,l,f]) => `<div><div class="label">${l}</div><div class="v">${f(s.metrics[k])}</div></div>`).join('')}</div>`:''}
+    <p class="small" style="margin-top:10px">P/E, P/B và tỷ suất cổ tức tính theo giá mới nhất${isNum(s.epsTTM)?`, EPS 12 tháng ${fmtP(s.epsTTM)} đồng`:''}${isNum(s.bvps)?`, giá trị sổ sách ${fmtP(s.bvps)} đồng/cp`:''}.</p>
+    ${s.valuationMethod?`<h4>Cách định giá <span class="en">Method</span></h4><div class="prose small">${esc(s.valuationMethod)}</div>`:''}
+  </section>
+
+  ${fin.rows?.length ? `<section class="sec"><h3>Tài chính 5 năm <span class="en">5-year financials</span></h3>
+    <div class="tablebox"><table class="fin"><thead><tr><th>${esc(fin.unit||'Tỷ đồng')}</th>${(fin.years||[]).map(y=>`<th class="n">${esc(y)}</th>`).join('')}<th class="n">CAGR</th><th>Xu hướng</th></tr></thead>
+    <tbody>${fin.rows.map(r=>{ const annual = (r.values||[]).slice(0, fin.cagrCols || (r.values||[]).length); const g = cagr(annual); return `<tr><td>${esc(r.label)}</td>${(r.values||[]).map(v=>`<td class="n">${isNum(v)?fmtN(v,0):'—'}</td>`).join('')}<td class="n g ${g>0?'pos':g<0?'neg':''}">${isNum(g)?fmtPct(g,0):'—'}</td><td>${spark(annual)}</td></tr>`; }).join('')}</tbody></table></div>
+    ${fin.note?`<p class="small" style="margin-top:8px">${esc(fin.note)}</p>`:''}
+    ${s.financialsComment?`<h4>Đọc số <span class="en">What the numbers say</span></h4><div class="prose">${esc(s.financialsComment)}</div>`:''}
+  </section>` : ''}
+
+  ${s.news?.length ? `<section class="sec"><h3>Điểm tin quan trọng <span class="en">Key developments</span></h3><div class="news">
+    ${s.news.map(it => { const imp = it.impact==='+'?'<span class="imp pos">+</span>':it.impact==='-'?'<span class="imp neg">−</span>':'<span class="imp small">·</span>';
+      return `<div class="it"><span class="d">${esc(it.date||'')}</span>${imp}<div><div class="tt">${esc(it.title)}</div>${it.note?`<div class="small">${esc(it.note)}</div>`:''}</div></div>`; }).join('')}
+  </div></section>` : ''}
+
+  ${(s.catalysts?.length || s.risks?.length) ? `<div class="grid2">
+    <section class="sec"><h3>Động lực <span class="en">Catalysts</span></h3>${s.catalysts?.length?`<ul class="plain">${s.catalysts.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'<p class="small">—</p>'}</section>
+    <section class="sec"><h3>Rủi ro <span class="en">Risks</span></h3>${s.risks?.length?`<ul class="plain">${s.risks.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'<p class="small">—</p>'}</section>
+  </div>` : ''}
+
+  <section class="sec"><h3>Ghi chú của tôi <span class="en">My notes</span></h3>
+    <form class="notes" id="nform">
+      <div class="two">
+        <label for="n-buy"><span class="label">Giá muốn mua dưới <span class="en">Buy below</span></span><input id="n-buy" inputmode="numeric" value="${esc(n.buyBelow??'')}" placeholder="VD: 55000"></label>
+        <label for="n-target"><span class="label">Giá mục tiêu của tôi <span class="en">My target</span></span><input id="n-target" inputmode="numeric" value="${esc(n.target??'')}" placeholder="VD: 80000"></label>
+      </div>
+      <label for="n-sell"><span class="label">Điều kiện bán <span class="en">Sell if</span></span><input id="n-sell" value="${esc(n.sellIf||'')}"></label>
+      <label for="n-text"><span class="label">Suy nghĩ của tôi <span class="en">My view</span></span><textarea id="n-text" placeholder="Tôi đồng ý / không đồng ý với thesis ở điểm nào, điều gì làm tôi đổi ý…">${esc(n.text||'')}</textarea></label>
+      ${isNum(n.buyBelow) && isNum(s.price) ? `<p class="small">Giá hiện tại ${s.price <= n.buyBelow ? '<strong class="pos">đã xuống dưới</strong>' : `còn cao hơn ${fmtPct((s.price/n.buyBelow-1)*100,0)} so với`} giá muốn mua của bạn.</p>` : ''}
+      <div class="row"><button class="btn primary" type="submit">Lưu ghi chú</button><span class="small" id="nmsg">${esc(ui.noteMsg || 'Ghi chú lưu trên trình duyệt này, không đồng bộ sang máy khác.')}</span></div>
+    </form>
+  </section>
+
+  ${s.history?.length ? `<section class="sec"><h3>Lịch sử research <span class="en">Revision history</span></h3><div class="tablebox"><table class="hist">
+    <thead><tr><th>Ngày</th><th class="n">Giá lúc đó</th><th class="n">Giá trị nội tại</th><th>Khuyến nghị</th></tr></thead>
+    <tbody>${[...s.history].reverse().map(h=>`<tr><td class="mono">${esc(h.date)}</td><td class="n">${fmtP(h.price)}</td><td class="n">${fmtP(h.intrinsicBase)}</td><td>${recChip(h.recommendation)}</td></tr>`).join('')}</tbody></table></div></section>` : ''}
+
+  <section class="sec">
+    ${s.sources?.length ? `<details style="margin-bottom:14px"><summary>Nguồn số liệu (${s.sources.length})</summary><ul class="plain small" style="margin-top:8px">${s.sources.map(x => `<li>${esc(x.title||'')}</li>`).join('')}</ul></details>` : ''}
+    <div class="row">
+      <button class="btn" id="copy-prompt2">Sao chép lệnh research lại</button>
+      <label class="row small" for="cmp-this"><input type="checkbox" id="cmp-this"${ui.compare.has(t)?' checked':''}> Thêm vào so sánh</label>
+    </div>
+    <p class="small" id="cpmsg" style="margin:8px 0 0"></p>
+  </section>
+  </article>`;
+}
+
+/* ---------- compare ---------- */
+function viewCompare(){
+  const all = [...stocks.values()].sort((a,b)=>String(a.ticker).localeCompare(String(b.ticker)));
+  if (!all.length) return `<div class="tablebox" style="margin-top:24px"><div class="empty"><strong>Chưa có mã để so sánh</strong>Thêm mã vào thư viện trước.</div></div>`;
+  const picked = all.filter(s => ui.compare.has(s.ticker));
+  const cols = picked.length ? picked : all.slice(0, 5);
+  const finCagr = (s, re) => { const r = (s.financials?.rows||[]).find(r => re.test(r.label||'')); if (!r) return null; return cagr((r.values||[]).slice(0, s.financials.cagrCols || r.values.length)); };
+  const rows = [
+    ['Giá', s=>s.price, fmtP, null],
+    ['Giá trị nội tại', s=>s.intrinsic?.base, fmtP, null],
+    ['Biên an toàn', s=>s.mos, v=>fmtPct(v,0), 'max'],
+    ['Khuyến nghị', s=>s.recommendation, recChip, null],
+    ...METRICS.map(([k,l,f,best]) => [l, s=>s.metrics?.[k], f, best]),
+    ['CAGR doanh thu 5 năm', s=>finCagr(s,/doanh thu/i), v=>fmtPct(v,0), 'max'],
+    ['CAGR LNST 5 năm', s=>finCagr(s,/LNST/i), v=>fmtPct(v,0), 'max'],
+    ['Vốn hóa (tỷ)', s=>s.marketCapBn, fmtP, null],
+    ['Research', s=>s.updatedAt, fmtDate, null],
+  ];
+  return `
+  <div class="cmp-picks" role="group" aria-label="Chọn mã để so sánh">
+    <span class="label" style="align-self:center;margin-right:6px">Chọn mã</span>
+    ${all.map(s=>`<button class="pick" data-t="${esc(s.ticker)}" aria-pressed="${ui.compare.has(s.ticker)}">${esc(s.ticker)}</button>`).join('')}
+  </div>
+  ${picked.length ? '' : `<p class="small">Chưa chọn mã nào nên đang hiện ${cols.length} mã đầu tiên. Bấm vào mã ở trên để chọn.</p>`}
+  <div class="tablebox"><table>
+    <thead><tr><th>Chỉ tiêu <span class="en">Metric</span></th>${cols.map(s=>`<th class="n"><a href="#t-${esc(s.ticker)}" class="tk" style="text-decoration:none">${esc(s.ticker)}</a></th>`).join('')}</tr></thead>
+    <tbody>${rows.map(([label, get, f, best]) => {
+      const vals = cols.map(get);
+      let bi = -1;
+      if (best && cols.length > 1) { const nums = vals.map((v,i)=>[v,i]).filter(([v])=>isNum(v) && !(best==='min' && v<=0)); if (nums.length>1) bi = nums.reduce((a,b)=> (best==='max' ? b[0]>a[0] : b[0]<a[0]) ? b : a)[1]; }
+      return `<tr><td>${esc(label)}</td>${vals.map((v,i)=>`<td class="n${i===bi?' best':''}">${f(v)}</td>`).join('')}</tr>`; }).join('')}
+    </tbody></table></div>
+  <p class="small">Số được tô xanh là tốt nhất trong hàng (P/E, P/B, EV/EBITDA, nợ vay thấp hơn là tốt hơn).</p>`;
+}
+
+/* ---------- events ---------- */
+const saveCompare = () => store.set('compare', [...ui.compare]);
+async function copyText(text, msgEl){
+  try { await navigator.clipboard.writeText(text); if (msgEl) msgEl.textContent = 'Đã sao chép. Dán vào chat với Claude.'; }
+  catch { if (msgEl) msgEl.textContent = 'Không sao chép tự động được, hãy chọn và sao chép thủ công: ' + text; }
+}
+function bind(r){
+  const on = (id, ev, fn) => { const el = document.getElementById(id); if (el) el.addEventListener(ev, fn); };
+  if (r.view === 'lib'){
+    on('qform','submit', e => {
+      e.preventDefault();
+      const t = document.getElementById('q').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');
+      ui.query = t; if (!t) return;
+      if (stocks.has(t)) { ui.missing = null; location.hash = 't-' + t; return; }
+      ui.missing = t; render();
+    });
+    on('copy-prompt','click', () => copyText(researchPrompt(ui.missing), document.getElementById('cpmsg')));
+    on('close-miss','click', () => { ui.missing = null; render(); });
+    [['f-sector','sector'],['f-rec','rec'],['f-sort','sort']].forEach(([id,k]) => on(id,'change', e => { ui.filters[k] = e.target.value; store.set('filters', ui.filters); render(); }));
+    app.querySelectorAll('tr.click').forEach(tr => tr.addEventListener('click', e => { if (e.target.closest('input')) return; location.hash = 't-' + tr.dataset.t; }));
+    app.querySelectorAll('.cmpbox').forEach(cb => cb.addEventListener('change', e => { e.target.checked ? ui.compare.add(cb.dataset.t) : ui.compare.delete(cb.dataset.t); saveCompare(); render(); }));
+  }
+  if (r.view === 'cmp'){
+    app.querySelectorAll('.pick').forEach(b => b.addEventListener('click', () => { const t = b.dataset.t; ui.compare.has(t) ? ui.compare.delete(t) : ui.compare.add(t); saveCompare(); render(); }));
+  }
+  if (r.view === 'stock' && stocks.has(r.ticker)){
+    const t = r.ticker;
+    on('nform','submit', e => {
+      e.preventDefault();
+      const num = id => { const v = document.getElementById(id).value.replace(/[^\d]/g,''); return v ? Number(v) : null; };
+      store.set('note:' + t, { buyBelow:num('n-buy'), target:num('n-target'), sellIf:document.getElementById('n-sell').value.trim(), text:document.getElementById('n-text').value, updatedAt:new Date().toISOString() });
+      ui.noteMsg = 'Đã lưu trên trình duyệt này.'; render();
+    });
+    on('copy-prompt2','click', () => copyText(researchPrompt(t), document.getElementById('cpmsg')));
+    on('cmp-this','change', e => { e.target.checked ? ui.compare.add(t) : ui.compare.delete(t); saveCompare(); });
+  }
+}
+
+load();
+})();
+</script>
+</body>
+</html>
