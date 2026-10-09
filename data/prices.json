@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T18:02:49+07:00",
+  "updatedAt": "2026-10-10T05:25:03+07:00",
   "prices": {
     "FPT": {
       "close": 57900,
@@ -32,10 +32,10 @@
       "source": "VCI"
     },
     "TRC": {
-      "close": 24500,
-      "prevClose": 24100,
-      "date": "2026-10-08",
-      "source": "nhập tay"
+      "close": 25000,
+      "prevClose": 24500,
+      "date": "2026-10-09",
+      "source": "VCI"
     }
   }
 }
