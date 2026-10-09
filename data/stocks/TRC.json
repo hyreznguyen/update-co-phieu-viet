@@ -1,0 +1,80 @@
+{
+  "ticker": "TRC",
+  "name": "CTCP Cao su Tây Ninh",
+  "nameEn": "Tay Ninh Rubber JSC",
+  "exchange": "HOSE",
+  "sector": "Cao su tự nhiên",
+  "updatedAt": "2026-10-10T00:00:00.000Z",
+  "dataAsOf": "giá 08/10/2026, KQKD Q2/2026",
+  "price": 24500,
+  "recommendation": "GIỮ",
+  "intrinsic": { "low": 15000, "base": 20000, "high": 30000 },
+  "epsTTM": 2392,
+  "bvps": 18700,
+  "sharesMn": 120,
+  "dps": 750,
+  "tagline": "Một công ty trồng cao su nhỏ, không nợ, ngồi trên hơn 13.000 ha đất. Lợi nhuận 2026 sẽ tăng vọt nhờ tiền đền bù đất khu công nghiệp, nhưng đó là khoản một lần, và giá cổ phiếu đã phản ánh phần lớn.",
+  "story": "Cao su Tây Ninh trồng và khai thác mủ cao su trên khoảng 6.970 ha ở Tây Ninh và 6.410 ha ở Siem Reap (Campuchia), rồi sơ chế thành mủ thành phẩm để bán. Công ty con của Tập đoàn Công nghiệp Cao su Việt Nam (GVR), sở hữu 61,8%. Mỗi năm TRC bán khoảng 18.000–20.000 tấn mủ. Lợi nhuận phụ thuộc gần như hoàn toàn vào giá cao su thế giới, cộng thêm thu nhập từ thanh lý vườn cây già (bán gỗ cao su) khi tái canh.\n\nGiai đoạn 2021–2023 giá cao su thấp, TRC chỉ lãi 70–100 tỷ mỗi năm và cổ phiếu ít được chú ý. Từ 2024 giá mủ tăng mạnh (bình quân 9 tháng 2025 khoảng 51 triệu đồng/tấn, tăng 18%), lợi nhuận nhảy lên 221 tỷ năm 2024 và 251 tỷ năm 2025. Vườn cây ở Campuchia cũng bắt đầu cho năng suất cao hơn.\n\nNhưng câu chuyện lớn hơn là đất. Khi Tây Ninh và Bình Dương cũ phát triển công nghiệp, đất cao su của các công ty trong hệ sinh thái GVR trở thành quỹ đất khu công nghiệp. TRC đang bàn giao 495 ha ở nông trường Gò Dầu cho GVR làm Khu công nghiệp Hiệp Thạnh, với tiền đền bù ước khoảng 1,5 tỷ đồng/ha. Ban lãnh đạo kỳ vọng ghi nhận khoảng 500 tỷ trong nửa cuối 2026, đưa lợi nhuận cả năm lên khoảng 636 tỷ, gấp 2,5 lần năm 2025.\n\nCổ phiếu đã chạy trước. Tháng 9/2026 TRC thưởng cổ phiếu tỷ lệ 1:3, số cổ phiếu tăng từ 30 lên 120 triệu. Ở giá 24.500 đồng (tương đương 98.000 trước khi thưởng), vốn hóa khoảng 2.940 tỷ, cao hơn giá mục tiêu FPTS đưa ra cuối 2025 (90.000 trước thưởng, tức 22.500 hiện tại). Nhìn theo lợi nhuận 2026 thì P/E chỉ khoảng 4,6 lần, nhưng gần 80% lợi nhuận đó đến từ khoản đền bù đất chỉ xảy ra một lần.",
+  "thesis": "TRC là trường hợp P/E dự phóng rất thấp nhưng không thật sự rẻ. Phần lớn lợi nhuận 2026 là tiền đền bù đất một lần. Khi tách ra, giá trị gồm mảng cao su lõi (~150–200 tỷ/năm), khoảng 300–400 tỷ tiền gửi và khoảng 550 tỷ tiền đền bù sắp về, cộng lại xấp xỉ 20.000 đồng/cổ phiếu, thấp hơn giá hiện tại. Phần chênh lệch là thị trường đang trả trước cho các đợt chuyển đổi đất tiếp theo, vốn chưa có kế hoạch cụ thể. Doanh nghiệp tốt, bảng cân đối sạch, nhưng giá đã đi trước giá trị. Vùng mua hấp dẫn là dưới khoảng 17.000.",
+  "thesisPoints": [
+    { "title": "P/E dự phóng 4,6x là ảo giác của khoản thu một lần", "detail": "Kế hoạch lợi nhuận 2026 ~636 tỷ gồm khoảng 500 tỷ từ đền bù 495 ha đất KCN Hiệp Thạnh. Lợi nhuận từ trồng cao su chỉ khoảng 150–200 tỷ/năm ở mức giá mủ hiện tại." },
+    { "title": "Bảng cân đối rất sạch", "detail": "Không còn nợ vay từ 2025, tiền gửi ngân hàng khoảng 440 tỷ (quý III/2025), sắp nhận thêm tiền đền bù. Đây là điểm tựa an toàn nếu giá cao su giảm." },
+    { "title": "Quyền chọn đất là giá trị thật nhưng khó định lượng", "detail": "Còn khoảng 6.470 ha đất ở Tây Ninh sau Hiệp Thạnh. Các thương vụ chuyển đổi trong ngành có giá 1–2,5 tỷ/ha, nhưng thời điểm và việc có xảy ra hay không phụ thuộc vào GVR và tỉnh, không phải TRC." },
+    { "title": "Cổ tức có thể tăng nhưng chưa chắc", "detail": "Cổ tức 2025 là 3.000 đ/cp trước thưởng (tương đương 750 đ/cp hiện tại, ~3%). Với tiền đền bù, cổ tức 2026 có thể cao hơn nhiều, nhưng công ty mẹ GVR mới là bên quyết định." }
+  ],
+  "thesisBreakers": [
+    "GVR hoặc tỉnh Tây Ninh công bố kế hoạch chuyển đổi thêm đất của TRC sang khu công nghiệp, với diện tích và giá đền bù cụ thể",
+    "Giá đền bù Hiệp Thạnh được chốt cao hơn đáng kể mức ~1,5 tỷ/ha",
+    "Cổ tức tiền mặt năm 2026 từ 3.000 đ/cp trở lên (tức trả phần lớn tiền đền bù cho cổ đông)",
+    "Giá mủ cao su tăng tiếp và giữ trên ~55 triệu đồng/tấn, nâng lợi nhuận lõi lên trên 250 tỷ/năm"
+  ],
+  "metrics": { "roe": 12.8, "netMargin": 32.3, "debtEquity": 0, "epsGrowth": 37 },
+  "valuationMethod": "Định giá theo tổng các phần (sum-of-the-parts), vì lợi nhuận 2026–2027 có khoản thu một lần lớn.\nCơ sở (~20.000): mảng cao su lõi ~160 tỷ/năm × 9x ≈ 1.440 tỷ; tiền ròng ~300 tỷ; tiền đền bù Hiệp Thạnh sau thuế ~550 tỷ (FPTS ước ~594 tỷ cho 2026–2027). Cộng ~2.300 tỷ, chia 120 triệu cổ phiếu.\nThấp (~15.000): giá mủ giảm, lợi nhuận lõi ~120 tỷ × 8x. Cao (~30.000): lợi nhuận lõi ~200 tỷ × 11x, cộng ~500 tỷ giá trị cho các đợt chuyển đổi đất sau.\nP/E trên trang tính theo LNST 12 tháng gần nhất (~287 tỷ), đã gồm thu nhập thanh lý vườn cây. Giá trị sổ sách ước từ P/B 1,31x trên Simplize.",
+  "financials": {
+    "unit": "Tỷ đồng",
+    "years": ["2021", "2022", "2023", "2024", "2025", "12T tới 6/26"],
+    "cagrCols": 5,
+    "rows": [
+      { "label": "Doanh thu", "values": [null, 524, 563, 753, 844, 888] },
+      { "label": "LN trước thuế", "values": [null, 89, 74, 242, 270, 310] },
+      { "label": "LNST cổ đông mẹ", "values": [97, 75, 68, 221, 251, 287] },
+      { "label": "EPS điều chỉnh (đồng)", "values": [808, 625, 563, 1842, 2088, 2392] }
+    ],
+    "note": "2021–2022 suy ngược từ tốc độ tăng và EPS công bố trong báo cáo năm 2023, không có doanh thu và LN trước thuế 2021. 2024 theo FPTS. 2025 và 12 tháng gần nhất cộng từ số liệu từng quý. Lợi nhuận đã gồm thu nhập thanh lý vườn cây (ví dụ ~50 tỷ trong 6T2026), chưa gồm tiền đền bù đất Hiệp Thạnh. EPS điều chỉnh = LNST chia 120 triệu cổ phiếu sau đợt thưởng 1:3 tháng 9/2026; EPS 9.569 đồng trên một số trang là số cũ tính trên 30 triệu cổ phiếu."
+  },
+  "financialsComment": "Lợi nhuận gấp hơn 3 lần chỉ trong hai năm, gần như hoàn toàn nhờ giá mủ cao su tăng. Đây là đòn bẩy của một doanh nghiệp có chi phí trồng gần như cố định: giá bán tăng 15–20% là lợi nhuận tăng gấp đôi, và chiều ngược lại cũng vậy. Biên lợi nhuận ròng trên 30% đã gồm thu nhập thanh lý vườn cây, không lặp lại đều mỗi năm.",
+  "news": [
+    { "date": "09/2026", "title": "Hoàn tất thưởng cổ phiếu tỷ lệ 1:3, vốn điều lệ lên 1.200 tỷ", "note": "Số cổ phiếu từ 30 lên 120 triệu, nguồn từ quỹ đầu tư phát triển. Không thay đổi giá trị doanh nghiệp.", "impact": "0" },
+    { "date": "09/2026", "title": "Trả cổ tức tiền mặt 2025: 3.000 đ/cp (trước thưởng)", "note": "Tổng khoảng 90 tỷ, tương đương 750 đ/cp sau thưởng.", "impact": "0" },
+    { "date": "07/2026", "title": "6T2026 lãi 142 tỷ (+35%); chờ ~500 tỷ đền bù đất KCN Hiệp Thạnh nửa cuối năm", "note": "Lợi nhuận khác ~50 tỷ, chủ yếu từ thanh lý vườn cây. Ban lãnh đạo dự kiến lợi nhuận cả năm ~636 tỷ; số đền bù tạm tính 354 tỷ, chưa chốt chính thức.", "impact": "+" },
+    { "date": "06/2026", "title": "Kế hoạch 2026: LNST tối thiểu 491 tỷ, gần gấp đôi năm 2025", "note": "Kế hoạch đã gồm một phần tiền đền bù đất. Quý I biên gộp giảm từ 38,9% xuống 27,1%.", "impact": "+" },
+    { "date": "12/2025", "title": "FPTS khuyến nghị MUA, giá mục tiêu 90.000 (trước thưởng)", "note": "Tương đương ~22.500 sau thưởng. Giá hiện tại đã vượt mức này.", "impact": "0" }
+  ],
+  "catalysts": [
+    "Ghi nhận tiền đền bù Hiệp Thạnh trong quý III–IV/2026",
+    "Cổ tức tiền mặt lớn từ tiền đền bù",
+    "Kế hoạch chuyển đổi thêm đất cao su sang khu công nghiệp",
+    "Giá cao su thế giới tăng do nguồn cung Thái Lan, Indonesia hạn chế"
+  ],
+  "risks": [
+    "Giá mủ cao su giảm, kéo lợi nhuận lõi giảm mạnh",
+    "Số tiền và thời điểm đền bù đất chưa chốt chính thức",
+    "Quyết định cổ tức và đất đai phụ thuộc công ty mẹ GVR (61,8%)",
+    "Thanh khoản cổ phiếu thấp, vốn hóa nhỏ",
+    "Vườn cây Campuchia năng suất thấp hơn Việt Nam, rủi ro chính sách nước ngoài",
+    "Quy định EUDR của EU về truy xuất nguồn gốc, chống phá rừng có thể ảnh hưởng xuất khẩu"
+  ],
+  "sources": [
+    { "title": "Simplize – Lịch sử giá TRC (08/10/2026)" },
+    { "title": "24HMoney – Báo cáo tài chính quý TRC (Q3/2024–Q2/2026)" },
+    { "title": "Doanh nhân – TRC lãi bán niên, chờ nguồn thu đền bù đất KCN (07/2026)" },
+    { "title": "Doanh nhân – TRC mục tiêu lãi tối thiểu 491,2 tỷ năm 2026 (06/2026)" },
+    { "title": "Doanh nhân – TRC phát hành 90 triệu cổ phiếu (09/2026)" },
+    { "title": "FPTS – Báo cáo cập nhật định giá TRC (12/2025)" },
+    { "title": "Báo cáo phân tích TRC (12/2023), số liệu 2019–2023" },
+    { "title": "AWM Fund – #TRC Tay Ninh Rubber" }
+  ],
+  "history": [
+    { "date": "2026-10-10", "price": 24500, "intrinsicBase": 20000, "recommendation": "GIỮ" }
+  ]
+}

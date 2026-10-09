@@ -3,5 +3,6 @@
   "PVD",
   "MSR",
   "VHM",
-  "VNM"
+  "VNM",
+  "TRC"
 ]

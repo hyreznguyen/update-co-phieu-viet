@@ -30,6 +30,12 @@
       "prevClose": 57900,
       "date": "2026-10-09",
       "source": "VCI"
+    },
+    "TRC": {
+      "close": 24500,
+      "prevClose": 24100,
+      "date": "2026-10-08",
+      "source": "nhập tay"
     }
   }
 }
