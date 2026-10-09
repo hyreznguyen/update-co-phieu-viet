@@ -18,6 +18,12 @@
       "prevClose": 68200,
       "date": "2026-10-09",
       "source": "VCI"
+    },
+    "VHM": {
+      "close": 65700,
+      "prevClose": 68000,
+      "date": "2026-10-08",
+      "source": "nhập tay"
     }
   }
 }

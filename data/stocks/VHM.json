@@ -1,0 +1,77 @@
+{
+  "ticker": "VHM",
+  "name": "CTCP Vinhomes",
+  "nameEn": "Vinhomes JSC",
+  "exchange": "HOSE",
+  "sector": "Bất động sản",
+  "updatedAt": "2026-10-09T11:00:00.000Z",
+  "dataAsOf": "giá 08/10/2026, KQKD Q2/2026",
+  "price": 65700,
+  "recommendation": "GIỮ",
+  "intrinsic": { "low": 45000, "base": 62000, "high": 85000 },
+  "epsTTM": 9730,
+  "bvps": 32050,
+  "sharesMn": 8214.82,
+  "tagline": "Nhà phát triển bất động sản lớn nhất Việt Nam vừa có 12 tháng lãi kỷ lục. P/E 6,8x trông rất rẻ, nhưng phần lớn là nhờ vài thương vụ bán buôn lớn, nên mức rẻ thực tế thấp hơn nhiều so với con số.",
+  "story": "Vinhomes là công ty bất động sản lớn nhất Việt Nam, thuộc Tập đoàn Vingroup. Mô hình của Vinhomes là gom quỹ đất rất lớn từ sớm, làm hạ tầng và tiện ích để tạo ra cả một khu đô thị mới (Ocean Park, Smart City, Grand Park, Royal Island...), rồi bán căn hộ, nhà phố cho người mua lẻ và bán buôn từng phân khu cho nhà đầu tư hoặc đối tác liên doanh. Doanh thu chỉ được ghi nhận khi bàn giao, nên lợi nhuận lên xuống theo từng đợt bàn giao lớn.\n\nGiai đoạn 2022–2024 là thời kỳ khó của cả ngành: khủng hoảng trái phiếu và thị trường đóng băng khiến lợi nhuận Vinhomes đi ngang quanh 29.000–33.000 tỷ mỗi năm. Song song, nhà đầu tư lo ngại Vinhomes phải gánh một phần nhu cầu vốn của hệ sinh thái Vingroup, đặc biệt là VinFast.\n\nTừ 2025 thị trường hồi phục mạnh. Vinhomes mở bán liên tục các đại dự án, doanh số bán hàng 6 tháng đầu 2026 đạt khoảng 148.000 tỷ (tăng 119%) và giá trị hợp đồng chưa ghi nhận còn khoảng 197.000 tỷ. Bàn giao Ocean Park 2, Ocean Park 3 và Green Paradise đẩy lợi nhuận lên mức chưa từng có: quý IV/2025 lãi 27.500 tỷ, 6 tháng 2026 lãi hơn 52.000 tỷ, gần bằng 87% kế hoạch cả năm. Cùng lúc, Vinhomes đang lấn sang hạ tầng: metro Bến Thành – Cần Giờ, đường sắt cao tốc Hà Nội – Quảng Ninh, cầu vượt biển Cần Giờ – Vũng Tàu và làm tổng thầu 5 tuyến metro Hà Nội cùng VinSpeed.\n\nỞ giá 65.700 đồng, Vinhomes có vốn hóa khoảng 540.000 tỷ, P/E 12 tháng chỉ 6,8 lần. Nhưng con số này dựa trên giai đoạn lợi nhuận đỉnh: kế hoạch cả năm 2026 cho thấy nửa cuối năm lợi nhuận sẽ thấp hơn nhiều, và tính theo lợi nhuận cả năm 2026, P/E thực tế gần 10 lần.",
+  "thesis": "Vinhomes có tài sản và tầm nhìn doanh thu tốt nhất ngành: quỹ đất khổng lồ, doanh số bán hàng kỷ lục và gần 200.000 tỷ hợp đồng chưa ghi nhận. Nhưng P/E 6,8x đang phóng đại mức rẻ, vì lợi nhuận 12 tháng gần nhất có nhiều đợt bàn giao và bán buôn lớn khó lặp lại đều đặn. Tính theo lợi nhuận bình thường, giá hiện tại xấp xỉ giá trị hợp lý, chưa có biên an toàn. Thêm vào đó, chuyện phân bổ vốn sang hạ tầng và quan hệ với hệ sinh thái Vingroup là lý do chính đáng để đòi hỏi một mức chiết khấu. Vùng mua hấp dẫn là dưới khoảng 50.000.",
+  "thesisPoints": [
+    { "title": "Tầm nhìn doanh thu rất rõ", "detail": "Doanh số bán 6T2026 khoảng 148.000 tỷ và giá trị hợp đồng chưa ghi nhận khoảng 197.000 tỷ, đủ để duy trì lợi nhuận cao trong 1–2 năm tới khi bàn giao." },
+    { "title": "P/E 12 tháng không phản ánh lợi nhuận bình thường", "detail": "Lợi nhuận 12 tháng gần nhất (~80.000 tỷ) gấp hơn 2,5 lần mức 2022–2024. Kế hoạch năm 2026 (~60.000 tỷ, đã đạt 87% sau 6 tháng) ngụ ý nửa cuối năm thấp hơn hẳn. P/E theo năm 2026 vào khoảng 10x." },
+    { "title": "Định giá đã hợp lý, không còn rẻ", "detail": "Lấy lợi nhuận bình quân 2023–2026 (~40.000 tỷ) làm mức bình thường, giá trị hợp lý ở 12x vào khoảng 60.000 đồng, sát giá hiện tại." },
+    { "title": "Rủi ro phân bổ vốn cần được chiết khấu", "detail": "Mảng hạ tầng (metro, đường sắt cao tốc, cầu biển) rất tốn vốn, lợi nhuận chưa rõ. Giao dịch với hệ sinh thái Vingroup cũng làm khó đánh giá chất lượng lợi nhuận và dòng tiền." }
+  ],
+  "thesisBreakers": [
+    "Doanh số bán hàng cả năm 2026 vượt ~280.000 tỷ và lợi nhuận 2027 không thấp hơn 2026: khi đó lợi nhuận bình thường cao hơn mình giả định và cổ phiếu đang rẻ thật",
+    "Lợi nhuận quý III và IV/2026 vẫn trên ~15.000 tỷ mỗi quý",
+    "Khoản phải thu hoặc cho vay với các công ty liên quan trong Vingroup tăng mạnh, cho thấy lợi nhuận không chuyển thành tiền",
+    "Nợ vay tăng nhanh để tài trợ dự án hạ tầng trong khi doanh số bán hàng chững lại"
+  ],
+  "metrics": { "roe": 30, "netMargin": 33.9, "epsGrowth": 164 },
+  "valuationMethod": "Định giá theo lợi nhuận bình thường hóa, đối chiếu với kế hoạch 2026. Các công ty chứng khoán thường dùng RNAV (giá trị tài sản ròng điều chỉnh) cho Vinhomes; mình chưa làm RNAV đầy đủ.\nLợi nhuận bình thường lấy trung bình 2023–2026 (2026 ước tính ~55.000 tỷ cổ đông mẹ theo kế hoạch): khoảng 40.000 tỷ, tương đương EPS ~4.900 đồng. Thấp: 9x ≈ 45.000. Cơ sở: 12–13x ≈ 62.000. Cao: doanh số giữ mức kỷ lục, lợi nhuận 2027 ~60.000 tỷ (EPS ~7.300), 12x ≈ 85.000.\nP/E 12 tháng (6,8x) và P/E theo kế hoạch 2026 (~10x) được tính trên ~8,21 tỷ cổ phiếu hiện tại.",
+  "financials": {
+    "unit": "Tỷ đồng",
+    "years": ["2021", "2022", "2023", "2024", "2025", "12T tới 6/26"],
+    "cagrCols": 5,
+    "rows": [
+      { "label": "Doanh thu", "values": [85093, 62393, 103334, 102045, 153271, 235820] },
+      { "label": "LN trước thuế", "values": [null, 38643, 43244, 40860, 52810, 103225] },
+      { "label": "LNST cổ đông mẹ", "values": [39231, 28831, 33125, 31527, 41895, 79933] },
+      { "label": "EPS điều chỉnh (đồng)", "values": [4776, 3510, 4032, 3838, 5100, 9730] }
+    ],
+    "note": "Năm 2021 là LNST theo báo cáo (bài báo không tách phần cổ đông mẹ), không có LN trước thuế. 2022–2024 theo báo cáo Shinhan Securities. 2025 và 12 tháng gần nhất cộng từ số liệu từng quý. Doanh thu thuần chưa gồm các giao dịch chuyển nhượng dự án và hợp tác kinh doanh ghi vào doanh thu tài chính. EPS điều chỉnh = LNST cổ đông mẹ chia ~8,21 tỷ cổ phiếu hiện tại (gấp khoảng đôi số cổ phiếu năm 2025), nên thấp hơn EPS công bố các năm trước."
+  },
+  "financialsComment": "Lợi nhuận đi ngang ba năm 2022–2024 rồi bùng nổ: 12 tháng gần nhất lãi gần 80.000 tỷ, gấp khoảng 2,5 lần mức trung bình trước đó. Phần lớn đến từ một quý IV/2025 có doanh thu hơn 100.000 tỷ và nửa đầu 2026 bàn giao dồn dập. Doanh thu của nhà phát triển bất động sản lên xuống theo đợt bàn giao, nên nên nhìn lợi nhuận trung bình nhiều năm hơn là một năm đỉnh.",
+  "news": [
+    { "date": "10/2026", "title": "Giá giảm về 65.700 sau khi đi ngang quanh 68.000–70.000 cuối tháng 9", "note": "P/E 12 tháng ~6,8x, thấp nhất nhóm VN30 ngoài ngân hàng.", "impact": "0" },
+    { "date": "07/2026", "title": "6T2026 lãi kỷ lục hơn 52.000 tỷ, gấp gần 5 lần cùng kỳ", "note": "Đạt 87% kế hoạch năm. Doanh số bán ~148.000 tỷ (+119%), hợp đồng chưa ghi nhận ~197.000 tỷ (+42%). Biên gộp quý II khoảng 66%.", "impact": "+" },
+    { "date": "2026", "title": "Mở bán loạt đại dự án mới", "note": "Vinhomes Global Gate Hạ Long, Hai Van Bay Đà Nẵng (512 ha), Saigon Park (tây bắc TP.HCM).", "impact": "+" },
+    { "date": "2026", "title": "Mở rộng sang hạ tầng giao thông", "note": "Metro Bến Thành – Cần Giờ, đường sắt cao tốc Hà Nội – Quảng Ninh, cầu biển Cần Giờ – Vũng Tàu; liên danh với VinSpeed làm tổng thầu 5 tuyến metro Hà Nội. Tầm nhìn dài hạn nhưng rất tốn vốn.", "impact": "0" },
+    { "date": "01/2026", "title": "Quý IV/2025 doanh thu hơn 102.000 tỷ, lãi 27.500 tỷ", "note": "Quý lớn nhất lịch sử nhờ bàn giao dồn dập. Cả năm 2025 lãi cổ đông mẹ ~41.900 tỷ.", "impact": "+" }
+  ],
+  "catalysts": [
+    "Bàn giao từ khối hợp đồng chưa ghi nhận ~197.000 tỷ",
+    "Lãi suất thấp và chính sách hỗ trợ thị trường bất động sản",
+    "Hạ tầng (metro, cao tốc) làm tăng giá trị quỹ đất xung quanh các đại dự án",
+    "Thị trường chứng khoán được nâng hạng, vốn ngoại vào nhóm vốn hóa lớn"
+  ],
+  "risks": [
+    "Lợi nhuận phụ thuộc các đợt bàn giao và bán buôn lớn, dễ biến động mạnh giữa các năm",
+    "Giao dịch với các công ty liên quan trong hệ sinh thái Vingroup khó đánh giá",
+    "Mảng hạ tầng cần vốn rất lớn, có thể đẩy nợ vay lên và làm loãng lợi nhuận",
+    "Thị trường bất động sản đảo chiều hoặc siết tín dụng",
+    "Rủi ro pháp lý dự án, đặc biệt với các dự án quy mô hàng trăm hecta",
+    "Tổng nợ phải trả lớn (tài sản ~1,1 triệu tỷ so với vốn chủ ~274.000 tỷ), phần lớn là tiền khách hàng ứng trước và phải trả"
+  ],
+  "sources": [
+    { "title": "Simplize – Lịch sử giá VHM (08/10/2026)" },
+    { "title": "24HMoney – Báo cáo tài chính quý VHM (Q3/2024–Q2/2026)" },
+    { "title": "Doanh nhân – Vinhomes báo lãi bán niên kỷ lục (07/2026)" },
+    { "title": "Shinhan Securities – Báo cáo cập nhật VHM (03/2025), số liệu 2022–2024" },
+    { "title": "Nhà Đầu Tư – Vinhomes lãi 39.231 tỷ năm 2021" },
+    { "title": "TheLEADER – Vinhomes lãi sau thuế gần 29.000 tỷ năm 2022" }
+  ],
+  "history": [
+    { "date": "2026-10-09", "price": 65700, "intrinsicBase": 62000, "recommendation": "GIỮ" }
+  ]
+}
