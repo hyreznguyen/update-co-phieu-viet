@@ -1,0 +1,80 @@
+{
+  "ticker": "VNM",
+  "name": "CTCP Sữa Việt Nam (Vinamilk)",
+  "nameEn": "Vietnam Dairy Products JSC",
+  "exchange": "HOSE",
+  "sector": "Hàng tiêu dùng – thực phẩm",
+  "updatedAt": "2026-10-09T11:30:00.000Z",
+  "dataAsOf": "giá 08/10/2026, KQKD Q2/2026",
+  "price": 57900,
+  "recommendation": "MUA",
+  "intrinsic": { "low": 55000, "base": 70000, "high": 90000 },
+  "epsTTM": 5246,
+  "bvps": 15237,
+  "sharesMn": 2089.96,
+  "dps": 4350,
+  "tagline": "Sau bốn năm giậm chân tại chỗ, Vinamilk đã tăng trưởng trở lại nhờ tái định vị thương hiệu và xuất khẩu. Thị trường vẫn định giá như một doanh nghiệp không còn tăng trưởng.",
+  "story": "Vinamilk là công ty sữa lớn nhất Việt Nam, dẫn đầu thị phần với các dòng sữa nước, sữa chua, sữa bột và sữa đặc. Công ty sở hữu hệ thống trang trại bò sữa, nhà máy và mạng lưới phân phối phủ khắp cả nước, cộng thêm các công ty con Mộc Châu Milk, Driftwood (Mỹ) và Angkormilk (Campuchia). Cổ đông lớn là SCIC (nhà nước) và F&N của Thái Lan, vừa nâng sở hữu lên 24,99% đầu năm 2026.\n\nVinamilk từng là cổ phiếu tăng trưởng được săn đón nhất sàn, giao dịch ở P/E trên 20 lần. Nhưng giai đoạn 2021–2024, doanh thu đứng yên quanh 60.000 tỷ, lợi nhuận giảm từ hơn 10.500 tỷ xuống quanh 8.500–9.400 tỷ. Thị trường sữa nội địa bão hòa, tỷ lệ sinh giảm, cạnh tranh từ TH True Milk, Nutifood và hàng ngoại gay gắt, trong khi giá sữa bột nguyên liệu tăng vọt năm 2022 bào mòn biên lợi nhuận. Cổ phiếu mất dần vị thế và P/E co lại.\n\nTừ 2023, Vinamilk làm mới toàn bộ thương hiệu, đẩy mạnh sản phẩm cao cấp (hiện hơn 10% doanh thu), mở chuỗi cửa hàng riêng và tấn công xuất khẩu. Kết quả bắt đầu hiện rõ trong 2026: 6 tháng đầu năm doanh thu tăng gần 18%, lợi nhuận tăng 38% lên 5.643 tỷ, biên gộp lên 43,1%. Xuất khẩu tăng 42%, nội địa tăng 12%. Giá nguyên liệu đã được chốt đến cuối năm, và công ty tăng giá bán 3–4% hồi tháng 4.\n\nỞ giá 57.900 đồng, Vinamilk giao dịch quanh 11 lần lợi nhuận 12 tháng, P/E thấp nhất trong hơn một thập kỷ của công ty, trong khi trả cổ tức tiền mặt 4.350 đồng cho năm 2025 (tỷ suất khoảng 7,5%). Câu hỏi là đà tăng trưởng 2026 có bền hay chỉ là hồi phục từ nền thấp của quý I/2025.",
+  "thesis": "Thị trường đang định giá Vinamilk như một doanh nghiệp đã hết thời tăng trưởng, trong khi công ty vừa chứng minh có thể tăng trưởng trở lại nhờ sản phẩm cao cấp và xuất khẩu. Ở khoảng 11x P/E với ROE trên 30%, tiền mặt dồi dào và cổ tức ~7,5%, nhà đầu tư đang được trả tiền để chờ. Chỉ cần lợi nhuận tăng đều 4–6%/năm, cổ phiếu đã xứng đáng 13–15x. Rủi ro chính là tăng trưởng 2026 phần lớn đến từ nền thấp và các yếu tố khó lặp lại.",
+  "thesisPoints": [
+    { "title": "Doanh nghiệp chất lượng cao ở mức giá của doanh nghiệp bình thường", "detail": "ROE khoảng 34%, biên LN ròng ~16%, nắm nhiều tiền mặt nhàn rỗi, thương hiệu dẫn đầu. P/E ~11x là thấp nhất trong hơn 10 năm của Vinamilk." },
+    { "title": "Tăng trưởng đã quay lại", "detail": "6T2026 lợi nhuận +38%, doanh thu +18%, biên gộp +200 điểm cơ bản lên 43,1%. Kế hoạch năm (9.828 tỷ) đã đạt 57% sau 6 tháng, khả năng cao vượt kế hoạch." },
+    { "title": "Cổ tức trả tiền cho thời gian chờ", "detail": "Cổ tức tiền mặt 2025 là 4.350 đ/cp (~7,5% ở giá hiện tại). Chính sách 2026 tối thiểu 50% lợi nhuận, thực tế Vinamilk thường trả cao hơn nhiều." },
+    { "title": "Xuất khẩu và sản phẩm cao cấp là hai động lực mới", "detail": "Doanh thu nước ngoài 6T2026 đạt ~8.400 tỷ (+39%), xuất khẩu trực tiếp chủ yếu sang Trung Đông. Sản phẩm cao cấp đã vượt 10% doanh thu, GreenFarm tăng ba chữ số." }
+  ],
+  "thesisBreakers": [
+    "Doanh thu nội địa tăng dưới 3% trong 2 quý liên tiếp (quý II/2026 đã chậm lại còn +6,5%)",
+    "Biên lợi nhuận gộp giảm dưới ~40% khi giá sữa bột nguyên liệu tăng trở lại",
+    "Cổ tức tiền mặt năm 2026 thấp hơn ~3.500 đ/cp",
+    "Doanh thu nước ngoài ngừng tăng khi đà tăng đột biến của Angkormilk qua đi"
+  ],
+  "metrics": { "roe": 34, "netMargin": 15.9, "epsGrowth": 28 },
+  "valuationMethod": "Kết hợp P/E và chiết khấu cổ tức.\nCổ tức 4.350 đ/cp tăng 4%/năm, chi phí vốn 11%: ~64.600. P/E: EPS 2026 ước tính ~5.600 đồng (lợi nhuận ~11.700 tỷ, nửa cuối năm tăng ~15% so với cùng kỳ), 13x ≈ 73.000.\nThấp (~55.000): tăng trưởng chậm lại 2–3%/năm, 11x EPS ~5.000. Cơ sở (~70.000): trung bình hai cách trên. Cao (~90.000): tăng trưởng 6–8%/năm, thị trường định giá lại 16x.\nTỷ suất cổ tức trang hiển thị tính theo cổ tức năm 2025.",
+  "financials": {
+    "unit": "Tỷ đồng",
+    "years": ["2021", "2022", "2023", "2024", "2025", "12T tới 6/26"],
+    "cagrCols": 5,
+    "rows": [
+      { "label": "Doanh thu", "values": [61012, 59956, 60369, 61783, 63646, 68983] },
+      { "label": "LN trước thuế", "values": [12922, 10496, 10968, null, 11650, 13516] },
+      { "label": "LNST cổ đông mẹ", "values": [10532, 8516, 8874, 9392, 9410, 10963] },
+      { "label": "EPS điều chỉnh (đồng)", "values": [5039, 4075, 4246, 4494, 4503, 5246] }
+    ],
+    "note": "2021 và 2024 là tổng doanh thu hợp nhất theo báo chí; LNST cổ đông mẹ 2021 (~10.530 tỷ) chưa đối chiếu lại được với nguồn trong lần research này. Không có LN trước thuế 2024. 2025 và 12 tháng gần nhất cộng từ số liệu từng quý. EPS điều chỉnh = LNST cổ đông mẹ chia ~2,09 tỷ cổ phiếu."
+  },
+  "financialsComment": "Bốn năm 2021–2024 gần như không tăng trưởng: doanh thu đi ngang, lợi nhuận thấp hơn đỉnh 2021. CAGR 5 năm vì vậy chỉ quanh 1–2%. Điểm thay đổi nằm ở 12 tháng gần nhất: lợi nhuận lần đầu vượt 10.900 tỷ, cao nhất từ 2021, và biên gộp đang mở rộng. Cần lưu ý quý I/2025 là nền rất thấp, nên tốc độ tăng 38% của nửa đầu 2026 sẽ khó giữ trong nửa cuối năm.",
+  "news": [
+    { "date": "08/2026", "title": "6T2026 lãi 5.643 tỷ (+38%), doanh thu +18%, biên gộp 43,1%", "note": "Xuất khẩu +42%, nội địa +12,4% nhưng riêng quý II chỉ +6,5%. Mộc Châu, Driftwood, Angkormilk đều tăng mạnh.", "impact": "+" },
+    { "date": "08/2026", "title": "Không tăng giá thêm, nguyên liệu đã chốt đến cuối năm", "note": "Sau lần tăng giá 3–4% đầu tháng 4. Ban lãnh đạo kỳ vọng biên gộp nửa cuối năm giữ quanh mức nửa đầu năm. Nguồn sữa tươi đủ cho nhu cầu năm 2027; xây thêm trang trại ở Tây Ninh, Bình Định.", "impact": "+" },
+    { "date": "04/2026", "title": "ĐHĐCĐ: kế hoạch 2026 LNST 9.828 tỷ; cổ tức 2025 tổng 4.350 đ/cp", "note": "Kế hoạch thận trọng (+4,4%). Chính sách cổ tức 2026 tối thiểu 50% lợi nhuận. Mục tiêu 1.000 cửa hàng cuối 2026.", "impact": "0" },
+    { "date": "03/2026", "title": "F&N nâng sở hữu lên 24,99%, Platinum Victory thoái vốn", "note": "Cổ đông Thái Lan F&N tăng tỷ lệ, quỹ Platinum Victory bán gần hết từ mức 10,6%.", "impact": "0" },
+    { "date": "2023", "title": "Tái định vị thương hiệu, đẩy sản phẩm cao cấp", "note": "Bước ngoặt chiến lược sau giai đoạn tăng trưởng chững lại 2021–2023.", "impact": "+" }
+  ],
+  "catalysts": [
+    "Lợi nhuận 2026 vượt xa kế hoạch thận trọng",
+    "Cổ tức tiền mặt cao, có thể kèm tạm ứng sớm",
+    "Mở rộng xuất khẩu sang thị trường mới ngoài Trung Đông",
+    "Sản phẩm cao cấp và kênh bán hàng trực tiếp nâng biên lợi nhuận"
+  ],
+  "risks": [
+    "Giá sữa bột nguyên liệu tăng trở lại, bào mòn biên gộp",
+    "Tỷ lệ sinh giảm và thị trường sữa nội địa bão hòa",
+    "Cạnh tranh gay gắt từ TH True Milk, Nutifood, hàng nhập khẩu",
+    "Tăng trưởng 2026 một phần đến từ nền thấp quý I/2025 và Angkormilk tăng đột biến",
+    "Chi phí logistics xuất khẩu sang Trung Đông",
+    "Thay đổi cơ cấu cổ đông lớn (SCIC, F&N) có thể ảnh hưởng chiến lược"
+  ],
+  "sources": [
+    { "title": "Simplize – Lịch sử giá VNM (08/10/2026)" },
+    { "title": "24HMoney – Báo cáo tài chính quý VNM (Q3/2024–Q2/2026)" },
+    { "title": "Doanh nhân – Vinamilk báo lãi nửa đầu 2026 tăng 38% (07/2026)" },
+    { "title": "VCCI – Vinamilk giành thêm thị phần, chưa điều chỉnh giá bán (08/2026)" },
+    { "title": "Thị trường Tài chính Tiền tệ – Kế hoạch 2026 và cổ tức Vinamilk (03/2026)" },
+    { "title": "MISA AMIS – Báo cáo tài chính Vinamilk 2022–2023" },
+    { "title": "Mekong ASEAN – Vinamilk lãi ròng cao nhất 3 năm (2024)" },
+    { "title": "Mekong ASEAN – Nghịch lý của Vinamilk (2021)" }
+  ],
+  "history": [
+    { "date": "2026-10-09", "price": 57900, "intrinsicBase": 70000, "recommendation": "MUA" }
+  ]
+}

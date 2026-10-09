@@ -24,6 +24,12 @@
       "prevClose": 65700,
       "date": "2026-10-09",
       "source": "VCI"
+    },
+    "VNM": {
+      "close": 57900,
+      "prevClose": 58000,
+      "date": "2026-10-08",
+      "source": "nhập tay"
     }
   }
 }
