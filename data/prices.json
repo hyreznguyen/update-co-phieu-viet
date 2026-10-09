@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T17:05:58+07:00",
+  "updatedAt": "2026-10-09T18:02:49+07:00",
   "prices": {
     "FPT": {
       "close": 57900,
@@ -26,10 +26,10 @@
       "source": "VCI"
     },
     "VNM": {
-      "close": 57900,
-      "prevClose": 58000,
-      "date": "2026-10-08",
-      "source": "nhập tay"
+      "close": 57700,
+      "prevClose": 57900,
+      "date": "2026-10-09",
+      "source": "VCI"
     }
   }
 }
