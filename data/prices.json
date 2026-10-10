@@ -36,6 +36,12 @@
       "prevClose": 24500,
       "date": "2026-10-09",
       "source": "VCI"
+    },
+    "MSN": {
+      "close": 74300,
+      "prevClose": 74200,
+      "date": "2026-10-09",
+      "source": "nhập tay"
     }
   }
 }
