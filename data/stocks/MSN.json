@@ -8,18 +8,34 @@
   "dataAsOf": "giá 09/10/2026, KQKD Q2/2026",
   "price": 74300,
   "recommendation": "GIỮ",
-  "intrinsic": { "low": 60000, "base": 78000, "high": 100000 },
+  "intrinsic": {
+    "low": 60000,
+    "base": 78000,
+    "high": 100000
+  },
   "epsTTM": 4830,
   "bvps": 27420,
   "sharesMn": 1460.37,
   "tagline": "Mua MSN là mua Masan Consumer, Techcombank và WinMart với giá chiết khấu. Nhưng lợi nhuận kỷ lục năm 2026 có khoảng một nửa đến từ giá vonfram, không phải từ mảng tiêu dùng.",
-  "story": "Masan là tập đoàn tiêu dùng và bán lẻ do ông Nguyễn Đăng Quang xây dựng. Bên trong có nhiều mảng: Masan Consumer (MCH) với các thương hiệu nước mắm, mì gói, nước chấm, đồ uống quen thuộc; WinCommerce với hơn 5.100 cửa hàng WinMart, WinMart+; Masan MEATLife (thịt chế biến); chuỗi trà Phúc Long; mỏ vonfram Núi Pháo (MSR); và một phần sở hữu lớn tại ngân hàng Techcombank. MSN là công ty mẹ nắm giữ tất cả, nên giá trị của MSN là tổng giá trị các mảng trừ đi nợ vay.\n\nGiai đoạn 2022–2024 là thời kỳ khó. Masan vay nhiều để mua lại chuỗi bán lẻ từ Vingroup (cuối 2019) và mở rộng các mảng khác. Khi lãi suất tăng, chi phí lãi vay ăn mòn lợi nhuận. WinCommerce lỗ kéo dài, MSR lỗ hơn 1.500 tỷ mỗi năm. Lợi nhuận thuộc cổ đông Masan rơi từ 3.567 tỷ năm 2022 xuống chỉ 419 tỷ năm 2023.\n\nTừ 2025 mọi thứ đảo chiều cùng lúc. WinCommerce có lãi 7 quý liên tiếp, chi phí mở cửa hàng giảm 30%. Masan Consumer tăng trưởng đều 13–14%/năm. Và giá vonfram tăng vọt kéo MSR từ lỗ sang lãi 1.666 tỷ chỉ riêng quý II/2026. Kết quả: quý II/2026 Masan lãi kỷ lục 3.800 tỷ (trước lợi ích cổ đông thiểu số), cả năm nâng mục tiêu lợi nhuận thuộc cổ đông Masan lên khoảng 8.000 tỷ, gấp đôi 2025. Nợ ròng/EBITDA giảm từ 2,7 xuống 2,4 lần.\n\nỞ giá 74.300 đồng, vốn hóa MSN khoảng 108.500 tỷ, trong khi riêng Masan Consumer niêm yết đã có vốn hóa khoảng 187.000 tỷ và phần sở hữu Techcombank trị giá khoảng 34.000 tỷ theo giá thị trường. Tổng giám đốc Danny Le nói cổ phiếu đang giao dịch dưới 60% giá trị thật. Điều đó có phần đúng, nhưng thị trường có lý do để chiết khấu: cấu trúc phức tạp, nợ lớn và lợi nhuận đang được giá vonfram đẩy lên.",
+  "story": "Masan là tập đoàn tiêu dùng và bán lẻ do ông Nguyễn Đăng Quang xây dựng. Bên trong có nhiều mảng: Masan Consumer (MCH) với các thương hiệu nước mắm, mì gói, nước chấm, đồ uống quen thuộc; WinCommerce với hơn 5.100 cửa hàng WinMart, WinMart+; Masan MEATLife (thịt chế biến); chuỗi trà Phúc Long; mỏ vonfram Núi Pháo (MSR); và một phần sở hữu lớn tại ngân hàng Techcombank. MSN là công ty mẹ nắm giữ tất cả, nên giá trị của MSN là tổng giá trị các mảng trừ đi nợ vay.\n\nGiai đoạn 2022–2024 là thời kỳ khó. Masan vay nhiều để mua lại chuỗi bán lẻ từ Vingroup (cuối 2019) và mở rộng các mảng khác. Khi lãi suất tăng, chi phí lãi vay ăn mòn lợi nhuận. WinCommerce lỗ kéo dài, MSR lỗ hơn 1.500 tỷ mỗi năm. Lợi nhuận thuộc cổ đông Masan rơi từ 3.567 tỷ năm 2022 xuống chỉ 419 tỷ năm 2023.\n\nTừ 2025 mọi thứ đảo chiều cùng lúc. WinCommerce có lãi 7 quý liên tiếp, chi phí mở cửa hàng giảm 30%. Masan Consumer tăng trưởng đều 13–14%/năm. Và giá vonfram tăng vọt kéo MSR từ lỗ sang lãi 1.666 tỷ chỉ riêng quý II/2026. Kết quả: quý II/2026 Masan lãi kỷ lục 3.800 tỷ (trước lợi ích cổ đông thiểu số), cả năm nâng mục tiêu lợi nhuận thuộc cổ đông Masan lên khoảng 8.000 tỷ, gấp đôi 2025. Nợ ròng/EBITDA giảm từ 2,7 xuống 2,4 lần.\n\nỞ giá 74.300 đồng, vốn hóa MSN khoảng 108.500 tỷ, trong khi riêng Masan Consumer niêm yết đã có vốn hóa khoảng 187.000 tỷ và phần sở hữu 19,9% Techcombank trị giá khoảng 45.600 tỷ theo giá thị trường. Tổng giám đốc Danny Le nói cổ phiếu đang giao dịch dưới 60% giá trị thật. Điều đó có phần đúng, nhưng thị trường có lý do để chiết khấu: cấu trúc phức tạp, nợ lớn và lợi nhuận đang được giá vonfram đẩy lên.",
   "thesis": "MSN có hai mặt. Theo tổng các phần, nắm MSN rẻ hơn nắm trực tiếp các công ty con: phần Masan Consumer và Techcombank theo giá thị trường đã gần bằng toàn bộ vốn hóa MSN cộng nợ. Nhưng theo lợi nhuận, khoảng một nửa lợi nhuận 2026 đến từ MSR ở đỉnh chu kỳ vonfram; bỏ phần này đi thì P/E bình thường hóa khoảng 17–18x, không còn rẻ. Mức chiết khấu tập đoàn 30–40% cũng là hợp lý với nợ ~69.000 tỷ và lịch sử phân bổ vốn của Masan. Cân hai mặt, giá hiện tại gần giá trị hợp lý, biên an toàn mỏng. Vùng mua hấp dẫn là dưới khoảng 63.000.",
   "thesisPoints": [
-    { "title": "Mảng tiêu dùng là tài sản chất lượng, đang có giá chiết khấu", "detail": "Masan Consumer tăng trưởng 13–14%/năm, biên LN ròng ~21%, thị trường trả ~27x P/E khi mua trực tiếp MCH. Qua MSN, nhà đầu tư nắm phần này rẻ hơn đáng kể." },
-    { "title": "WinCommerce đã qua điểm hòa vốn", "detail": "Lãi 7 quý liên tiếp, quý II/2026 lãi 142 tỷ (gấp 14 lần), mục tiêu lãi trên 1.000 tỷ năm 2026 và 13.000 cửa hàng năm 2030. Nếu thành công, đây là mảng có thể được định giá lại lớn nhất." },
-    { "title": "Lợi nhuận 2026 bị giá vonfram phóng đại", "detail": "MSR có thể đóng góp khoảng 4.000 tỷ, gần một nửa lợi nhuận thuộc cổ đông Masan năm 2026. Elmet (Mỹ) mua 4,99% MSR với giá ~59.000–60.000 đồng/cp, thấp hơn giá thị trường MSR. Ngay cả đối tác chiến lược cũng không trả mức giá thị trường." },
-    { "title": "Nợ đang giảm nhưng vẫn lớn", "detail": "Tổng nợ vay ~69.000 tỷ, tiền mặt ~17.600 tỷ. Nợ ròng/EBITDA 2,4 lần đang cải thiện nhờ MSR có tiền. Khi giá vonfram giảm, tốc độ giảm nợ cũng chậm lại." }
+    {
+      "title": "Mảng tiêu dùng là tài sản chất lượng, đang có giá chiết khấu",
+      "detail": "Masan Consumer tăng trưởng 13–14%/năm, biên LN ròng ~21%, thị trường trả ~27x P/E khi mua trực tiếp MCH. Qua MSN, nhà đầu tư nắm phần này rẻ hơn đáng kể."
+    },
+    {
+      "title": "WinCommerce đã qua điểm hòa vốn",
+      "detail": "Lãi 7 quý liên tiếp, quý II/2026 lãi 142 tỷ (gấp 14 lần), mục tiêu lãi trên 1.000 tỷ năm 2026 và 13.000 cửa hàng năm 2030. Nếu thành công, đây là mảng có thể được định giá lại lớn nhất."
+    },
+    {
+      "title": "Lợi nhuận 2026 bị giá vonfram phóng đại",
+      "detail": "MSR có thể đóng góp khoảng 4.000 tỷ, gần một nửa lợi nhuận thuộc cổ đông Masan năm 2026. Elmet (Mỹ) mua 4,99% MSR với giá ~59.000–60.000 đồng/cp, thấp hơn giá thị trường MSR. Ngay cả đối tác chiến lược cũng không trả mức giá thị trường."
+    },
+    {
+      "title": "Nợ đang giảm nhưng vẫn lớn",
+      "detail": "Tổng nợ vay ~69.000 tỷ, tiền mặt ~17.600 tỷ. Nợ ròng/EBITDA 2,4 lần đang cải thiện nhờ MSR có tiền. Khi giá vonfram giảm, tốc độ giảm nợ cũng chậm lại."
+    }
   ],
   "thesisBreakers": [
     "WinCommerce đạt lãi trên 1.000 tỷ năm 2026 và tiếp tục tăng trên 30% năm 2027, hoặc có kế hoạch IPO với định giá cụ thể",
@@ -27,27 +43,104 @@
     "Giá vonfram giữ trên ~3.000 USD/mtu đến hết 2027, giữ lợi nhuận MSR ở mức cao",
     "Ngược lại: lợi nhuận Masan Consumer tăng dưới 10% hoặc WinCommerce quay lại lỗ"
   ],
-  "metrics": { "roe": 17.6, "netMargin": 7.3, "debtEquity": 1.4, "epsGrowth": 150 },
-  "valuationMethod": "Định giá tổng các phần (SOTP), đối chiếu với lợi nhuận bình thường hóa.\nGiá trị các phần (tỷ lệ sở hữu là ước tính của mình, cần đối chiếu báo cáo thường niên): Masan Consumer ~80% × 20x lợi nhuận (~7.000 tỷ) ≈ 112.000 tỷ; Techcombank ~15% theo giá thị trường ≈ 34.000 tỷ; MSR ~90% theo giá trị hợp lý của mình (~30.000 đ/cp) ≈ 30.000 tỷ; WinCommerce ~83% × 30x lợi nhuận 1.000 tỷ ≈ 25.000 tỷ; MEATLife + Phúc Long ≈ 10.000 tỷ. Tổng ~211.000 tỷ, trừ nợ ròng ~45.000 tỷ, còn ~166.000 tỷ (~113.000 đ/cp).\nCơ sở (~78.000): chiết khấu tập đoàn 30%. Thấp (~60.000): chiết khấu 40%, MCH 16x. Cao (~100.000): chiết khấu 20%, MSR theo giá thị trường.\nĐối chiếu: lợi nhuận bình thường hóa ~5.800 tỷ (bỏ phần MSR đỉnh chu kỳ) × 15–18x ≈ 60.000–72.000 đ/cp. SHS (05/2026) ra giá mục tiêu 98.300, Mirae Asset (09/2026) 89.200.",
+  "metrics": {
+    "roe": 17.6,
+    "netMargin": 7.3,
+    "debtEquity": 1.4,
+    "epsGrowth": 150
+  },
+  "valuationMethod": "Định giá tổng các phần (SOTP), đối chiếu với lợi nhuận bình thường hóa.\nTỷ lệ sở hữu: 68% Masan Consumer và 19,9% Techcombank theo Masan công bố (07/2024); MSR ~90%, WinCommerce ~83% là ước tính.\nGiá trị các phần: Masan Consumer 68% × 20x lợi nhuận (~7.000 tỷ) ≈ 95.000 tỷ; Techcombank 19,9% theo giá thị trường ≈ 45.600 tỷ; MSR ~90% theo giá trị hợp lý của mình (~30.000 đ/cp) ≈ 30.000 tỷ; WinCommerce ≈ 25.000 tỷ; MEATLife + Phúc Long ≈ 10.000 tỷ. Tổng ~206.000 tỷ, trừ nợ ròng công ty mẹ ước ~45.000 tỷ, còn ~161.000 tỷ (~110.000 đ/cp).\nCơ sở (~78.000): chiết khấu tập đoàn ~30%. Thấp (~60.000): chiết khấu 40%, MCH 16x. Cao (~100.000): chiết khấu 20%, MSR theo giá thị trường.\nNếu tính MCH và MSR theo giá thị trường, SOTP khoảng ~157.000 đ/cp, tức MSN đang chiết khấu ~53%.\nĐối chiếu: lợi nhuận bình thường hóa ~5.800 tỷ (bỏ phần MSR đỉnh chu kỳ) × 15–18x ≈ 60.000–72.000 đ/cp. SHS (05/2026) ra giá mục tiêu 98.300, Mirae Asset (09/2026) 89.200.",
   "financials": {
     "unit": "Tỷ đồng",
-    "years": ["2021", "2022", "2023", "2024", "2025", "12T tới 6/26"],
+    "years": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "12T tới 6/26"
+    ],
     "cagrCols": 5,
     "rows": [
-      { "label": "Doanh thu", "values": [88629, 76189, 78252, 83178, 81621, 96547] },
-      { "label": "LN trước thuế", "values": [null, 5147, 2563, 6025, 7888, 11303] },
-      { "label": "LNST cổ đông mẹ", "values": [8561, 3567, 419, 1999, 4108, 7054] },
-      { "label": "EPS điều chỉnh (đồng)", "values": [5862, 2443, 287, 1369, 2813, 4830] }
+      {
+        "label": "Doanh thu",
+        "values": [
+          88629,
+          76189,
+          78252,
+          83178,
+          81621,
+          96547
+        ]
+      },
+      {
+        "label": "LN trước thuế",
+        "values": [
+          null,
+          5147,
+          2563,
+          6025,
+          7888,
+          11303
+        ]
+      },
+      {
+        "label": "LNST cổ đông mẹ",
+        "values": [
+          8561,
+          3567,
+          419,
+          1999,
+          4108,
+          7054
+        ]
+      },
+      {
+        "label": "EPS điều chỉnh (đồng)",
+        "values": [
+          5862,
+          2443,
+          287,
+          1369,
+          2813,
+          4830
+        ]
+      }
     ],
     "note": "LNST cổ đông mẹ năm 2021 gồm khoảng 4.160 tỷ lãi một lần và điều chỉnh; lợi nhuận cốt lõi 2021 chỉ ~4.400 tỷ. Doanh thu 2021 chưa điều chỉnh các mảng đã thoái vốn sau đó, nên không so sánh trực tiếp được. 2022–2024 theo Shinhan Securities. 2025 và 12 tháng gần nhất cộng từ số liệu từng quý. EPS điều chỉnh = LNST cổ đông mẹ chia ~1,46 tỷ cổ phiếu hiện tại."
   },
   "financialsComment": "Lợi nhuận thuộc cổ đông Masan đi hình chữ V: từ 3.567 tỷ (2022) xuống 419 tỷ (2023) vì lãi vay và các mảng thua lỗ, rồi bật lên hơn 7.000 tỷ trong 12 tháng gần nhất. Khoảng cách lớn giữa LNST trước lợi ích cổ đông thiểu số (~5.773 tỷ trong 6T2026) và phần của Masan (~4.371 tỷ) cho thấy một phần đáng kể lợi nhuận thuộc về cổ đông nhỏ ở các công ty con. Doanh thu chỉ tăng ~18%/năm gần đây nhưng lợi nhuận tăng nhiều lần nhờ đòn bẩy tài chính: khi chi phí lãi vay cố định, phần lợi nhuận tăng thêm rơi thẳng xuống dòng cuối.",
   "news": [
-    { "date": "09/2026", "title": "Elmet (Mỹ) mua 4,99% MSR với giá ~124,75 triệu USD", "note": "Tương đương ~59.000–60.000 đồng/cp MSR, thấp hơn giá thị trường. Kèm hợp đồng cung cấp dài hạn ~1.250–1.280 tấn sản phẩm vonfram/năm.", "impact": "+" },
-    { "date": "07/2026", "title": "Q2/2026 lãi kỷ lục 3.800 tỷ, nâng mục tiêu lợi nhuận 2026 thêm tới 46%", "note": "Mục tiêu mới: LNST 10.000–11.500 tỷ, phần cổ đông Masan ~8.000 tỷ. MSR lãi 1.666 tỷ nhờ giá APT ~3.245 USD/mtu, gấp đôi giả định kế hoạch.", "impact": "+" },
-    { "date": "07/2026", "title": "WinCommerce lãi 142 tỷ quý II, gấp 14 lần; tổng 5.141 cửa hàng", "note": "Doanh thu +27%. Hơn 90% cửa hàng mới hòa vốn EBITDA ngay trong quý.", "impact": "+" },
-    { "date": "04/2026", "title": "ĐHĐCĐ: CEO nói cổ phiếu dưới 60% giá trị thật", "note": "Mục tiêu WinCommerce lãi trên 1.000 tỷ năm 2026, 13.000 cửa hàng năm 2030. Chủ tịch cam kết WinCommerce trả lại ~3.000 tỷ lỗ lũy kế cho cổ đông.", "impact": "0" },
-    { "date": "08/2026", "title": "Masan Consumer (MCH) vào rổ VN30", "note": "Tăng sự chú ý của dòng vốn vào mảng tiêu dùng; vốn hóa MCH khoảng 187.000 tỷ, lớn hơn cả MSN.", "impact": "0" }
+    {
+      "date": "09/2026",
+      "title": "Elmet (Mỹ) mua 4,99% MSR với giá ~124,75 triệu USD",
+      "note": "Tương đương ~59.000–60.000 đồng/cp MSR, thấp hơn giá thị trường. Kèm hợp đồng cung cấp dài hạn ~1.250–1.280 tấn sản phẩm vonfram/năm.",
+      "impact": "+"
+    },
+    {
+      "date": "07/2026",
+      "title": "Q2/2026 lãi kỷ lục 3.800 tỷ, nâng mục tiêu lợi nhuận 2026 thêm tới 46%",
+      "note": "Mục tiêu mới: LNST 10.000–11.500 tỷ, phần cổ đông Masan ~8.000 tỷ. MSR lãi 1.666 tỷ nhờ giá APT ~3.245 USD/mtu, gấp đôi giả định kế hoạch.",
+      "impact": "+"
+    },
+    {
+      "date": "07/2026",
+      "title": "WinCommerce lãi 142 tỷ quý II, gấp 14 lần; tổng 5.141 cửa hàng",
+      "note": "Doanh thu +27%. Hơn 90% cửa hàng mới hòa vốn EBITDA ngay trong quý.",
+      "impact": "+"
+    },
+    {
+      "date": "04/2026",
+      "title": "ĐHĐCĐ: CEO nói cổ phiếu dưới 60% giá trị thật",
+      "note": "Mục tiêu WinCommerce lãi trên 1.000 tỷ năm 2026, 13.000 cửa hàng năm 2030. Chủ tịch cam kết WinCommerce trả lại ~3.000 tỷ lỗ lũy kế cho cổ đông.",
+      "impact": "0"
+    },
+    {
+      "date": "08/2026",
+      "title": "Masan Consumer (MCH) vào rổ VN30",
+      "note": "Tăng sự chú ý của dòng vốn vào mảng tiêu dùng; vốn hóa MCH khoảng 187.000 tỷ, lớn hơn cả MSN.",
+      "impact": "0"
+    }
   ],
   "catalysts": [
     "WinCommerce tăng trưởng lợi nhuận mạnh, có thể IPO hoặc bán vốn cho đối tác",
@@ -64,17 +157,43 @@
     "Chi phí logistics tăng làm giảm biên lợi nhuận Masan Consumer"
   ],
   "sources": [
-    { "title": "Simplize – Lịch sử giá MSN, MCH, TCB (09/10/2026)" },
-    { "title": "24HMoney – Báo cáo tài chính quý MSN (Q3/2024–Q2/2026)" },
-    { "title": "Nhà Đầu Tư – Lãi quý II kỷ lục, Masan nâng mục tiêu 2026 (07/2026)" },
-    { "title": "Doanh nhân – Mirae Asset dự báo lợi nhuận MSN tăng hơn 90% (09/2026)" },
-    { "title": "Doanh nhân – ĐHĐCĐ 2026 Masan (04/2026)" },
-    { "title": "SHS – Báo cáo cập nhật MSN Q1/2026 (05/2026)" },
-    { "title": "Shinhan Securities – Báo cáo cập nhật MSN Q2/2025, số liệu 2022–2024" },
-    { "title": "Doanh nhân – Lợi nhuận Masan năm 2025 lập kỷ lục" },
-    { "title": "VnBusiness – Masan công bố lợi nhuận năm 2021" }
+    {
+      "title": "Simplize – Lịch sử giá MSN, MCH, TCB (09/10/2026)"
+    },
+    {
+      "title": "24HMoney – Báo cáo tài chính quý MSN (Q3/2024–Q2/2026)"
+    },
+    {
+      "title": "Nhà Đầu Tư – Lãi quý II kỷ lục, Masan nâng mục tiêu 2026 (07/2026)"
+    },
+    {
+      "title": "Doanh nhân – Mirae Asset dự báo lợi nhuận MSN tăng hơn 90% (09/2026)"
+    },
+    {
+      "title": "Doanh nhân – ĐHĐCĐ 2026 Masan (04/2026)"
+    },
+    {
+      "title": "SHS – Báo cáo cập nhật MSN Q1/2026 (05/2026)"
+    },
+    {
+      "title": "Shinhan Securities – Báo cáo cập nhật MSN Q2/2025, số liệu 2022–2024"
+    },
+    {
+      "title": "Doanh nhân – Lợi nhuận Masan năm 2025 lập kỷ lục"
+    },
+    {
+      "title": "VnBusiness – Masan công bố lợi nhuận năm 2021"
+    },
+    {
+      "title": "Masan Group – Why financial institutions are optimistic on Masan Group share price (07/2024)"
+    }
   ],
   "history": [
-    { "date": "2026-10-10", "price": 74300, "intrinsicBase": 78000, "recommendation": "GIỮ" }
+    {
+      "date": "2026-10-10",
+      "price": 74300,
+      "intrinsicBase": 78000,
+      "recommendation": "GIỮ"
+    }
   ]
 }
