@@ -88,6 +88,9 @@ td{padding:6px 4px;border-bottom:1px solid var(--line);font-family:var(--f-mono)
 .h2row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}.h2row h2{margin:0}
 .mini{font-size:11.5px;padding:3px 9px;border-radius:6px}
 .tp{color:var(--up)} .slc{color:var(--down)}
+.xbtn{font-size:12px;padding:2px 8px;border-radius:6px}
+.dhead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.dhead .pill{font-size:14px;padding:3px 10px}
 tr.sig{cursor:pointer} tr.sig:hover td{background:var(--chip)} tr.sel td{background:var(--gold-soft)}
 .side-b{color:var(--up);font-weight:600} .side-s{color:var(--down);font-weight:600}
 .g{display:inline-block;min-width:18px;text-align:center;border-radius:4px;font-weight:600;font-family:var(--f-mono)}
@@ -150,6 +153,19 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
         <button type="button" data-g="AB" aria-pressed="false" id="gAB">A + B</button>
         <button type="button" data-g="A" aria-pressed="false" id="gA">Chỉ A</button>
       </div>
+      <span class="sep"></span>
+      <span class="muted" style="font-size:12px">TP</span>
+      <div class="seg" id="tpSeg">
+        <button type="button" data-tp="1.5" id="tp15">1,5R</button>
+        <button type="button" data-tp="2" id="tp2">2R</button>
+        <button type="button" data-tp="3" id="tp3">3R</button>
+        <button type="button" data-tp="struct" id="tpS">Cấu trúc</button>
+      </div>
+      <span class="muted" style="font-size:12px">SL</span>
+      <div class="seg" id="slSeg">
+        <button type="button" data-sl="pivot" id="slP">Điểm chốt</button>
+        <button type="button" data-sl="buf" id="slB">+0,2 ATR</button>
+      </div>
     </div>
     <div class="chips" id="toggles"></div>
     <div id="msg" class="msg" role="status"></div>
@@ -162,10 +178,11 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
     </div>
     <div class="side">
       <div class="card pad" id="status"></div>
+      <div class="card pad" id="detail" hidden></div>
       <div class="card pad">
         <div class="h2row"><h2>Tín hiệu trong quá khứ</h2><div class="bar"><button type="button" class="mini" id="showAll">Hiện SL/TP tất cả</button><button type="button" class="mini" id="hideAll">Ẩn tất cả</button></div></div>
         <div class="stats" id="stats"></div>
-        <p class="muted" style="font-size:12px;margin:0 0 10px">Kiểm tra lại trên các nến đang tải (1.000 nến gần nhất): vào lệnh khi giá phá đỉnh (đáy) nến xác nhận, cắt lỗ ở điểm chốt, chốt lời 2R. Tích ô “Hiện” để vẽ giá vào lệnh, SL và TP của lệnh đó trên biểu đồ. Bấm vào dòng để nhảy tới lệnh.</p>
+        <p class="muted" style="font-size:12px;margin:0 0 10px">Kiểm tra lại trên các nến đang tải (1.000 nến gần nhất): vào lệnh khi giá phá đỉnh (đáy) nến xác nhận, cắt lỗ và chốt lời theo lựa chọn SL/TP ở trên. Tích ô “Hiện” để vẽ giá vào lệnh, SL và TP của lệnh đó trên biểu đồ. Bấm vào dòng để nhảy tới lệnh.</p>
         <div class="tablewrap"><table><thead><tr><th title="Hiện vào lệnh, SL, TP trên biểu đồ">Hiện</th><th>Khớp lúc</th><th>Lệnh</th><th>Vào</th><th>SL</th><th>TP</th><th>KQ</th></tr></thead><tbody id="sigBody"></tbody></table></div>
       </div>
     </div>
@@ -178,7 +195,7 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
       <div><code>TC</code><span>Điểm chốt thứ cấp: phá qua điểm chốt trước. Nhãn mạnh / TB / yếu là xung lượng theo 3 tiêu chí: đóng cửa vượt, phá xa, có nến nằm hẳn bên kia.</span></div>
       <div><code>VB</code><span>Điểm chốt vững bền: đáy (đỉnh) thứ cấp được xác nhận khi giá vượt qua đỉnh (đáy) nơi cú hồi bắt đầu. Quyết định xu hướng.</span></div>
       <div><code>Trendline</code><span>Nối điểm bắt đầu xu hướng với điểm vững bền, luôn bao trọn hành động giá. Nét đứt là đoạn sau khi bị phá vỡ.</span></div>
-      <div><code>MUA / BÁN</code><span>Điểm vào lệnh: điểm chốt cơ bản thuận xu hướng được xác nhận, giá phá qua nến xác nhận. Hạng A, B, C theo số điều kiện bất lợi.</span></div>
+      <div><code>MUA / BÁN</code><span>Điểm vào lệnh: điểm chốt cơ bản thuận xu hướng được xác nhận, giá phá qua nến xác nhận. Hạng A, B, C theo số điều kiện bất lợi. Bấm vào mũi tên để xem SL, TP của riêng lệnh đó.</span></div>
       <div><code>Dải màu đáy</code><span>Xu hướng tại mỗi nến: xanh là tăng (điểm vững bền gần nhất là đáy), đỏ là giảm, xám là chưa rõ.</span></div>
     </div>
   </div>
@@ -188,7 +205,7 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
     <p>Giá lấy trực tiếp từ Binance, cặp <b>PAXG/USDT</b>. PAXG là token được bảo chứng 1:1 bằng một ounce vàng, nên giá đi sát XAUUSD nhưng thường chênh vài đô và có thanh khoản mỏng hơn sàn forex. Lịch sử nến tải qua REST, còn nến đang chạy cập nhật từng giây qua WebSocket. Trang chỉ tính điểm chốt và tín hiệu trên các nến <b>đã đóng</b>, nên kết quả không bị vẽ lại khi nến còn đang chạy.</p>
     <p>Để giá khớp với sàn của bạn, mở MT5 xem giá XAUUSD, lấy giá đó trừ đi giá trên trang rồi nhập vào ô “Cộng thêm vào giá”. Mức cộng thêm làm dịch toàn bộ biểu đồ lên hoặc xuống, nên sóng, điểm chốt và trendline giữ nguyên. Chỉ các mức vào lệnh và cắt lỗ đổi theo giá sàn.</p>
     <p>Vàng giao ngay nghỉ từ khoảng 21:00 UTC thứ Sáu đến 22:00 UTC Chủ nhật, tức 04:00 sáng thứ Bảy đến 05:00 sáng thứ Hai giờ Việt Nam. Còn PAXG giao dịch cả cuối tuần. Bật “Ẩn nến cuối tuần” để bỏ những nến đó khỏi phân tích, cho giống biểu đồ MT5.</p>
-    <p style="margin-top:12px">Toàn bộ quy tắc được tính tự động từ giá cao, thấp và đóng cửa, không dùng thông tin của tương lai: mỗi điểm chốt và tín hiệu chỉ xuất hiện từ nến mà nó được xác nhận. Các ngưỡng “phá xa” (0,5 ATR), nến xác nhận “quá dài” (2 ATR) và chốt lời 2R là cách mình định lượng những chỗ tài liệu mô tả bằng cảm nhận. Đây là công cụ học phương pháp, không phải lời khuyên đầu tư.</p>
+    <p style="margin-top:12px">Toàn bộ quy tắc được tính tự động từ giá cao, thấp và đóng cửa, không dùng thông tin của tương lai: mỗi điểm chốt và tín hiệu chỉ xuất hiện từ nến mà nó được xác nhận. Các ngưỡng “phá xa” (0,5 ATR), nến xác nhận “quá dài” (2 ATR) và các cách đặt SL/TP là cách mình định lượng những chỗ tài liệu mô tả bằng cảm nhận. Đây là công cụ học phương pháp, không phải lời khuyên đầu tư.</p>
   </div>
 </div>
 
@@ -211,7 +228,7 @@ const TOG=[
   {k:'bias',label:'Dải xu hướng',color:'--up',def:true},
   {k:'wkd',label:'Ẩn nến cuối tuần',color:'--basic',def:true},
 ];
-const state={closed:[],forming:null,tf:LS.get('sxh.tf','15m'),offset:+LS.get('sxh.off',0)||0,grade:LS.get('sxh.grade','all'),shown:new Set(LS.get('sxh.shown',[])),tog:Object.assign(Object.fromEntries(TOG.map(t=>[t.k,t.def])),LS.get('sxh.tog',{})),sel:null};
+const state={closed:[],forming:null,tf:LS.get('sxh.tf','15m'),offset:+LS.get('sxh.off',0)||0,grade:LS.get('sxh.grade','all'),tpMode:LS.get('sxh.tp','struct'),slMode:LS.get('sxh.sl','pivot'),shown:new Set(LS.get('sxh.shown',[])),tog:Object.assign(Object.fromEntries(TOG.map(t=>[t.k,t.def])),LS.get('sxh.tog',{})),sel:null};
 const tg=$('toggles');
 TOG.forEach(t=>{const l=document.createElement('label');l.className='chip';l.innerHTML=`<input type="checkbox" id="t_${t.k}" ${state.tog[t.k]?'checked':''}><span class="dot" style="background:var(${t.color})"></span>${t.label}`;
   l.querySelector('input').addEventListener('change',e=>{state.tog[t.k]=e.target.checked;LS.set('sxh.tog',state.tog);if(t.k==='wkd')run();else drawOverlays()});tg.appendChild(l)});
@@ -414,10 +431,26 @@ function analyze(bars){
       else r.push({ok:true,t:'Giá còn '+(buy?'trên':'dưới')+' trendline '+(buy?'tăng':'giảm')+' ('+fmt(v)+')'})}
     const rng=H[t]-L[t];
     if(rng>2*atr[t]){bad++;r.push({ok:false,t:'Nến xác nhận dài hơn 2 ATR: cắt lỗ rộng'})}
-    const entry=buy?H[t]:L[t],sl=buy?L[p.idx]:H[p.idx],R=Math.abs(entry-sl);
+    const buf=state.slMode==='buf'?0.2*atr[t]:0;
+    const entry=buy?H[t]:L[t],sl=buy?L[p.idx]-buf:H[p.idx]+buf,R=Math.abs(entry-sl);
     if(R<=0)return;
-    const tp=buy?entry+2*R:entry-2*R;
-    const sig={side,p,conf:t,entry,sl,tp,R,grade:bad===0?'A':bad===1?'B':'C',reasons:r,status:'pending',trig:null,exit:null};
+    let tp,tpNote;
+    if(state.tpMode==='struct'){
+      // nearest confirmed swing high above entry (buy) / swing low below entry (sell), known at bar t
+      let best=null;
+      for(const q of piv){
+        if(q.conf>t||q.idx<t-300||q.kind!==(buy?'H':'L'))continue;
+        if(buy?q.price>entry:q.price<entry){if(!best||(buy?q.price<best.price:q.price>best.price))best=q}
+      }
+      if(best){
+        if(Math.abs(best.price-entry)<R)return; // kháng cự/hỗ trợ gần hơn 1R: bỏ qua lệnh
+        tp=best.price;
+        const nm=best.anchor&&best.anchorConf<=t?'vững bền':best.cls==='sec'?'thứ cấp':best.cls==='basic'?'cơ bản':'đầu tiên';
+        tpNote=(buy?'đỉnh ':'đáy ')+nm+' gần nhất '+(buy?'phía trên':'phía dưới')+' ('+fmtT(T(best.idx))+')';
+      }else{tp=buy?entry+2*R:entry-2*R;tpNote='chưa có '+(buy?'đỉnh':'đáy')+' nào '+(buy?'phía trên':'phía dưới')+', dùng 2R'}
+    }else{const m=+state.tpMode;tp=buy?entry+m*R:entry-m*R;tpNote=String(m).replace('.',',')+'R cố định'}
+    const rr=Math.abs(tp-entry)/R;
+    const sig={side,p,conf:t,entry,sl,tp,R,rr,tpNote,grade:bad===0?'A':bad===1?'B':'C',reasons:r,status:'pending',trig:null,exit:null};
     for(let k=t+1;k<n&&k<=t+6;k++){
       if(buy?H[k]>entry:L[k]<entry){sig.trig=k;break}
       if(buy?(type[k]==='down'||L[k]<sl):(type[k]==='up'||H[k]>sl)){sig.status='cancel';break}
@@ -447,7 +480,7 @@ function makeChart(){
   candle.priceScale().applyOptions({scaleMargins:{top:0.08,bottom:0.07}});
   biasSer=chart.addHistogramSeries({priceScaleId:'bias',priceLineVisible:false,lastValueVisible:false,base:0});
   chart.priceScale('bias').applyOptions({scaleMargins:{top:0.965,bottom:0},visible:false});
-  chart.subscribeCrosshairMove(onHover);
+  chart.subscribeCrosshairMove(onHover);chart.subscribeClick(onChartClick);
   overlay=[];priceLines=[];
 }
 function applyTheme(){if(!chart)return;chart.applyOptions(themeOpts());
@@ -496,10 +529,10 @@ function drawOverlays(){
   mk.sort((a,b)=>a.time-b.time);candle.setMarkers(mk);
   // per-signal entry / SL / TP segments, from fill to exit
   for(const g of visibleSignals()){
-    if(!state.shown.has(sigKey(g)))continue;
+    if(!state.shown.has(sigKey(g))&&A.signals.indexOf(g)!==state.sel)continue;
     const a=g.trig;let b=g.exit??A.n-1;if(b<=a)b=Math.min(a+1,A.n-1);if(b<=a)continue;
     for(const [price,col,w,title] of [[g.entry,gold,1,g.side==='buy'?'Mua':'Bán'],[g.sl,down,2,'SL'],[g.tp,up,2,'TP']]){
-      const ser=chart.addLineSeries({color:col,lineWidth:w,priceLineVisible:false,lastValueVisible:true,title,crosshairMarkerVisible:false});
+      const ser=chart.addLineSeries({color:col,lineWidth:w,priceLineVisible:false,lastValueVisible:A.signals.indexOf(g)!==state.sel,title,crosshairMarkerVisible:false});
       ser.setData([{time:T(a),value:price},{time:T(b),value:price}]);overlay.push(ser)}
   }
   // selected or current setup
@@ -507,7 +540,7 @@ function drawOverlays(){
   if(s){const buy=s.side==='buy';
     priceLines.push(candle.createPriceLine({price:s.entry,color:gold,lineWidth:1,lineStyle:0,axisLabelVisible:true,title:buy?'Mua':'Bán'}));
     priceLines.push(candle.createPriceLine({price:s.sl,color:down,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'SL'}));
-    priceLines.push(candle.createPriceLine({price:s.tp,color:up,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'TP 2R'}))}
+    priceLines.push(candle.createPriceLine({price:s.tp,color:up,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'TP'}))}
 }
 const sigKey=s=>s.side+':'+T(s.conf);
 function saveShown(){LS.set('sxh.shown',[...state.shown].slice(-300))}
@@ -532,7 +565,7 @@ function renderStatus(){
   const s=currentSetup();
   if(s){const buy=s.side==='buy';
     html+=`<div class="setup"><div class="t" style="color:var(${buy?'--up':'--down'})">${s.status==='pending'?'Lệnh chờ':'Lệnh đang chạy'}: ${buy?'MUA':'BÁN'} <span class="g g${s.grade}">${s.grade}</span></div>
-    <dl class="kv" style="margin-top:6px"><dt>${buy?'Buy stop':'Sell stop'}</dt><dd>${fmt(s.entry)}</dd><dt>Cắt lỗ</dt><dd>${fmt(s.sl)}</dd><dt>Chốt lời 2R</dt><dd>${fmt(s.tp)}</dd></dl>
+    <dl class="kv" style="margin-top:6px"><dt>${buy?'Buy stop':'Sell stop'}</dt><dd>${fmt(s.entry)}</dd><dt>SL</dt><dd>${fmt(s.sl)}</dd><dt>TP</dt><dd>${fmt(s.tp)}</dd><dt>R:R</dt><dd>1 : ${s.rr.toFixed(1)}</dd></dl><p class="muted" style="font-size:12px;margin:6px 0 0">TP tại ${s.tpNote}</p>
     <ul class="reasons">${s.reasons.map(r=>`<li class="${r.ok?'ok':'bad'}">${r.t}</li>`).join('')}</ul></div>`}
   else html+=`<div class="setup muted">Chưa có lệnh chờ. ${b===1?'Đợi một đáy cơ bản được xác nhận bằng nến lên.':b===-1?'Đợi một đỉnh cơ bản được xác nhận bằng nến xuống.':'Khi chưa rõ xu hướng, tài liệu khuyên đứng ngoài.'}</div>`;
   $('status').innerHTML=html;
@@ -540,10 +573,10 @@ function renderStatus(){
 function renderSignals(){
   const list=visibleSignals();
   const w=list.filter(s=>s.status==='win').length,l=list.filter(s=>s.status==='loss').length,o=list.filter(s=>s.status==='open').length;
-  const exp=w+l?((w*2-l)/(w+l)):0;
+  const exp=w+l?((list.filter(s=>s.status==='win').reduce((a,s)=>a+s.rr,0)-l)/(w+l)):0;
   $('stats').innerHTML=[['Lệnh khớp',list.length],['Thắng',w],['Thua',l],['TB / lệnh',(w+l?(exp>=0?'+':'')+exp.toFixed(2)+'R':'—')]].map(([l2,v])=>`<div class="stat"><div class="n">${v}</div><div class="l">${l2}</div></div>`).join('');
   const res={win:['+2R','res-w'],loss:['−1R','res-l'],open:['đang chạy','res-o']};
-  $('sigBody').innerHTML=list.slice().reverse().map(s=>{const k=A.signals.indexOf(s),r=res[s.status]||['—','res-o'];
+  $('sigBody').innerHTML=list.slice().reverse().map(s=>{const k=A.signals.indexOf(s);let r=res[s.status]||['—','res-o'];if(s.status==='win')r=['+'+s.rr.toFixed(1)+'R','res-w'];
     const on=state.shown.has(sigKey(s));
     return `<tr class="sig${state.sel===k?' sel':''}" data-k="${k}" tabindex="0"><td><input type="checkbox" class="chk" id="shw_${k}" aria-label="Hiện SL và TP của lệnh này" ${on?'checked':''}></td><td>${fmtT(T(s.trig))}</td><td><span class="${s.side==='buy'?'side-b':'side-s'}">${s.side==='buy'?'Mua':'Bán'}</span> <span class="g g${s.grade}">${s.grade}</span></td><td>${fmt(s.entry)}</td><td class="slc">${fmt(s.sl)}</td><td class="tp">${fmt(s.tp)}</td><td class="${r[1]}">${r[0]}</td></tr>`}).join('')||`<tr><td colspan="7" class="muted" style="font-family:var(--f-body)">Không có tín hiệu nào khớp với bộ lọc.</td></tr>`;
 }
@@ -553,9 +586,33 @@ $('sigBody').addEventListener('click',e=>{const tr=e.target.closest('tr.sig');if
 $('showAll').addEventListener('click',()=>{visibleSignals().forEach(g=>state.shown.add(sigKey(g)));saveShown();drawOverlays();renderSignals()});
 $('hideAll').addEventListener('click',()=>{visibleSignals().forEach(g=>state.shown.delete(sigKey(g)));saveShown();drawOverlays();renderSignals()});
 $('sigBody').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.target.classList.contains('chk')){const tr=e.target.closest('tr.sig');if(tr)selectSig(+tr.dataset.k)}});
-function selectSig(k){state.sel=state.sel===k?null:k;const s=A.signals[k];
-  if(state.sel!=null){const c=s.trig??s.conf;chart.timeScale().setVisibleLogicalRange({from:Math.max(0,c-70),to:Math.min(A.n+5,c+50)})}
-  drawOverlays();renderSignals();onHover({time:state.sel!=null?T(s.trig??s.conf):undefined})}
+function selectSig(k,fromChart){state.sel=(state.sel===k&&!fromChart)?null:k;const s=A.signals[k];
+  if(state.sel!=null&&!fromChart){const c=s.trig??s.conf;chart.timeScale().setVisibleLogicalRange({from:Math.max(0,c-70),to:Math.min(A.n+5,c+50)})}
+  drawOverlays();renderSignals();renderDetail();onHover({time:state.sel!=null?T(s.trig??s.conf):undefined})}
+function renderDetail(){
+  const el=$('detail'),s=state.sel!=null&&A?A.signals[state.sel]:null;
+  if(!s){el.hidden=true;el.innerHTML='';return}
+  const buy=s.side==='buy',res={win:`Chạm TP lúc ${s.exit!=null?fmtT(T(s.exit)):''} · +${s.rr.toFixed(1)}R`,loss:`Chạm SL lúc ${s.exit!=null?fmtT(T(s.exit)):''} · −1R`,open:'Đang chạy',pending:'Chưa khớp',cancel:'Đã hủy'}[s.status];
+  el.hidden=false;
+  el.innerHTML=`<div class="h2row"><h2>Chi tiết lệnh</h2><button type="button" class="xbtn" id="detailClose" aria-label="Đóng chi tiết lệnh">Đóng</button></div>
+  <div class="dhead"><span class="pill ${buy?'up':'down'}">${buy?'MUA':'BÁN'}</span><span class="g g${s.grade}">${s.grade}</span><span class="muted" style="font-size:12px">khớp ${s.trig!=null?fmtT(T(s.trig)):'—'}</span></div>
+  <dl class="kv"><dt>${buy?'Buy stop':'Sell stop'}</dt><dd>${fmt(s.entry)}</dd>
+  <dt>SL</dt><dd class="slc">${fmt(s.sl)} (${buy?'−':'+'}${fmt(s.R)})</dd>
+  <dt>TP</dt><dd class="tp">${fmt(s.tp)} (${buy?'+':'−'}${fmt(Math.abs(s.tp-s.entry))})</dd>
+  <dt>R:R</dt><dd>1 : ${s.rr.toFixed(1)}</dd><dt>Kết quả</dt><dd>${res}</dd></dl>
+  <p class="muted" style="font-size:12px;margin:8px 0 0">SL tại ${buy?'đáy':'đỉnh'} ${s.p.cls==='sec'?'thứ cấp':'cơ bản'} ${fmtT(T(s.p.idx))}${state.slMode==='buf'?' trừ đệm 0,2 ATR':''}. TP tại ${s.tpNote}.</p>
+  <ul class="reasons">${s.reasons.map(r=>`<li class="${r.ok?'ok':'bad'}">${r.t}</li>`).join('')}</ul>`;
+}
+$('detail').addEventListener('click',e=>{if(e.target.id==='detailClose'){state.sel=null;drawOverlays();renderSignals();renderDetail()}});
+function onChartClick(param){
+  if(!A||!param||param.time==null)return;const i=idxOf.get(param.time);if(i==null)return;
+  let best=null;for(const g of visibleSignals()){const d=Math.abs(g.trig-i);if(d<=2&&(!best||d<Math.abs(best.trig-i)))best=g}
+  if(best)selectSig(A.signals.indexOf(best),true);
+}
+function setSeg(id,attr,v){document.querySelectorAll('#'+id+' button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===v)))}
+setSeg('tpSeg','tp',state.tpMode);setSeg('slSeg','sl',state.slMode);
+$('tpSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.tpMode=b.dataset.tp;LS.set('sxh.tp',state.tpMode);setSeg('tpSeg','tp',state.tpMode);state.sel=null;if(A)run(false)});
+$('slSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.slMode=b.dataset.sl;LS.set('sxh.sl',state.slMode);setSeg('slSeg','sl',state.slMode);state.sel=null;if(A)run(false)});
 
 /* ---------- hover readout ---------- */
 function onHover(param){
@@ -566,7 +623,7 @@ function onHover(param){
     let t=(p.kind==='H'?'Đỉnh ':'Đáy ')+nm;
     if(p.momCrit){const c=p.momCrit;t+=` · xung lượng ${p.mom} (đóng cửa vượt ${c.cl?'✓':'✗'}, phá xa ${c.far?'✓':'✗'}, nến nằm hẳn ${c.full?'✓':'✗'})`}
     if(p.anchor)t+=` · xác nhận ${fmtT(T(p.anchorConf))} khi vượt ${fmt(p.ref.price)}`;notes.push(t)}
-  for(const s of A.signals)if(s.trig===i)notes.push(`${s.side==='buy'?'MUA':'BÁN'} hạng ${s.grade}: vào ${fmt(s.entry)}, cắt lỗ ${fmt(s.sl)}, 2R ${fmt(s.tp)}`);
+  for(const s of A.signals)if(s.trig===i)notes.push(`${s.side==='buy'?'MUA':'BÁN'} hạng ${s.grade}: vào ${fmt(s.entry)}, cắt lỗ ${fmt(s.sl)}, TP ${fmt(s.tp)} (1:${s.rr.toFixed(1)})`);
   const ty={up:'nến lên',down:'nến xuống',in:'inside bar',out:'outside bar'}[A.type[i]]||'';
   el.innerHTML=`<b>${fmtT(b.time)}</b> O ${fmt(b.open)} H ${fmt(b.high)} L ${fmt(b.low)} C ${fmt(b.close)} · ${ty}${notes.map(t=>`<span class="note">${t}</span>`).join('')}`;
 }
@@ -588,7 +645,7 @@ function run(fresh){
   if(fresh||!range){chart.timeScale().setVisibleLogicalRange({from:Math.max(0,bars.length-200),to:bars.length+4})}
   else{const atRight=range.to>=prevLen-3,dl=bars.length-prevLen;
     chart.timeScale().setVisibleLogicalRange(atRight?{from:range.from+dl,to:range.to+dl}:range)}
-  renderStatus();renderSignals();onHover({});
+  renderStatus();renderSignals();renderDetail();onHover({});
   // highlight signals that appeared since the last run
   const keys=new Set(A.signals.map(s=>s.side+s.conf));
   if(seen&&!fresh){
