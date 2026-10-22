@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sổ Xu Hướng XAUUSD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+<style>
+/* Layout: bàn làm việc của trader — thanh điều khiển trên, biểu đồ lớn bên trái, sổ ghi chú tín hiệu bên phải; xếp một cột trên điện thoại */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf8; --line:#e3ddd0; --fg:#1f1d19; --muted:#6f685b;
+  --gold:#a8791f; --gold-soft:#f1e3c2; --up:#13846b; --down:#c2413a; --warn:#b7791f; --basic:#8b8578;
+  --grid:#ece7dc; --chip:#efe9dc;
+  --f-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13151a; --panel:#1a1d23; --line:#2b2f37; --fg:#ece8df; --muted:#9b958a;
+  --gold:#d9a845; --gold-soft:#3a3020; --up:#2fb38f; --down:#e2665e; --warn:#e0a040; --basic:#8d877c;
+  --grid:#20242b; --chip:#242830; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13151a; --panel:#1a1d23; --line:#2b2f37; --fg:#ece8df; --muted:#9b958a;
+  --gold:#d9a845; --gold-soft:#3a3020; --up:#2fb38f; --down:#e2665e; --warn:#e0a040; --basic:#8d877c;
+  --grid:#20242b; --chip:#242830; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 40px}
+.wrap{max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+h1{font-size:22px;font-weight:700;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1 .sym{font-family:var(--f-mono);color:var(--gold);font-weight:600}
+.sub{color:var(--muted);font-size:13px;margin:2px 0 0}
+.src{font-family:var(--f-mono);font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.src.demo{border-color:var(--warn);color:var(--warn)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button,.btn{font:inherit;font-size:13px;font-weight:500;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover,.btn:hover{border-color:var(--gold)}
+button:focus-visible,.btn:focus-within,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.btn input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.btn{position:relative}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;border-radius:0;border-right:1px solid var(--line);padding:6px 11px;font-family:var(--f-mono);font-size:12px}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--gold-soft);color:var(--fg);font-weight:600}
+.seg button:disabled{opacity:.4;cursor:not-allowed}
+.sep{width:1px;height:22px;background:var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:5px 10px;border-radius:999px;background:var(--chip);border:1px solid transparent;cursor:pointer;user-select:none}
+.chip input{accent-color:var(--gold);margin:0}
+.chip:has(input:checked){border-color:var(--line);background:var(--panel)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:14px;align-items:start}
+@media (max-width:980px){.main{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.chartbox{position:relative;padding:8px}
+#chart{height:clamp(380px,64vh,740px);width:100%}
+.hover{position:absolute;left:16px;top:14px;z-index:3;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);pointer-events:none;background:color-mix(in srgb,var(--panel) 85%,transparent);padding:3px 6px;border-radius:6px;max-width:calc(100% - 90px)}
+.hover b{color:var(--fg);font-weight:500}
+.hover .note{display:block;color:var(--gold);font-family:var(--f-body);font-size:12px}
+.side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.card h2{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.pad{padding:14px 16px}
+.bias{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.pill{font-weight:700;font-size:15px;padding:4px 12px;border-radius:8px}
+.pill.up{background:color-mix(in srgb,var(--up) 16%,transparent);color:var(--up)}
+.pill.down{background:color-mix(in srgb,var(--down) 16%,transparent);color:var(--down)}
+.pill.flat{background:var(--chip);color:var(--muted)}
+dl.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 12px;margin:0;font-size:13px}
+dl.kv dt{color:var(--muted)}
+dl.kv dd{margin:0;font-family:var(--f-mono);font-size:12.5px;text-align:right;min-width:0;overflow-wrap:anywhere}
+.setup{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px;font-size:13px}
+.setup .t{font-weight:600}
+.reasons{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:12.5px}
+.reasons li.ok::marker{color:var(--up)} .reasons li.bad::marker{color:var(--down)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.stat{background:var(--chip);border-radius:8px;padding:6px 8px}
+.stat .n{font-family:var(--f-mono);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.stat .l{font-size:11px;color:var(--muted)}
+.tablewrap{max-height:420px;overflow:auto;margin:0 -16px -14px;border-top:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+th{position:sticky;top:0;background:var(--panel);text-align:left;font-weight:600;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line);font-size:11px}
+td{padding:6px 6px;border-bottom:1px solid var(--line);font-family:var(--f-mono);white-space:nowrap}
+tr.sig{cursor:pointer} tr.sig:hover td{background:var(--chip)} tr.sel td{background:var(--gold-soft)}
+.side-b{color:var(--up);font-weight:600} .side-s{color:var(--down);font-weight:600}
+.g{display:inline-block;min-width:18px;text-align:center;border-radius:4px;font-weight:600;font-family:var(--f-mono)}
+.gA{background:color-mix(in srgb,var(--up) 18%,transparent);color:var(--up)}
+.gB{background:color-mix(in srgb,var(--warn) 20%,transparent);color:var(--warn)}
+.gC{background:var(--chip);color:var(--muted)}
+.res-w{color:var(--up)} .res-l{color:var(--down)} .res-o{color:var(--muted)}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px 24px;font-size:13px}
+.legend div{display:flex;gap:8px;align-items:baseline}
+.legend code{font-family:var(--f-mono);font-size:12px;padding:1px 6px;border-radius:4px;background:var(--chip);flex:none}
+.muted{color:var(--muted)}
+details summary{cursor:pointer;font-weight:600}
+textarea{width:100%;min-height:120px;font-family:var(--f-mono);font-size:12px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px;margin-top:8px}
+.msg{font-size:13px;margin-top:6px}
+.msg.err{color:var(--down)}
+.notes{font-size:13px;color:var(--muted);max-width:80ch}
+.notes p{margin:0 0 6px}
+ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
+.live{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.px{font-family:var(--f-mono);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.px.tick-up{color:var(--up)} .px.tick-down{color:var(--down)}
+.src .led{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--muted);margin-right:6px;vertical-align:1px}
+.src.on .led{background:var(--up);box-shadow:0 0 0 3px color-mix(in srgb,var(--up) 25%,transparent)}
+.src.off{border-color:var(--down);color:var(--down)} .src.off .led{background:var(--down)}
+.src.closed{border-color:var(--warn);color:var(--warn)} .src.closed .led{background:var(--warn)}
+.offset{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.offset input{width:84px;font-family:var(--f-mono);font-size:12.5px;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.newsig{animation:pulse 1.6s ease-in-out 3}
+@keyframes pulse{50%{box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 45%,transparent)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Sổ Xu Hướng <span class="sym">XAUUSD</span></h1>
+      <p class="sub">Sóng Gann · điểm chốt cơ bản / thứ cấp / vững bền · trendline theo quy tắc của tài liệu “Xu hướng thị trường”</p>
+    </div>
+    <div class="live">
+      <span class="px" id="px">—</span>
+      <span id="src" class="src"><span class="led"></span><span id="srcTxt">Đang kết nối…</span></span>
+    </div>
+  </header>
+
+  <div class="card pad" style="display:flex;flex-direction:column;gap:10px">
+    <div class="bar">
+      <span class="muted" style="font-size:12px">Khung</span>
+      <div class="seg" id="tfSeg">
+        <button type="button" data-tf="5m" aria-pressed="false">M5</button>
+        <button type="button" data-tf="15m" aria-pressed="true">M15</button>
+        <button type="button" data-tf="1h" aria-pressed="false">H1</button>
+      </div>
+      <span class="sep"></span>
+      <label class="offset" for="offset">Cộng thêm vào giá (USD)<input id="offset" type="number" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+      <span class="sep"></span>
+      <span class="muted" style="font-size:12px">Tín hiệu</span>
+      <div class="seg" id="gradeSeg">
+        <button type="button" data-g="all" aria-pressed="true" id="gAll">Tất cả</button>
+        <button type="button" data-g="AB" aria-pressed="false" id="gAB">A + B</button>
+        <button type="button" data-g="A" aria-pressed="false" id="gA">Chỉ A</button>
+      </div>
+    </div>
+    <div class="chips" id="toggles"></div>
+    <div id="msg" class="msg" role="status"></div>
+  </div>
+
+  <div class="main">
+    <div class="card chartbox">
+      <div class="hover" id="hover"></div>
+      <div id="chart"></div>
+    </div>
+    <div class="side">
+      <div class="card pad" id="status"></div>
+      <div class="card pad">
+        <h2>Tín hiệu trong quá khứ</h2>
+        <div class="stats" id="stats"></div>
+        <p class="muted" style="font-size:12px;margin:0 0 10px">Kiểm tra lại trên các nến đang tải (1.000 nến gần nhất): vào lệnh khi giá phá đỉnh (đáy) nến xác nhận, cắt lỗ ở điểm chốt, chốt lời 2R. Bấm vào một dòng để xem trên biểu đồ.</p>
+        <div class="tablewrap"><table><thead><tr><th>Thời điểm</th><th>Lệnh</th><th>Hạng</th><th>Vào</th><th>Cắt lỗ</th><th>KQ</th></tr></thead><tbody id="sigBody"></tbody></table></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card pad">
+    <h2>Cách đọc biểu đồ</h2>
+    <div class="legend">
+      <div><code>CB</code><span>Điểm chốt cơ bản: đỉnh thấp hơn hoặc đáy cao hơn điểm chốt trước. Hỗ trợ và kháng cự yếu nhất.</span></div>
+      <div><code>TC</code><span>Điểm chốt thứ cấp: phá qua điểm chốt trước. Nhãn mạnh / TB / yếu là xung lượng theo 3 tiêu chí: đóng cửa vượt, phá xa, có nến nằm hẳn bên kia.</span></div>
+      <div><code>VB</code><span>Điểm chốt vững bền: đáy (đỉnh) thứ cấp được xác nhận khi giá vượt qua đỉnh (đáy) nơi cú hồi bắt đầu. Quyết định xu hướng.</span></div>
+      <div><code>Trendline</code><span>Nối điểm bắt đầu xu hướng với điểm vững bền, luôn bao trọn hành động giá. Nét đứt là đoạn sau khi bị phá vỡ.</span></div>
+      <div><code>MUA / BÁN</code><span>Điểm vào lệnh: điểm chốt cơ bản thuận xu hướng được xác nhận, giá phá qua nến xác nhận. Hạng A, B, C theo số điều kiện bất lợi.</span></div>
+      <div><code>Dải màu đáy</code><span>Xu hướng tại mỗi nến: xanh là tăng (điểm vững bền gần nhất là đáy), đỏ là giảm, xám là chưa rõ.</span></div>
+    </div>
+  </div>
+
+  <div class="card pad notes">
+    <h2>Nguồn giá</h2>
+    <p>Giá lấy trực tiếp từ Binance, cặp <b>PAXG/USDT</b>. PAXG là token được bảo chứng 1:1 bằng một ounce vàng, nên giá đi sát XAUUSD nhưng thường chênh vài đô và có thanh khoản mỏng hơn sàn forex. Lịch sử nến tải qua REST, còn nến đang chạy cập nhật từng giây qua WebSocket. Trang chỉ tính điểm chốt và tín hiệu trên các nến <b>đã đóng</b>, nên kết quả không bị vẽ lại khi nến còn đang chạy.</p>
+    <p>Để giá khớp với sàn của bạn, mở MT5 xem giá XAUUSD, lấy giá đó trừ đi giá trên trang rồi nhập vào ô “Cộng thêm vào giá”. Mức cộng thêm làm dịch toàn bộ biểu đồ lên hoặc xuống, nên sóng, điểm chốt và trendline giữ nguyên. Chỉ các mức vào lệnh và cắt lỗ đổi theo giá sàn.</p>
+    <p>Vàng giao ngay nghỉ từ khoảng 21:00 UTC thứ Sáu đến 22:00 UTC Chủ nhật, tức 04:00 sáng thứ Bảy đến 05:00 sáng thứ Hai giờ Việt Nam. Còn PAXG giao dịch cả cuối tuần. Bật “Ẩn nến cuối tuần” để bỏ những nến đó khỏi phân tích, cho giống biểu đồ MT5.</p>
+    <p style="margin-top:12px">Toàn bộ quy tắc được tính tự động từ giá cao, thấp và đóng cửa, không dùng thông tin của tương lai: mỗi điểm chốt và tín hiệu chỉ xuất hiện từ nến mà nó được xác nhận. Các ngưỡng “phá xa” (0,5 ATR), nến xác nhận “quá dài” (2 ATR) và chốt lời 2R là cách mình định lượng những chỗ tài liệu mô tả bằng cảm nhận. Đây là công cụ học phương pháp, không phải lời khuyên đầu tư.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- toggles ---------- */
+const TOG=[
+  {k:'swing',label:'Sóng',color:'--muted',def:true},
+  {k:'basic',label:'Điểm chốt cơ bản',color:'--basic',def:true},
+  {k:'sec',label:'Điểm chốt thứ cấp',color:'--warn',def:true},
+  {k:'anchor',label:'Điểm chốt vững bền',color:'--gold',def:true},
+  {k:'mom',label:'Nhãn xung lượng',color:'--warn',def:false},
+  {k:'tl',label:'Trendline',color:'--up',def:true},
+  {k:'sig',label:'Điểm mua / bán',color:'--down',def:true},
+  {k:'bias',label:'Dải xu hướng',color:'--up',def:true},
+  {k:'wkd',label:'Ẩn nến cuối tuần',color:'--basic',def:true},
+];
+const state={closed:[],forming:null,tf:LS.get('sxh.tf','15m'),offset:+LS.get('sxh.off',0)||0,grade:LS.get('sxh.grade','all'),tog:Object.assign(Object.fromEntries(TOG.map(t=>[t.k,t.def])),LS.get('sxh.tog',{})),sel:null};
+const tg=$('toggles');
+TOG.forEach(t=>{const l=document.createElement('label');l.className='chip';l.innerHTML=`<input type="checkbox" id="t_${t.k}" ${state.tog[t.k]?'checked':''}><span class="dot" style="background:var(${t.color})"></span>${t.label}`;
+  l.querySelector('input').addEventListener('change',e=>{state.tog[t.k]=e.target.checked;LS.set('sxh.tog',state.tog);if(t.k==='wkd')run();else drawOverlays()});tg.appendChild(l)});
+
+/* ---------- live data: Binance PAXG/USDT ---------- */
+const SYMBOL='PAXGUSDT',VN=7*3600;
+const REST=['https://data-api.binance.vision','https://api.binance.com'];
+const WSS=['wss://data-stream.binance.vision/ws/','wss://stream.binance.com:9443/ws/'];
+const TFNAME={'5m':'M5','15m':'M15','1h':'H1'};
+// bar.time is shown as Vietnam time (UTC+7); the chart library renders timestamps as UTC
+const toBar=(t,o,h,l,c)=>({time:Math.floor(t/1000)+VN,open:+o,high:+h,low:+l,close:+c});
+// spot gold is closed roughly Fri 21:00 UTC to Sun 22:00 UTC
+function goldClosed(vnTime){const d=new Date((vnTime-VN)*1000),wd=d.getUTCDay(),h=d.getUTCHours();return wd===6||(wd===5&&h>=21)||(wd===0&&h<22)}
+async function fetchHistory(tf){
+  let lastErr;
+  for(const base of REST){
+    try{
+      const r=await fetch(`${base}/api/v3/klines?symbol=${SYMBOL}&interval=${tf}&limit=1000`,{cache:'no-store'});
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      const k=await r.json(),now=Date.now(),closed=[];let forming=null;
+      for(const x of k){const b=toBar(x[0],x[1],x[2],x[3],x[4]);if(x[6]<now)closed.push(b);else forming=b}
+      return {closed,forming};
+    }catch(e){lastErr=e}
+  }
+  throw lastErr||new Error('Không có phản hồi');
+}
+const live={ws:null,wsIdx:0,retry:0,lastMsg:0,timer:null,gen:0,lastPx:null};
+function connect(){
+  const gen=++live.gen;
+  try{live.ws&&live.ws.close()}catch(e){}
+  const ws=new WebSocket(WSS[live.wsIdx%WSS.length]+SYMBOL.toLowerCase()+'@kline_'+state.tf);
+  live.ws=ws;
+  ws.onopen=()=>{if(gen!==live.gen)return;live.retry=0;live.lastMsg=Date.now();setConn('on')};
+  ws.onmessage=ev=>{
+    if(gen!==live.gen)return;live.lastMsg=Date.now();
+    let d;try{d=JSON.parse(ev.data)}catch(e){return}
+    const k=d.k;if(!k)return;
+    const b=toBar(k.t,k.o,k.h,k.l,k.c);
+    if(k.x){const arr=state.closed,last=arr[arr.length-1];
+      if(last&&last.time===b.time)arr[arr.length-1]=b;else if(!last||b.time>last.time)arr.push(b);
+      state.forming=null;run(false)}
+    else{state.forming=b;showForming()}
+    setConn('on');
+  };
+  ws.onclose=()=>{if(gen!==live.gen)return;scheduleReconnect()};
+  ws.onerror=()=>{try{ws.close()}catch(e){}};
+}
+function scheduleReconnect(){
+  setConn('off');live.wsIdx++;
+  const wait=Math.min(30,2*Math.pow(2,live.retry++));
+  msg(`Mất kết nối giá trực tiếp. Thử lại sau ${wait} giây.`,true);
+  clearTimeout(live.timer);live.timer=setTimeout(()=>loadTF(false),wait*1000);
+}
+setInterval(()=>{if(live.ws&&live.ws.readyState===1&&Date.now()-live.lastMsg>90000){try{live.ws.close()}catch(e){}}
+  if(live.lastMsg)setConn(live.ws&&live.ws.readyState===1?'on':'off')},15000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(!live.ws||live.ws.readyState!==1||Date.now()-live.lastMsg>60000))loadTF(false)});
+function setConn(st){
+  const el=$('src'),tf=TFNAME[state.tf];
+  const t=live.lastMsg?new Date(live.lastMsg+VN*1000).toISOString().slice(11,19):'';
+  const closedNow=goldClosed(Math.floor(Date.now()/1000)+VN);
+  el.className='src '+(st==='on'?(closedNow?'closed':'on'):'off');
+  $('srcTxt').textContent=st==='on'?`${closedNow?'Vàng đang nghỉ · PAXG vẫn chạy':'Trực tiếp'} · PAXG/USDT · ${tf} · ${t}`:`Mất kết nối · ${tf}`;
+}
+function showForming(){
+  const f=state.forming;if(!f||!candle)return;
+  const off=state.offset,px=f.close+off,el=$('px');
+  el.textContent=fmt(px);
+  if(live.lastPx!=null&&px!==live.lastPx)el.className='px '+(px>live.lastPx?'tick-up':'tick-down');
+  live.lastPx=px;
+  const last=bars[bars.length-1];
+  if(state.tog.wkd&&goldClosed(f.time))return;
+  if(!last||f.time>last.time)candle.update({time:f.time,open:f.open+off,high:f.high+off,low:f.low+off,close:f.close+off});
+}
+
+/* ---------- analysis engine ---------- */
+function analyze(bars){
+  const n=bars.length,H=bars.map(b=>b.high),L=bars.map(b=>b.low),C=bars.map(b=>b.close);
+  const atr=new Array(n);let s=0;
+  for(let i=0;i<n;i++){const tr=i?Math.max(H[i]-L[i],Math.abs(H[i]-C[i-1]),Math.abs(L[i]-C[i-1])):H[i]-L[i];
+    if(i<14){s+=tr;atr[i]=s/(i+1)}else atr[i]=(atr[i-1]*13+tr)/14}
+  const type=new Array(n).fill('');
+  for(let i=1;i<n;i++){const hh=H[i]>H[i-1],ll=L[i]<L[i-1];type[i]=hh&&ll?'out':hh?'up':ll?'down':'in'}
+  const argmin=(a,b)=>{let k=a;for(let i=a;i<=b;i++)if(L[i]<L[k])k=i;return k};
+  const argmax=(a,b)=>{let k=a;for(let i=a;i<=b;i++)if(H[i]>H[k])k=i;return k};
+
+  /* 1. Gann swings */
+  const piv=[];let lastH=null,lastL=null;
+  const push=(kind,idx,conf)=>{const p={kind,idx,conf,price:kind==='H'?H[idx]:L[idx]};piv.push(p);if(kind==='H')lastH=p.price;else lastL=p.price};
+  let i0=1;while(i0<n&&type[i0]!=='up'&&type[i0]!=='down')i0++;
+  if(i0>=n)return null;
+  let dir,ext=i0;
+  if(type[i0]==='up'){push('L',argmin(0,i0-1),i0);dir=1}else{push('H',argmax(0,i0-1),i0);dir=-1}
+  for(let i=i0+1;i<n;i++){const t=type[i];
+    if(dir===1){
+      if(t==='down'){push('H',ext,i);dir=-1;ext=i}
+      else if(t==='out'&&lastL!==null&&L[i]<lastL){push('H',H[i]>=H[ext]?i:ext,i);dir=-1;ext=i}
+      else if(H[i]>=H[ext])ext=i;
+    }else{
+      if(t==='up'){push('L',ext,i);dir=1;ext=i}
+      else if(t==='out'&&lastH!==null&&H[i]>lastH){push('L',L[i]<=L[ext]?i:ext,i);dir=1;ext=i}
+      else if(L[i]<=L[ext])ext=i;
+    }}
+  const tentative={kind:dir===1?'H':'L',idx:ext,dir};
+
+  /* 2. classify pivots + momentum */
+  let pH=null,pL=null;
+  for(const p of piv){
+    const prev=p.kind==='H'?pH:pL;
+    if(!prev)p.cls='start';
+    else if(p.kind==='H'?p.price>prev.price:p.price<prev.price){
+      p.cls='sec';const X=prev.price;let j0=-1;
+      for(let j=prev.idx+1;j<=p.idx;j++){if(p.kind==='H'?H[j]>X:L[j]<X){j0=j;break}}
+      let cl=false,full=false;
+      if(j0>=0)for(let j=j0;j<=p.idx;j++){if(p.kind==='H'){if(C[j]>X)cl=true;if(L[j]>X)full=true}else{if(C[j]<X)cl=true;if(H[j]<X)full=true}}
+      const far=Math.abs(p.price-X)>=0.5*atr[p.idx];
+      const sc=(cl?1:0)+(far?1:0)+(full?1:0);
+      p.momScore=sc;p.mom=sc===3?'mạnh':sc===0?'yếu':'TB';p.momCrit={cl,far,full};p.broke=X;
+    }else p.cls='basic';
+    if(p.kind==='H')pH=p;else pL=p;
+  }
+
+  /* 3. anchors */
+  const anchors=[];
+  piv.forEach((p,k)=>{
+    if(p.cls!=='sec')return;
+    let stop=-1;
+    for(let q=k-1;q>=0;q--){const o=piv[q];if(o.kind===p.kind&&(p.kind==='L'?o.price<p.price:o.price>p.price)){stop=q;break}}
+    let ref=null;
+    for(let q=stop+1;q<k;q++){const o=piv[q];if(o.kind!==p.kind&&(ref===null||(p.kind==='L'?o.price>ref.price:o.price<ref.price)))ref=o}
+    if(!ref)return;
+    for(let j=p.idx+1;j<n;j++){
+      if(p.kind==='L'?L[j]<p.price:H[j]>p.price)break;
+      if(p.kind==='L'?H[j]>ref.price:L[j]<ref.price){p.anchor=true;p.anchorConf=Math.max(j,p.conf);p.ref=ref;anchors.push(p);break}
+    }
+  });
+
+  /* 4. bias, trendlines, signals — bar by bar, confirmed info only */
+  const pivAt=Array.from({length:n},()=>[]),ancAt=Array.from({length:n},()=>[]);
+  piv.forEach(p=>pivAt[p.conf].push(p));anchors.forEach(p=>ancAt[p.anchorConf].push(p));
+  const lines=[],biasArr=new Array(n).fill(0),signals=[];
+  let bias=0,up=null,dn=null,lastAH=null,lastAL=null,lastSecH=null,lastSecL=null;
+  const val=(ln,t)=>ln.v0+ln.slope*(t-ln.i0);
+  // the confirmed pullback pivot (lowest low / highest high) after the line's endpoint — the point the book re-anchors to
+  const pivSince=(kind,after,t)=>{let best=null;for(const p of piv){if(p.kind!==kind||p.idx<=after||p.conf>t)continue;if(!best||(kind==='L'?p.price<best.price:p.price>best.price))best=p}return best};
+  const close=(st,t)=>{if(st&&st.line&&st.line.to==null)st.line.to=t};
+  function setEnd(st,e,t){
+    close(st,t);st.E=e;st.broken=false;
+    if(e===st.S){st.line=null;return}
+    let s=-Infinity,P=st.S;
+    for(let i=st.S;i<e;i++){const v=st.dir===1?(L[e]-L[i])/(e-i):(H[e]-H[i])/(e-i);
+      if(st.dir===1?v>s:(s===-Infinity||v<s)){s=v;P=i}}
+    const ln={dir:st.dir,i0:e,v0:st.dir===1?L[e]:H[e],slope:s,from:P,validFrom:t,to:null,brokenAt:null};
+    lines.push(ln);st.line=ln;
+  }
+  for(let t=0;t<n;t++){
+    for(const a of ancAt[t]){
+      if(a.kind==='L'){
+        if(bias!==1||!up){const from=lastAH?lastAH.idx:Math.max(0,a.idx-500);close(up,t);
+          up={dir:1,S:argmin(Math.min(from,a.idx),a.idx),E:null,line:null,broken:false,ext:H[t],adj:true}}
+        setEnd(up,a.idx,t);bias=1;lastAL=a;if(dn)dn.adj=false;
+      }else{
+        if(bias!==-1||!dn){const from=lastAL?lastAL.idx:Math.max(0,a.idx-500);close(dn,t);
+          dn={dir:-1,S:argmax(Math.min(from,a.idx),a.idx),E:null,line:null,broken:false,ext:L[t],adj:true}}
+        setEnd(dn,a.idx,t);bias=-1;lastAH=a;if(up)up.adj=false;
+      }
+    }
+    if(up){
+      if(up.line&&up.line.brokenAt==null&&t>up.line.validFrom&&C[t]<val(up.line,t)){up.line.brokenAt=t;up.broken=true}
+      if(up.adj&&up.broken&&H[t]>up.ext&&up.E!=null){const q=pivSince('L',up.E,t);if(q)setEnd(up,q.idx,t)}
+      up.ext=Math.max(up.ext,H[t]);
+      if(L[t]<L[up.S]){close(up,t);up=null;if(bias===1)bias=0}
+      else if(!up.adj&&(!up.line||(up.line.brokenAt!=null&&t-up.line.brokenAt>20))){close(up,t);up=null}
+    }
+    if(dn){
+      if(dn.line&&dn.line.brokenAt==null&&t>dn.line.validFrom&&C[t]>val(dn.line,t)){dn.line.brokenAt=t;dn.broken=true}
+      if(dn.adj&&dn.broken&&L[t]<dn.ext&&dn.E!=null){const q=pivSince('H',dn.E,t);if(q)setEnd(dn,q.idx,t)}
+      dn.ext=Math.min(dn.ext,L[t]);
+      if(H[t]>H[dn.S]){close(dn,t);dn=null;if(bias===-1)bias=0}
+      else if(!dn.adj&&(!dn.line||(dn.line.brokenAt!=null&&t-dn.line.brokenAt>20))){close(dn,t);dn=null}
+    }
+    biasArr[t]=bias;
+    for(const p of pivAt[t]){
+      if(p.cls==='sec'){if(p.kind==='H')lastSecH=p;else lastSecL=p}
+      if(p.kind==='L'&&bias===1)mkSig('buy',p,t);
+      if(p.kind==='H'&&bias===-1)mkSig('sell',p,t);
+    }
+  }
+  function mkSig(side,p,t){
+    const buy=side==='buy',r=[];
+    if(p.cls==='sec'&&p.mom==='mạnh')return; // không giao dịch ngược xung lượng mạnh
+    let bad=0;
+    const ms=buy?lastSecH:lastSecL;
+    if(ms&&ms.mom==='yếu'){bad++;r.push({ok:false,t:buy?'Đỉnh thứ cấp gần nhất có xung lượng yếu: lực mua đang suy giảm':'Đáy thứ cấp gần nhất có xung lượng yếu: lực bán đang suy giảm'})}
+    else if(ms)r.push({ok:true,t:(buy?'Đỉnh':'Đáy')+' thứ cấp gần nhất có xung lượng '+ms.mom});
+    if(p.cls==='basic')r.push({ok:true,t:(buy?'Đáy':'Đỉnh')+' cơ bản: cú hồi nông, thuận xu hướng'});
+    else if(p.cls==='sec')r.push({ok:true,t:(buy?'Đáy':'Đỉnh')+' thứ cấp với xung lượng '+p.mom+' của bên ngược chiều'});
+    const st=buy?up:dn;
+    if(st&&st.line){const v=val(st.line,t);
+      if(st.line.brokenAt!=null){bad++;r.push({ok:false,t:'Trendline '+(buy?'tăng':'giảm')+' đã bị phá vỡ'})}
+      else r.push({ok:true,t:'Giá còn '+(buy?'trên':'dưới')+' trendline '+(buy?'tăng':'giảm')+' ('+fmt(v)+')'})}
+    const rng=H[t]-L[t];
+    if(rng>2*atr[t]){bad++;r.push({ok:false,t:'Nến xác nhận dài hơn 2 ATR: cắt lỗ rộng'})}
+    const entry=buy?H[t]:L[t],sl=buy?L[p.idx]:H[p.idx],R=Math.abs(entry-sl);
+    if(R<=0)return;
+    const tp=buy?entry+2*R:entry-2*R;
+    const sig={side,p,conf:t,entry,sl,tp,R,grade:bad===0?'A':bad===1?'B':'C',reasons:r,status:'pending',trig:null,exit:null};
+    for(let k=t+1;k<n&&k<=t+6;k++){
+      if(buy?H[k]>entry:L[k]<entry){sig.trig=k;break}
+      if(buy?(type[k]==='down'||L[k]<sl):(type[k]==='up'||H[k]>sl)){sig.status='cancel';break}
+    }
+    if(sig.trig==null&&sig.status==='pending'&&t+6<n)sig.status='cancel';
+    if(sig.trig!=null){sig.status='open';
+      for(let k=sig.trig;k<n;k++){
+        const hitSL=buy?L[k]<=sl:H[k]>=sl,hitTP=buy?H[k]>=tp:L[k]<=tp;
+        if(hitSL){sig.status='loss';sig.exit=k;break}
+        if(hitTP){sig.status='win';sig.exit=k;break}
+      }}
+    signals.push(sig);
+  }
+  return {n,H,L,C,atr,type,piv,anchors,lines,biasArr,signals,tentative,up,dn,lastAH,lastAL,lastSecH,lastSecL,val};
+}
+
+/* ---------- chart ---------- */
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let chart,candle,biasSer,overlay=[],priceLines=[],A=null,bars=[],idxOf=new Map();
+function themeOpts(){return{layout:{background:{type:'solid',color:css('--panel')},textColor:css('--muted'),fontFamily:'JetBrains Mono, ui-monospace, monospace',fontSize:11},
+  grid:{vertLines:{color:css('--grid')},horzLines:{color:css('--grid')}},rightPriceScale:{borderColor:css('--line')},timeScale:{borderColor:css('--line'),timeVisible:true,secondsVisible:false},
+  crosshair:{mode:0}}}
+function makeChart(){
+  if(chart)chart.remove();
+  chart=LightweightCharts.createChart($('chart'),Object.assign({autoSize:true,localization:{locale:'vi-VN',priceFormatter:p=>fmt(p)}},themeOpts()));
+  candle=chart.addCandlestickSeries({upColor:css('--up'),downColor:css('--down'),borderVisible:false,wickUpColor:css('--up'),wickDownColor:css('--down'),priceLineVisible:false});
+  candle.priceScale().applyOptions({scaleMargins:{top:0.08,bottom:0.07}});
+  biasSer=chart.addHistogramSeries({priceScaleId:'bias',priceLineVisible:false,lastValueVisible:false,base:0});
+  chart.priceScale('bias').applyOptions({scaleMargins:{top:0.965,bottom:0},visible:false});
+  chart.subscribeCrosshairMove(onHover);
+  overlay=[];priceLines=[];
+}
+function applyTheme(){if(!chart)return;chart.applyOptions(themeOpts());
+  candle.applyOptions({upColor:css('--up'),downColor:css('--down'),wickUpColor:css('--up'),wickDownColor:css('--down')});drawOverlays()}
+const mq=matchMedia('(prefers-color-scheme: dark)');mq.addEventListener&&mq.addEventListener('change',applyTheme);
+new MutationObserver(applyTheme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+const fmt=v=>v==null||!isFinite(v)?'—':v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtT=s=>{const d=new Date(s*1000),p=x=>String(x).padStart(2,'0');return `${p(d.getUTCDate())}/${p(d.getUTCMonth()+1)} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`};
+const T=i=>bars[i].time;
+
+function drawOverlays(){
+  if(!A)return;
+  overlay.forEach(s=>chart.removeSeries(s));overlay=[];
+  priceLines.forEach(l=>candle.removePriceLine(l));priceLines=[];
+  const tog=state.tog,up=css('--up'),down=css('--down'),gold=css('--gold'),warn=css('--warn'),basic=css('--basic'),muted=css('--muted');
+  // bias strip
+  biasSer.setData(tog.bias?bars.map((b,i)=>({time:b.time,value:1,color:A.biasArr[i]===1?up:A.biasArr[i]===-1?down:css('--line')})):[]);
+  // swings
+  if(tog.swing){const pts=[];let last=-1;
+    for(const p of A.piv){if(p.idx<=last)continue;pts.push({time:T(p.idx),value:p.price});last=p.idx}
+    const tp=A.tentative;if(tp.idx>last)pts.push({time:T(tp.idx),value:tp.kind==='H'?A.H[tp.idx]:A.L[tp.idx]});
+    const s=chart.addLineSeries({color:muted,lineWidth:1,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});s.setData(pts);overlay.push(s)}
+  // trendlines
+  if(tog.tl){const last=A.n-1;
+    for(const ln of A.lines){
+      const end=ln.to==null?last:ln.to;if(end<=ln.from)continue;
+      const col=ln.dir===1?up:down,brk=ln.brokenAt!=null&&ln.brokenAt<=end?ln.brokenAt:null;
+      const solidEnd=brk??end;
+      if(solidEnd>ln.from){const s=chart.addLineSeries({color:col,lineWidth:2,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});
+        s.setData([{time:T(ln.from),value:A.val(ln,ln.from)},{time:T(solidEnd),value:A.val(ln,solidEnd)}]);overlay.push(s)}
+      if(brk!=null&&end>brk){const s=chart.addLineSeries({color:col,lineWidth:1,lineStyle:2,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});
+        s.setData([{time:T(brk),value:A.val(ln,brk)},{time:T(end),value:A.val(ln,end)}]);overlay.push(s)}
+    }}
+  // markers
+  const mk=[];
+  for(const p of A.piv){
+    const pos=p.kind==='H'?'aboveBar':'belowBar';
+    if(p.anchor&&tog.anchor){mk.push({time:T(p.idx),position:pos,color:gold,shape:p.kind==='H'?'arrowDown':'arrowUp',size:1.4,text:'VB'+(tog.mom&&p.mom?' · '+p.mom:'')});continue}
+    if(p.cls==='sec'&&tog.sec){mk.push({time:T(p.idx),position:pos,color:warn,shape:'square',size:0.7,text:'TC'+(tog.mom&&p.mom?' · '+p.mom:'')});continue}
+    if(p.cls==='basic'&&tog.basic){mk.push({time:T(p.idx),position:pos,color:basic,shape:'circle',size:0.5,text:tog.mom?'CB':''})}
+  }
+  if(tog.sig){for(const s of visibleSignals()){
+    const i=s.trig??s.conf,buy=s.side==='buy';
+    mk.push({time:T(i),position:buy?'belowBar':'aboveBar',color:buy?up:down,shape:buy?'arrowUp':'arrowDown',size:1.6,text:(buy?'MUA ':'BÁN ')+s.grade})}}
+  mk.sort((a,b)=>a.time-b.time);candle.setMarkers(mk);
+  // selected or current setup
+  const s=state.sel!=null?A.signals[state.sel]:currentSetup();
+  if(s){const buy=s.side==='buy';
+    priceLines.push(candle.createPriceLine({price:s.entry,color:gold,lineWidth:1,lineStyle:0,axisLabelVisible:true,title:buy?'Mua':'Bán'}));
+    priceLines.push(candle.createPriceLine({price:s.sl,color:down,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'Cắt lỗ'}));
+    priceLines.push(candle.createPriceLine({price:s.tp,color:up,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'2R'}))}
+}
+function visibleSignals(){return A.signals.filter(s=>s.trig!=null&&(state.grade==='all'||(state.grade==='AB'?s.grade!=='C':s.grade==='A')))}
+function currentSetup(){const s=A.signals[A.signals.length-1];if(!s)return null;
+  if(s.status==='pending'||(s.status==='open'))return s;return null}
+
+/* ---------- side panels ---------- */
+function renderStatus(){
+  const n=A.n-1,b=A.biasArr[n],last=bars[n];
+  const lbl=b===1?['up','Xu hướng tăng']:b===-1?['down','Xu hướng giảm']:['flat','Chưa rõ xu hướng'];
+  const la=b===1?A.lastAL:b===-1?A.lastAH:(A.lastAL&&A.lastAH?(A.lastAL.anchorConf>A.lastAH.anchorConf?A.lastAL:A.lastAH):(A.lastAL||A.lastAH));
+  const tlTxt=st=>{if(!st)return 'chưa có';if(!st.line)return 'chờ điểm vững bền thứ hai';const v=A.val(st.line,n);return fmt(v)+(st.line.brokenAt!=null?' · đã bị phá':' · còn hiệu lực')};
+  const mom=p=>p?`${p.mom} (${fmtT(T(p.idx))})`:'—';
+  const swing=A.tentative.dir===1?'đang tăng':'đang giảm';
+  let html=`<h2>Tình hình hiện tại</h2><div class="bias"><span class="pill ${lbl[0]}">${lbl[1]}</span><span class="muted" style="font-size:12px">nến cuối ${fmtT(last.time)}</span></div>
+  <dl class="kv"><dt>Giá đóng cửa</dt><dd>${fmt(last.close)}</dd>
+  <dt>Vững bền gần nhất</dt><dd>${la?(la.kind==='L'?'Đáy ':'Đỉnh ')+fmt(la.price)+' · '+fmtT(T(la.idx)):'chưa có'}</dd>
+  <dt>Trendline tăng</dt><dd>${tlTxt(A.up)}</dd><dt>Trendline giảm</dt><dd>${tlTxt(A.dn)}</dd>
+  <dt>Xung lượng đỉnh TC</dt><dd>${mom(A.lastSecH)}</dd><dt>Xung lượng đáy TC</dt><dd>${mom(A.lastSecL)}</dd>
+  <dt>Sóng hiện tại</dt><dd>${swing}</dd><dt>ATR(14)</dt><dd>${fmt(A.atr[n])}</dd></dl>`;
+  const s=currentSetup();
+  if(s){const buy=s.side==='buy';
+    html+=`<div class="setup"><div class="t" style="color:var(${buy?'--up':'--down'})">${s.status==='pending'?'Lệnh chờ':'Lệnh đang chạy'}: ${buy?'MUA':'BÁN'} <span class="g g${s.grade}">${s.grade}</span></div>
+    <dl class="kv" style="margin-top:6px"><dt>${buy?'Buy stop':'Sell stop'}</dt><dd>${fmt(s.entry)}</dd><dt>Cắt lỗ</dt><dd>${fmt(s.sl)}</dd><dt>Chốt lời 2R</dt><dd>${fmt(s.tp)}</dd></dl>
+    <ul class="reasons">${s.reasons.map(r=>`<li class="${r.ok?'ok':'bad'}">${r.t}</li>`).join('')}</ul></div>`}
+  else html+=`<div class="setup muted">Chưa có lệnh chờ. ${b===1?'Đợi một đáy cơ bản được xác nhận bằng nến lên.':b===-1?'Đợi một đỉnh cơ bản được xác nhận bằng nến xuống.':'Khi chưa rõ xu hướng, tài liệu khuyên đứng ngoài.'}</div>`;
+  $('status').innerHTML=html;
+}
+function renderSignals(){
+  const list=visibleSignals();
+  const w=list.filter(s=>s.status==='win').length,l=list.filter(s=>s.status==='loss').length,o=list.filter(s=>s.status==='open').length;
+  const exp=w+l?((w*2-l)/(w+l)):0;
+  $('stats').innerHTML=[['Lệnh khớp',list.length],['Thắng',w],['Thua',l],['TB / lệnh',(w+l?(exp>=0?'+':'')+exp.toFixed(2)+'R':'—')]].map(([l2,v])=>`<div class="stat"><div class="n">${v}</div><div class="l">${l2}</div></div>`).join('');
+  const res={win:['+2R','res-w'],loss:['−1R','res-l'],open:['đang chạy','res-o']};
+  $('sigBody').innerHTML=list.slice().reverse().map(s=>{const k=A.signals.indexOf(s),r=res[s.status]||['—','res-o'];
+    return `<tr class="sig${state.sel===k?' sel':''}" data-k="${k}" tabindex="0"><td>${fmtT(T(s.trig))}</td><td class="${s.side==='buy'?'side-b':'side-s'}">${s.side==='buy'?'Mua':'Bán'}</td><td><span class="g g${s.grade}">${s.grade}</span></td><td>${fmt(s.entry)}</td><td>${fmt(s.sl)}</td><td class="${r[1]}">${r[0]}</td></tr>`}).join('')||`<tr><td colspan="6" class="muted" style="font-family:var(--f-body)">Không có tín hiệu nào khớp với bộ lọc.</td></tr>`;
+}
+$('sigBody').addEventListener('click',e=>{const tr=e.target.closest('tr.sig');if(!tr)return;selectSig(+tr.dataset.k)});
+$('sigBody').addEventListener('keydown',e=>{if(e.key==='Enter'){const tr=e.target.closest('tr.sig');if(tr)selectSig(+tr.dataset.k)}});
+function selectSig(k){state.sel=state.sel===k?null:k;const s=A.signals[k];
+  if(state.sel!=null){const c=s.trig??s.conf;chart.timeScale().setVisibleLogicalRange({from:Math.max(0,c-70),to:Math.min(A.n+5,c+50)})}
+  drawOverlays();renderSignals();onHover({time:state.sel!=null?T(s.trig??s.conf):undefined})}
+
+/* ---------- hover readout ---------- */
+function onHover(param){
+  const el=$('hover');let i=param&&param.time!=null?idxOf.get(param.time):A?A.n-1:undefined;
+  if(i==null&&A)i=A.n-1;if(i==null)return;
+  const b=bars[i],notes=[];
+  for(const p of A.piv)if(p.idx===i){const nm=p.anchor?'vững bền':p.cls==='sec'?'thứ cấp':p.cls==='basic'?'cơ bản':'đầu tiên';
+    let t=(p.kind==='H'?'Đỉnh ':'Đáy ')+nm;
+    if(p.momCrit){const c=p.momCrit;t+=` · xung lượng ${p.mom} (đóng cửa vượt ${c.cl?'✓':'✗'}, phá xa ${c.far?'✓':'✗'}, nến nằm hẳn ${c.full?'✓':'✗'})`}
+    if(p.anchor)t+=` · xác nhận ${fmtT(T(p.anchorConf))} khi vượt ${fmt(p.ref.price)}`;notes.push(t)}
+  for(const s of A.signals)if(s.trig===i)notes.push(`${s.side==='buy'?'MUA':'BÁN'} hạng ${s.grade}: vào ${fmt(s.entry)}, cắt lỗ ${fmt(s.sl)}, 2R ${fmt(s.tp)}`);
+  const ty={up:'nến lên',down:'nến xuống',in:'inside bar',out:'outside bar'}[A.type[i]]||'';
+  el.innerHTML=`<b>${fmtT(b.time)}</b> O ${fmt(b.open)} H ${fmt(b.high)} L ${fmt(b.low)} C ${fmt(b.close)} · ${ty}${notes.map(t=>`<span class="note">${t}</span>`).join('')}`;
+}
+
+/* ---------- pipeline ---------- */
+let seen=null;
+function run(fresh){
+  const off=state.offset;
+  let src=state.closed;
+  if(state.tog.wkd)src=src.filter(b=>!goldClosed(b.time));
+  const prevLen=bars.length,range=chart?chart.timeScale().getVisibleLogicalRange():null;
+  bars=src.map(b=>({time:b.time,open:b.open+off,high:b.high+off,low:b.low+off,close:b.close+off}));
+  idxOf=new Map(bars.map((b,i)=>[b.time,i]));
+  if(bars.length<50){msg('Chưa đủ nến để phân tích.',true);return}
+  A=analyze(bars);
+  if(!A){msg('Dữ liệu không có đủ biến động để xác định sóng.',true);return}
+  candle.setData(bars);drawOverlays();
+  if(state.forming)showForming();else $('px').textContent=fmt(bars[bars.length-1].close);
+  if(fresh||!range){chart.timeScale().setVisibleLogicalRange({from:Math.max(0,bars.length-200),to:bars.length+4})}
+  else{const atRight=range.to>=prevLen-3,dl=bars.length-prevLen;
+    chart.timeScale().setVisibleLogicalRange(atRight?{from:range.from+dl,to:range.to+dl}:range)}
+  renderStatus();renderSignals();onHover({});
+  // highlight signals that appeared since the last run
+  const keys=new Set(A.signals.map(s=>s.side+s.conf));
+  if(seen&&!fresh){
+    const fresh2=A.signals.filter(s=>!seen.has(s.side+s.conf)&&(s.status==='pending'||s.status==='open'));
+    if(fresh2.length){const s=fresh2[fresh2.length-1],buy=s.side==='buy';
+      const t=`${buy?'MUA':'BÁN'} ${s.grade}: ${s.status==='pending'?(buy?'buy stop ':'sell stop ')+fmt(s.entry):'đã khớp '+fmt(s.entry)}, cắt lỗ ${fmt(s.sl)}`;
+      msg('Tín hiệu mới lúc '+fmtT(T(s.conf))+' · '+t);
+      document.title='● '+(buy?'MUA':'BÁN')+' · Sổ Xu Hướng XAUUSD';
+      const st=$('status');st.classList.remove('newsig');void st.offsetWidth;st.classList.add('newsig')}}
+  seen=keys;
+}
+function msg(t,err){const m=$('msg');m.textContent=t||'';m.className='msg'+(err?' err':'')}
+async function loadTF(fresh){
+  clearTimeout(live.timer);
+  document.querySelectorAll('#tfSeg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tf===state.tf)));
+  if(fresh){msg('Đang tải nến '+TFNAME[state.tf]+'…');seen=null;state.sel=null}
+  try{
+    const h=await fetchHistory(state.tf);
+    state.closed=h.closed;state.forming=h.forming;
+    run(fresh);
+    msg(`Đã tải ${h.closed.length} nến ${TFNAME[state.tf]} đã đóng. Giờ hiển thị là giờ Việt Nam.`);
+    connect();
+  }catch(e){scheduleReconnect()}
+}
+document.addEventListener('focus',()=>{if(document.title.startsWith('●'))document.title='Sổ Xu Hướng XAUUSD'},true);
+window.addEventListener('focus',()=>{document.title='Sổ Xu Hướng XAUUSD'});
+$('tfSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.dataset.tf===state.tf)return;state.tf=b.dataset.tf;LS.set('sxh.tf',state.tf);loadTF(true)});
+$('offset').value=state.offset?state.offset:'';
+let offT;$('offset').addEventListener('input',e=>{clearTimeout(offT);offT=setTimeout(()=>{const v=parseFloat(String(e.target.value).replace(',','.'));state.offset=isFinite(v)?v:0;LS.set('sxh.off',state.offset);live.lastPx=null;if(state.closed.length)run(false)},400)});
+$('gradeSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.grade=b.dataset.g;LS.set('sxh.grade',state.grade);
+  document.querySelectorAll('#gradeSeg button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));state.sel=null;drawOverlays();renderSignals()});
+document.querySelectorAll('#gradeSeg button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.g===state.grade)));
+
+function boot(){
+  if(!window.LightweightCharts){msg('Không tải được thư viện biểu đồ. Hãy tải lại trang.',true);return}
+  makeChart();
+  loadTF(true);
+}
+boot();
+})();
+</script>
+</body>
+</html>
