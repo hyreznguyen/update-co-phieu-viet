@@ -53,8 +53,8 @@ button:focus-visible,.btn:focus-within,input:focus-visible,textarea:focus-visibl
 .chip input{accent-color:var(--gold);margin:0}
 .chip:has(input:checked){border-color:var(--line);background:var(--panel)}
 .dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
-.main{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:14px;align-items:start}
-@media (max-width:980px){.main{grid-template-columns:minmax(0,1fr)}}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:14px;align-items:start}
+@media (max-width:1060px){.main{grid-template-columns:minmax(0,1fr)}}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:12px}
 .chartbox{position:relative;padding:8px}
 #chart{height:clamp(380px,64vh,740px);width:100%}
@@ -82,8 +82,12 @@ dl.kv dd{margin:0;font-family:var(--f-mono);font-size:12.5px;text-align:right;mi
 .stat .l{font-size:11px;color:var(--muted)}
 .tablewrap{max-height:420px;overflow:auto;margin:0 -16px -14px;border-top:1px solid var(--line)}
 table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
-th{position:sticky;top:0;background:var(--panel);text-align:left;font-weight:600;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line);font-size:11px}
-td{padding:6px 6px;border-bottom:1px solid var(--line);font-family:var(--f-mono);white-space:nowrap}
+th{position:sticky;top:0;background:var(--panel);text-align:left;font-weight:600;color:var(--muted);padding:6px 4px;border-bottom:1px solid var(--line);font-size:11px}
+td{padding:6px 4px;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:11.5px;white-space:nowrap}
+.chk{width:15px;height:15px;accent-color:var(--gold);margin:0;vertical-align:-3px;cursor:pointer}
+.h2row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}.h2row h2{margin:0}
+.mini{font-size:11.5px;padding:3px 9px;border-radius:6px}
+.tp{color:var(--up)} .slc{color:var(--down)}
 tr.sig{cursor:pointer} tr.sig:hover td{background:var(--chip)} tr.sel td{background:var(--gold-soft)}
 .side-b{color:var(--up);font-weight:600} .side-s{color:var(--down);font-weight:600}
 .g{display:inline-block;min-width:18px;text-align:center;border-radius:4px;font-weight:600;font-family:var(--f-mono)}
@@ -159,10 +163,10 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
     <div class="side">
       <div class="card pad" id="status"></div>
       <div class="card pad">
-        <h2>Tín hiệu trong quá khứ</h2>
+        <div class="h2row"><h2>Tín hiệu trong quá khứ</h2><div class="bar"><button type="button" class="mini" id="showAll">Hiện SL/TP tất cả</button><button type="button" class="mini" id="hideAll">Ẩn tất cả</button></div></div>
         <div class="stats" id="stats"></div>
-        <p class="muted" style="font-size:12px;margin:0 0 10px">Kiểm tra lại trên các nến đang tải (1.000 nến gần nhất): vào lệnh khi giá phá đỉnh (đáy) nến xác nhận, cắt lỗ ở điểm chốt, chốt lời 2R. Bấm vào một dòng để xem trên biểu đồ.</p>
-        <div class="tablewrap"><table><thead><tr><th>Thời điểm</th><th>Lệnh</th><th>Hạng</th><th>Vào</th><th>Cắt lỗ</th><th>KQ</th></tr></thead><tbody id="sigBody"></tbody></table></div>
+        <p class="muted" style="font-size:12px;margin:0 0 10px">Kiểm tra lại trên các nến đang tải (1.000 nến gần nhất): vào lệnh khi giá phá đỉnh (đáy) nến xác nhận, cắt lỗ ở điểm chốt, chốt lời 2R. Tích ô “Hiện” để vẽ giá vào lệnh, SL và TP của lệnh đó trên biểu đồ. Bấm vào dòng để nhảy tới lệnh.</p>
+        <div class="tablewrap"><table><thead><tr><th title="Hiện vào lệnh, SL, TP trên biểu đồ">Hiện</th><th>Khớp lúc</th><th>Lệnh</th><th>Vào</th><th>SL</th><th>TP</th><th>KQ</th></tr></thead><tbody id="sigBody"></tbody></table></div>
       </div>
     </div>
   </div>
@@ -203,10 +207,11 @@ const TOG=[
   {k:'mom',label:'Nhãn xung lượng',color:'--warn',def:false},
   {k:'tl',label:'Trendline',color:'--up',def:true},
   {k:'sig',label:'Điểm mua / bán',color:'--down',def:true},
+  {k:'lv',label:'Mức lệnh đang chờ',color:'--gold',def:true},
   {k:'bias',label:'Dải xu hướng',color:'--up',def:true},
   {k:'wkd',label:'Ẩn nến cuối tuần',color:'--basic',def:true},
 ];
-const state={closed:[],forming:null,tf:LS.get('sxh.tf','15m'),offset:+LS.get('sxh.off',0)||0,grade:LS.get('sxh.grade','all'),tog:Object.assign(Object.fromEntries(TOG.map(t=>[t.k,t.def])),LS.get('sxh.tog',{})),sel:null};
+const state={closed:[],forming:null,tf:LS.get('sxh.tf','15m'),offset:+LS.get('sxh.off',0)||0,grade:LS.get('sxh.grade','all'),shown:new Set(LS.get('sxh.shown',[])),tog:Object.assign(Object.fromEntries(TOG.map(t=>[t.k,t.def])),LS.get('sxh.tog',{})),sel:null};
 const tg=$('toggles');
 TOG.forEach(t=>{const l=document.createElement('label');l.className='chip';l.innerHTML=`<input type="checkbox" id="t_${t.k}" ${state.tog[t.k]?'checked':''}><span class="dot" style="background:var(${t.color})"></span>${t.label}`;
   l.querySelector('input').addEventListener('change',e=>{state.tog[t.k]=e.target.checked;LS.set('sxh.tog',state.tog);if(t.k==='wkd')run();else drawOverlays()});tg.appendChild(l)});
@@ -489,13 +494,23 @@ function drawOverlays(){
     const i=s.trig??s.conf,buy=s.side==='buy';
     mk.push({time:T(i),position:buy?'belowBar':'aboveBar',color:buy?up:down,shape:buy?'arrowUp':'arrowDown',size:1.6,text:(buy?'MUA ':'BÁN ')+s.grade})}}
   mk.sort((a,b)=>a.time-b.time);candle.setMarkers(mk);
+  // per-signal entry / SL / TP segments, from fill to exit
+  for(const g of visibleSignals()){
+    if(!state.shown.has(sigKey(g)))continue;
+    const a=g.trig;let b=g.exit??A.n-1;if(b<=a)b=Math.min(a+1,A.n-1);if(b<=a)continue;
+    for(const [price,col,w,title] of [[g.entry,gold,1,g.side==='buy'?'Mua':'Bán'],[g.sl,down,2,'SL'],[g.tp,up,2,'TP']]){
+      const ser=chart.addLineSeries({color:col,lineWidth:w,priceLineVisible:false,lastValueVisible:true,title,crosshairMarkerVisible:false});
+      ser.setData([{time:T(a),value:price},{time:T(b),value:price}]);overlay.push(ser)}
+  }
   // selected or current setup
-  const s=state.sel!=null?A.signals[state.sel]:currentSetup();
+  const s=state.sel!=null?A.signals[state.sel]:(tog.lv?currentSetup():null);
   if(s){const buy=s.side==='buy';
     priceLines.push(candle.createPriceLine({price:s.entry,color:gold,lineWidth:1,lineStyle:0,axisLabelVisible:true,title:buy?'Mua':'Bán'}));
-    priceLines.push(candle.createPriceLine({price:s.sl,color:down,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'Cắt lỗ'}));
-    priceLines.push(candle.createPriceLine({price:s.tp,color:up,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'2R'}))}
+    priceLines.push(candle.createPriceLine({price:s.sl,color:down,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'SL'}));
+    priceLines.push(candle.createPriceLine({price:s.tp,color:up,lineWidth:1,lineStyle:2,axisLabelVisible:true,title:'TP 2R'}))}
 }
+const sigKey=s=>s.side+':'+T(s.conf);
+function saveShown(){LS.set('sxh.shown',[...state.shown].slice(-300))}
 function visibleSignals(){return A.signals.filter(s=>s.trig!=null&&(state.grade==='all'||(state.grade==='AB'?s.grade!=='C':s.grade==='A')))}
 function currentSetup(){const s=A.signals[A.signals.length-1];if(!s)return null;
   if(s.status==='pending'||(s.status==='open'))return s;return null}
@@ -529,10 +544,15 @@ function renderSignals(){
   $('stats').innerHTML=[['Lệnh khớp',list.length],['Thắng',w],['Thua',l],['TB / lệnh',(w+l?(exp>=0?'+':'')+exp.toFixed(2)+'R':'—')]].map(([l2,v])=>`<div class="stat"><div class="n">${v}</div><div class="l">${l2}</div></div>`).join('');
   const res={win:['+2R','res-w'],loss:['−1R','res-l'],open:['đang chạy','res-o']};
   $('sigBody').innerHTML=list.slice().reverse().map(s=>{const k=A.signals.indexOf(s),r=res[s.status]||['—','res-o'];
-    return `<tr class="sig${state.sel===k?' sel':''}" data-k="${k}" tabindex="0"><td>${fmtT(T(s.trig))}</td><td class="${s.side==='buy'?'side-b':'side-s'}">${s.side==='buy'?'Mua':'Bán'}</td><td><span class="g g${s.grade}">${s.grade}</span></td><td>${fmt(s.entry)}</td><td>${fmt(s.sl)}</td><td class="${r[1]}">${r[0]}</td></tr>`}).join('')||`<tr><td colspan="6" class="muted" style="font-family:var(--f-body)">Không có tín hiệu nào khớp với bộ lọc.</td></tr>`;
+    const on=state.shown.has(sigKey(s));
+    return `<tr class="sig${state.sel===k?' sel':''}" data-k="${k}" tabindex="0"><td><input type="checkbox" class="chk" id="shw_${k}" aria-label="Hiện SL và TP của lệnh này" ${on?'checked':''}></td><td>${fmtT(T(s.trig))}</td><td><span class="${s.side==='buy'?'side-b':'side-s'}">${s.side==='buy'?'Mua':'Bán'}</span> <span class="g g${s.grade}">${s.grade}</span></td><td>${fmt(s.entry)}</td><td class="slc">${fmt(s.sl)}</td><td class="tp">${fmt(s.tp)}</td><td class="${r[1]}">${r[0]}</td></tr>`}).join('')||`<tr><td colspan="7" class="muted" style="font-family:var(--f-body)">Không có tín hiệu nào khớp với bộ lọc.</td></tr>`;
 }
-$('sigBody').addEventListener('click',e=>{const tr=e.target.closest('tr.sig');if(!tr)return;selectSig(+tr.dataset.k)});
-$('sigBody').addEventListener('keydown',e=>{if(e.key==='Enter'){const tr=e.target.closest('tr.sig');if(tr)selectSig(+tr.dataset.k)}});
+$('sigBody').addEventListener('click',e=>{const tr=e.target.closest('tr.sig');if(!tr)return;
+  if(e.target.classList.contains('chk')){const key=sigKey(A.signals[+tr.dataset.k]);if(e.target.checked)state.shown.add(key);else state.shown.delete(key);saveShown();drawOverlays();return}
+  selectSig(+tr.dataset.k)});
+$('showAll').addEventListener('click',()=>{visibleSignals().forEach(g=>state.shown.add(sigKey(g)));saveShown();drawOverlays();renderSignals()});
+$('hideAll').addEventListener('click',()=>{visibleSignals().forEach(g=>state.shown.delete(sigKey(g)));saveShown();drawOverlays();renderSignals()});
+$('sigBody').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.target.classList.contains('chk')){const tr=e.target.closest('tr.sig');if(tr)selectSig(+tr.dataset.k)}});
 function selectSig(k){state.sel=state.sel===k?null:k;const s=A.signals[k];
   if(state.sel!=null){const c=s.trig??s.conf;chart.timeScale().setVisibleLogicalRange({from:Math.max(0,c-70),to:Math.min(A.n+5,c+50)})}
   drawOverlays();renderSignals();onHover({time:state.sel!=null?T(s.trig??s.conf):undefined})}
