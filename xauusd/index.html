@@ -166,6 +166,7 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
         <button type="button" data-sl="pivot" id="slP">Điểm chốt</button>
         <button type="button" data-sl="buf" id="slB">+0,2 ATR</button>
       </div>
+      <label class="offset" for="spread">Spread (USD)<input id="spread" type="number" step="0.01" min="0" inputmode="decimal"></label>
     </div>
     <div class="chips" id="toggles"></div>
     <div id="msg" class="msg" role="status"></div>
@@ -182,7 +183,7 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
       <div class="card pad">
         <div class="h2row"><h2>Tín hiệu trong quá khứ</h2><div class="bar"><button type="button" class="mini" id="showAll">Hiện SL/TP tất cả</button><button type="button" class="mini" id="hideAll">Ẩn tất cả</button></div></div>
         <div class="stats" id="stats"></div>
-        <p class="muted" style="font-size:12px;margin:0 0 10px">Kiểm tra lại trên các nến đang tải (1.000 nến gần nhất): vào lệnh khi giá phá đỉnh (đáy) nến xác nhận, cắt lỗ và chốt lời theo lựa chọn SL/TP ở trên. Tích ô “Hiện” để vẽ giá vào lệnh, SL và TP của lệnh đó trên biểu đồ. Bấm vào dòng để nhảy tới lệnh.</p>
+        <p class="muted" style="font-size:12px;margin:0 0 10px">Kiểm tra lại trên các nến đang tải (1.000 nến gần nhất): vào lệnh khi giá phá đỉnh (đáy) nến xác nhận, cắt lỗ và chốt lời theo lựa chọn SL/TP ở trên, đã tính spread. Tích ô “Hiện” để vẽ giá vào lệnh, SL và TP của lệnh đó trên biểu đồ. Bấm vào dòng để nhảy tới lệnh.</p>
         <div class="tablewrap"><table><thead><tr><th title="Hiện vào lệnh, SL, TP trên biểu đồ">Hiện</th><th>Khớp lúc</th><th>Lệnh</th><th>Vào</th><th>SL</th><th>TP</th><th>KQ</th></tr></thead><tbody id="sigBody"></tbody></table></div>
       </div>
     </div>
@@ -203,8 +204,11 @@ ol.steps{margin:6px 0 0;padding-left:20px;font-size:13px}
   <div class="card pad notes">
     <h2>Nguồn giá</h2>
     <p>Giá lấy trực tiếp từ Binance, cặp <b>PAXG/USDT</b>. PAXG là token được bảo chứng 1:1 bằng một ounce vàng, nên giá đi sát XAUUSD nhưng thường chênh vài đô và có thanh khoản mỏng hơn sàn forex. Lịch sử nến tải qua REST, còn nến đang chạy cập nhật từng giây qua WebSocket. Trang chỉ tính điểm chốt và tín hiệu trên các nến <b>đã đóng</b>, nên kết quả không bị vẽ lại khi nến còn đang chạy.</p>
-    <p>Để giá khớp với sàn của bạn, mở MT5 xem giá XAUUSD, lấy giá đó trừ đi giá trên trang rồi nhập vào ô “Cộng thêm vào giá”. Mức cộng thêm làm dịch toàn bộ biểu đồ lên hoặc xuống, nên sóng, điểm chốt và trendline giữ nguyên. Chỉ các mức vào lệnh và cắt lỗ đổi theo giá sàn.</p>
+    <p>Để giá khớp với sàn của bạn, mở MT5 xem giá Bid của XAUUSD (giá mà biểu đồ MT5 vẽ), lấy giá đó trừ đi giá trên trang rồi nhập vào ô “Cộng thêm vào giá”. Mức cộng thêm làm dịch toàn bộ biểu đồ lên hoặc xuống, nên sóng, điểm chốt và trendline giữ nguyên. Chỉ các mức vào lệnh và cắt lỗ đổi theo giá sàn.</p>
     <p>Vàng giao ngay nghỉ từ khoảng 21:00 UTC thứ Sáu đến 22:00 UTC Chủ nhật, tức 04:00 sáng thứ Bảy đến 05:00 sáng thứ Hai giờ Việt Nam. Còn PAXG giao dịch cả cuối tuần. Bật “Ẩn nến cuối tuần” để bỏ những nến đó khỏi phân tích, cho giống biểu đồ MT5.</p>
+    <h2 style="margin-top:14px">Spread</h2>
+    <p>Biểu đồ MT5 vẽ giá Bid. Lệnh mua khớp ở giá Ask, tức Bid cộng spread. Lệnh bán bị cắt lỗ hoặc chốt lời khi giá Ask chạm mức đặt. Vì vậy trang đặt buy stop cao hơn đỉnh nến xác nhận đúng một spread, đặt SL của lệnh bán cao hơn đỉnh điểm chốt một spread, và tính R:R sau khi đã trừ spread. Lệnh nào spread chiếm hơn 20% khoảng SL bị tính một điều kiện bất lợi. Lệnh nào khớp trong giờ rollover (khoảng 04:45–05:30 sáng giờ Việt Nam, lúc spread giãn mạnh) cũng vậy.</p>
+    <p>Xem spread thật trên MT5: trong cửa sổ Market Watch, bấm chuột phải, chọn Columns, rồi bật Spread. Con số hiện ra tính bằng point. Nếu giá XAUUSD có 2 chữ số thập phân (ví dụ 4.123,45) thì 30 point = 0,30 USD. Nếu có 3 chữ số thập phân thì 300 point = 0,30 USD. Tài khoản Raw/ECN có spread thấp nhưng thu phí hoa hồng. Hãy cộng phí khứ hồi cho mỗi lot chia 100 vào ô spread, ví dụ phí 7 USD/lot thì cộng thêm 0,07.</p>
     <p style="margin-top:12px">Toàn bộ quy tắc được tính tự động từ giá cao, thấp và đóng cửa, không dùng thông tin của tương lai: mỗi điểm chốt và tín hiệu chỉ xuất hiện từ nến mà nó được xác nhận. Các ngưỡng “phá xa” (0,5 ATR), nến xác nhận “quá dài” (2 ATR) và các cách đặt SL/TP là cách mình định lượng những chỗ tài liệu mô tả bằng cảm nhận. Đây là công cụ học phương pháp, không phải lời khuyên đầu tư.</p>
   </div>
 </div>
@@ -228,7 +232,7 @@ const TOG=[
   {k:'bias',label:'Dải xu hướng',color:'--up',def:true},
   {k:'wkd',label:'Ẩn nến cuối tuần',color:'--basic',def:true},
 ];
-const state={closed:[],forming:null,tf:LS.get('sxh.tf','15m'),offset:+LS.get('sxh.off',0)||0,grade:LS.get('sxh.grade','all'),tpMode:LS.get('sxh.tp','struct'),slMode:LS.get('sxh.sl','pivot'),shown:new Set(LS.get('sxh.shown',[])),tog:Object.assign(Object.fromEntries(TOG.map(t=>[t.k,t.def])),LS.get('sxh.tog',{})),sel:null};
+const state={closed:[],forming:null,tf:LS.get('sxh.tf','15m'),offset:+LS.get('sxh.off',0)||0,grade:LS.get('sxh.grade','all'),tpMode:LS.get('sxh.tp','struct'),spread:Math.max(0,+LS.get('sxh.sp',0.3)||0),slMode:LS.get('sxh.sl','pivot'),shown:new Set(LS.get('sxh.shown',[])),tog:Object.assign(Object.fromEntries(TOG.map(t=>[t.k,t.def])),LS.get('sxh.tog',{})),sel:null};
 const tg=$('toggles');
 TOG.forEach(t=>{const l=document.createElement('label');l.className='chip';l.innerHTML=`<input type="checkbox" id="t_${t.k}" ${state.tog[t.k]?'checked':''}><span class="dot" style="background:var(${t.color})"></span>${t.label}`;
   l.querySelector('input').addEventListener('change',e=>{state.tog[t.k]=e.target.checked;LS.set('sxh.tog',state.tog);if(t.k==='wkd')run();else drawOverlays()});tg.appendChild(l)});
@@ -431,9 +435,13 @@ function analyze(bars){
       else r.push({ok:true,t:'Giá còn '+(buy?'trên':'dưới')+' trendline '+(buy?'tăng':'giảm')+' ('+fmt(v)+')'})}
     const rng=H[t]-L[t];
     if(rng>2*atr[t]){bad++;r.push({ok:false,t:'Nến xác nhận dài hơn 2 ATR: cắt lỗ rộng'})}
-    const buf=state.slMode==='buf'?0.2*atr[t]:0;
-    const entry=buy?H[t]:L[t],sl=buy?L[p.idx]-buf:H[p.idx]+buf,R=Math.abs(entry-sl);
+    const buf=state.slMode==='buf'?0.2*atr[t]:0,sp=state.spread;
+    // Order levels are MT5 prices; the chart is Bid. A buy fills at Ask (Bid+spread); a sell's SL/TP are hit by Ask.
+    const entry=buy?H[t]+sp:L[t],sl=buy?L[p.idx]-buf:H[p.idx]+buf+sp,R=Math.abs(entry-sl);
     if(R<=0)return;
+    if(sp>0.2*R){bad++;r.push({ok:false,t:`Spread ${fmt(sp)} chiếm ${Math.round(sp/R*100)}% khoảng SL`})}
+    if(typeof VN==='number'){const d=new Date((T(t)-VN)*1000),m=d.getUTCHours()*60+d.getUTCMinutes();
+      if(m>=21*60+45&&m<=22*60+30){bad++;r.push({ok:false,t:'Giờ rollover: spread thường giãn mạnh'})}}
     let tp,tpNote;
     if(state.tpMode==='struct'){
       // nearest confirmed swing high above entry (buy) / swing low below entry (sell), known at bar t
@@ -443,22 +451,23 @@ function analyze(bars){
         if(buy?q.price>entry:q.price<entry){if(!best||(buy?q.price<best.price:q.price>best.price))best=q}
       }
       if(best){
-        if(Math.abs(best.price-entry)<R)return; // kháng cự/hỗ trợ gần hơn 1R: bỏ qua lệnh
-        tp=best.price;
+        tp=buy?best.price:best.price+sp; // a sell's TP is hit by Ask, so it sits one spread above the Bid low
+        if(buy?tp<=entry:tp>=entry)return;
+        if(Math.abs(tp-entry)<R)return; // kháng cự/hỗ trợ gần hơn 1R sau spread: bỏ qua lệnh
         const nm=best.anchor&&best.anchorConf<=t?'vững bền':best.cls==='sec'?'thứ cấp':best.cls==='basic'?'cơ bản':'đầu tiên';
         tpNote=(buy?'đỉnh ':'đáy ')+nm+' gần nhất '+(buy?'phía trên':'phía dưới')+' ('+fmtT(T(best.idx))+')';
       }else{tp=buy?entry+2*R:entry-2*R;tpNote='chưa có '+(buy?'đỉnh':'đáy')+' nào '+(buy?'phía trên':'phía dưới')+', dùng 2R'}
     }else{const m=+state.tpMode;tp=buy?entry+m*R:entry-m*R;tpNote=String(m).replace('.',',')+'R cố định'}
     const rr=Math.abs(tp-entry)/R;
-    const sig={side,p,conf:t,entry,sl,tp,R,rr,tpNote,grade:bad===0?'A':bad===1?'B':'C',reasons:r,status:'pending',trig:null,exit:null};
+    const sig={side,p,conf:t,entry,sl,tp,R,rr,tpNote,sp,grade:bad===0?'A':bad===1?'B':'C',reasons:r,status:'pending',trig:null,exit:null};
     for(let k=t+1;k<n&&k<=t+6;k++){
-      if(buy?H[k]>entry:L[k]<entry){sig.trig=k;break}
-      if(buy?(type[k]==='down'||L[k]<sl):(type[k]==='up'||H[k]>sl)){sig.status='cancel';break}
+      if(buy?H[k]+sp>entry:L[k]<entry){sig.trig=k;break}
+      if(buy?(type[k]==='down'||L[k]<sl):(type[k]==='up'||H[k]+sp>sl)){sig.status='cancel';break}
     }
     if(sig.trig==null&&sig.status==='pending'&&t+6<n)sig.status='cancel';
     if(sig.trig!=null){sig.status='open';
       for(let k=sig.trig;k<n;k++){
-        const hitSL=buy?L[k]<=sl:H[k]>=sl,hitTP=buy?H[k]>=tp:L[k]<=tp;
+        const hitSL=buy?L[k]<=sl:H[k]+sp>=sl,hitTP=buy?H[k]>=tp:L[k]+sp<=tp;
         if(hitSL){sig.status='loss';sig.exit=k;break}
         if(hitTP){sig.status='win';sig.exit=k;break}
       }}
@@ -599,8 +608,8 @@ function renderDetail(){
   <dl class="kv"><dt>${buy?'Buy stop':'Sell stop'}</dt><dd>${fmt(s.entry)}</dd>
   <dt>SL</dt><dd class="slc">${fmt(s.sl)} (${buy?'−':'+'}${fmt(s.R)})</dd>
   <dt>TP</dt><dd class="tp">${fmt(s.tp)} (${buy?'+':'−'}${fmt(Math.abs(s.tp-s.entry))})</dd>
-  <dt>R:R</dt><dd>1 : ${s.rr.toFixed(1)}</dd><dt>Kết quả</dt><dd>${res}</dd></dl>
-  <p class="muted" style="font-size:12px;margin:8px 0 0">SL tại ${buy?'đáy':'đỉnh'} ${s.p.cls==='sec'?'thứ cấp':'cơ bản'} ${fmtT(T(s.p.idx))}${state.slMode==='buf'?' trừ đệm 0,2 ATR':''}. TP tại ${s.tpNote}.</p>
+  <dt>R:R (sau spread)</dt><dd>1 : ${s.rr.toFixed(1)}</dd><dt>Spread</dt><dd>${fmt(s.sp)} · ${Math.round(s.sp/s.R*100)}% khoảng SL</dd><dt>Kết quả</dt><dd>${res}</dd></dl>
+  <p class="muted" style="font-size:12px;margin:8px 0 0">SL tại ${buy?'đáy':'đỉnh'} ${s.p.cls==='sec'?'thứ cấp':'cơ bản'} ${fmtT(T(s.p.idx))}${state.slMode==='buf'?' trừ đệm 0,2 ATR':''}. TP tại ${s.tpNote}. ${buy?'Giá vào là giá Ask (đỉnh nến xác nhận + spread).':'SL và TP là mức giá Ask, cao hơn mức Bid trên biểu đồ một spread.'}</p>
   <ul class="reasons">${s.reasons.map(r=>`<li class="${r.ok?'ok':'bad'}">${r.t}</li>`).join('')}</ul>`;
 }
 $('detail').addEventListener('click',e=>{if(e.target.id==='detailClose'){state.sel=null;drawOverlays();renderSignals();renderDetail()}});
@@ -611,6 +620,8 @@ function onChartClick(param){
 }
 function setSeg(id,attr,v){document.querySelectorAll('#'+id+' button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===v)))}
 setSeg('tpSeg','tp',state.tpMode);setSeg('slSeg','sl',state.slMode);
+$('spread').value=state.spread;
+let spT;$('spread').addEventListener('input',e=>{clearTimeout(spT);spT=setTimeout(()=>{const v=parseFloat(String(e.target.value).replace(',','.'));state.spread=isFinite(v)&&v>=0?v:0;LS.set('sxh.sp',state.spread);state.sel=null;if(A)run(false)},400)});
 $('tpSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.tpMode=b.dataset.tp;LS.set('sxh.tp',state.tpMode);setSeg('tpSeg','tp',state.tpMode);state.sel=null;if(A)run(false)});
 $('slSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.slMode=b.dataset.sl;LS.set('sxh.sl',state.slMode);setSeg('slSeg','sl',state.slMode);state.sel=null;if(A)run(false)});
 
