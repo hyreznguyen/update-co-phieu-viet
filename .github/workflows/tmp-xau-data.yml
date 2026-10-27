@@ -1,0 +1,42 @@
+name: Tạm - tải nến PAXG để thống kê
+on:
+  push:
+    branches: [tmp-xau-data]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tải nến
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, time, os
+          os.makedirs('tmpdata', exist_ok=True)
+          hosts=['https://data-api.binance.vision','https://api.binance.com','https://api1.binance.com']
+          def get(url):
+              last=None
+              for h in hosts:
+                  try:
+                      with urllib.request.urlopen(h+url, timeout=20) as r: return json.load(r)
+                  except Exception as e: last=e; print('fail',h,e)
+              raise last
+          for tf,n in [('5m',8000),('15m',8000),('1h',6000)]:
+              out=[]; end=None
+              while len(out)<n:
+                  q=f'/api/v3/klines?symbol=PAXGUSDT&interval={tf}&limit=1000'+(f'&endTime={end}' if end else '')
+                  k=get(q)
+                  if not k: break
+                  out=k+out; end=k[0][0]-1; time.sleep(0.3)
+              out=[x[:5] for x in out if x[6] < time.time()*1000]
+              json.dump(out, open(f'tmpdata/{tf}.json','w'))
+              print(tf, len(out))
+          PY
+      - name: Lưu
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tmpdata && git commit -m "tmp data" && git push
