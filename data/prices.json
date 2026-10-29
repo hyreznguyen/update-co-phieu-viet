@@ -1,46 +1,46 @@
 {
-  "updatedAt": "2026-10-28T16:53:43+07:00",
+  "updatedAt": "2026-10-29T16:54:38+07:00",
   "prices": {
     "FPT": {
-      "close": 54000,
-      "prevClose": 55400,
-      "date": "2026-10-28",
+      "close": 52700,
+      "prevClose": 54000,
+      "date": "2026-10-29",
       "source": "VCI"
     },
     "PVD": {
-      "close": 18800,
-      "prevClose": 18500,
-      "date": "2026-10-28",
+      "close": 18350,
+      "prevClose": 18800,
+      "date": "2026-10-29",
       "source": "VCI"
     },
     "MSR": {
-      "close": 68400,
-      "prevClose": 67400,
-      "date": "2026-10-28",
+      "close": 66000,
+      "prevClose": 68400,
+      "date": "2026-10-29",
       "source": "VCI"
     },
     "VHM": {
-      "close": 63500,
+      "close": 62100,
       "prevClose": 63500,
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "source": "VCI"
     },
     "VNM": {
-      "close": 58200,
-      "prevClose": 57600,
-      "date": "2026-10-28",
+      "close": 57700,
+      "prevClose": 58200,
+      "date": "2026-10-29",
       "source": "VCI"
     },
     "TRC": {
-      "close": 22200,
+      "close": 22250,
       "prevClose": 22200,
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "source": "VCI"
     },
     "MSN": {
-      "close": 74200,
-      "prevClose": 73400,
-      "date": "2026-10-28",
+      "close": 72100,
+      "prevClose": 74200,
+      "date": "2026-10-29",
       "source": "VCI"
     }
   }
